@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A1A7512F-8DAD-4022-B39F-D892D0B579FF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BlogEngine.Tests</RootNamespace>
+    <AssemblyName>BlogEngine.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.SHDocVw">
+      <HintPath>..\..\lib\watin\Interop.SHDocVw.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lib\nunit\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WatiN.Core">
+      <HintPath>..\..\lib\watin\WatiN.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\Login.cs" />
+    <Compile Include="BeTest.cs" />
+    <Compile Include="Comments\Comment.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="FileSystem\Crud.cs" />
+    <Compile Include="FileSystem\IO.cs" />
+    <Compile Include="Navigation\CustomPages.cs" />
+    <Compile Include="Packaging\Installer.cs" />
+    <Compile Include="PageTemplates\Account\Login.cs" />
+    <Compile Include="PageTemplates\Admin\CommentsPending.cs" />
+    <Compile Include="PageTemplates\Admin\EditPage.cs" />
+    <Compile Include="PageTemplates\Admin\EditPost.cs" />
+    <Compile Include="PageTemplates\Admin\ExtensionsGallery.cs" />
+    <Compile Include="PageTemplates\Admin\ExtensionsLocal.cs" />
+    <Compile Include="PageTemplates\Admin\Profile.cs" />
+    <Compile Include="PageTemplates\Admin\Users.cs" />
+    <Compile Include="PageTemplates\SinglePost.cs" />
+    <Compile Include="PageTemplates\Admin\PostList.cs" />
+    <Compile Include="PageTemplates\Admin\SettingsMain.cs" />
+    <Compile Include="PageTemplates\Admin\ThemesGallery.cs" />
+    <Compile Include="PageTemplates\Admin\ThemesLocal.cs" />
+    <Compile Include="PageTemplates\Admin\Trash.cs" />
+    <Compile Include="Posts\Post.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuickNotes\Crud.cs" />
+    <Compile Include="QuickNotes\Navigation.cs" />
+    <Compile Include="QuickNotes\Posting.cs" />
+    <Compile Include="Quixote\Runner.cs" />
+    <Compile Include="Users\AuthorProfile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Readme.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

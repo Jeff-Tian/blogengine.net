@@ -1,0 +1,684 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 11.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="11.0">
+ <Targets>
+  <Target Name="J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\bin\Release\BlogEngine.Core.dll">
+   <Modules>
+    <Module Name="blogengine.core.dll">
+     <Namespaces>
+      <Namespace Name="BlogEngine.Core">
+       <Types>
+        <Type Name="Utils" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CanWrite(System.String,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core" File="Utils.cs" Line="1318">Object 'fs' can be disposed more than once in method 'Utils.CanWrite(string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1318</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#RecycleIIS()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="NonBreaking">
+             <Issue Certainty="33" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core" File="Utils.cs" Line="1389">'Utils.RecycleIIS()' calls into 'DirectoryEntry.Invoke(string, params object[])' which has a LinkDemand. By making this call, 'DirectoryEntry.Invoke(string, params object[])' is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: &#xD;&#xA;   -&gt;'Utils.RecycleIIS()'&#xD;&#xA;   -&gt;'Utils.RecycleIIS()'</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#RenderControl(System.Web.UI.Control)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core" File="Utils.cs" Line="1040">Object 'sWriter' can be disposed more than once in method 'Utils.RenderControl(Control)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1040</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="BlogEngine.Core.API.MetaWeblog">
+       <Types>
+        <Type Name="MetaWeblogException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'MetaWeblogException'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="MetaWeblogHandler" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#NewMediaObject(System.String,System.String,System.String,BlogEngine.Core.API.MetaWeblog.MWAMediaObject,System.Web.HttpContext)" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\API\MetaWeblog" File="MetaWeblogHandler.cs" Line="773">Object 'bw' can be disposed more than once in method 'MetaWeblogHandler.NewMediaObject(string, string, string, MWAMediaObject, HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 773</Issue>
+             <Issue Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\API\MetaWeblog" File="MetaWeblogHandler.cs" Line="773">Object 'fs' can be disposed more than once in method 'MetaWeblogHandler.NewMediaObject(string, string, string, MWAMediaObject, HttpContext)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 773</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="BlogEngine.Core.Compilation">
+       <Types>
+        <Type Name="ReflectExpressionBuilder" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#EvaluateExpression(System.Object,System.Web.UI.BoundPropertyEntry,System.Object,System.Web.Compilation.ExpressionBuilderContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Name="OverrideOnly" Certainty="33" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Compilation" File="ReflectExpressionBuilder.cs" Line="82">Override 'ReflectExpressionBuilder.EvaluateExpression(object, BoundPropertyEntry, object, ExpressionBuilderContext)' has the following LinkDemand that is not present on base method 'ExpressionBuilder.EvaluateExpression(object, BoundPropertyEntry, object, ExpressionBuilderContext)': [AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]. If possible, apply the same LinkDemand to the base method. Otherwise, replace it with a full Demand or remove it entirely.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetCodeExpression(System.Web.UI.BoundPropertyEntry,System.Object,System.Web.Compilation.ExpressionBuilderContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Name="OverrideOnly" Certainty="33" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Compilation" File="ReflectExpressionBuilder.cs" Line="104">Override 'ReflectExpressionBuilder.GetCodeExpression(BoundPropertyEntry, object, ExpressionBuilderContext)' has the following LinkDemand that is not present on base method 'ExpressionBuilder.GetCodeExpression(BoundPropertyEntry, object, ExpressionBuilderContext)': [AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]. If possible, apply the same LinkDemand to the base method. Otherwise, replace it with a full Demand or remove it entirely.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ParseExpression(System.String,System.Type,System.Web.Compilation.ExpressionBuilderContext)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Name="OverrideOnly" Certainty="33" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Compilation" File="ReflectExpressionBuilder.cs" Line="125">Override 'ReflectExpressionBuilder.ParseExpression(string, Type, ExpressionBuilderContext)' has the following LinkDemand that is not present on base method 'ExpressionBuilder.ParseExpression(string, Type, ExpressionBuilderContext)': [AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]. If possible, apply the same LinkDemand to the base method. Otherwise, replace it with a full Demand or remove it entirely.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SupportsEvaluate" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#get_SupportsEvaluate()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+               <Issue Name="OverrideOnly" Certainty="33" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Compilation" File="ReflectExpressionBuilder.cs" Line="53">Override 'ReflectExpressionBuilder.SupportsEvaluate.get()' has the following LinkDemand that is not present on base method 'ExpressionBuilder.SupportsEvaluate.get()': [AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]. If possible, apply the same LinkDemand to the base method. Otherwise, replace it with a full Demand or remove it entirely.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="BlogEngine.Core.Compilation.Design">
+       <Types>
+        <Type Name="CodeExpressionEditor" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AptcaTypesShouldOnlyExtendAptcaBaseTypes" Category="Microsoft.Security" CheckId="CA2117" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+           <Issue Certainty="25" Level="CriticalError">Do one of the following: 1) Remove the AllowPartiallyTrustedCallersAttribute from 'CodeExpressionEditor'. 2) If the attribute is necessary, verify that 'CodeExpressionEditor' does not expose any protected members of inherited types. 3) Add AllowPartiallyTrustedCallersAttribute to the base type 'ExpressionEditor', if you can ensure that this will not have negative implications on security.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="AptcaMethodsShouldOnlyCallAptcaMethods" Category="Microsoft.Security" CheckId="CA2116" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Certainty="25" Level="CriticalError">The method 'CodeExpressionEditor.CodeExpressionEditor()' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'ExpressionEditor.ExpressionEditor()', which is defined in an assembly ('System.Design.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EvaluateExpression(System.String,System.Object,System.Type,System.IServiceProvider)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Name="BaseOnly" Certainty="33" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Compilation\Design" File="CodeExpressionEditor.cs" Line="40">Add the following security attribute to 'CodeExpressionEditor.EvaluateExpression(string, object, Type, IServiceProvider)' in order to match a LinkDemand on base method 'ExpressionEditor.EvaluateExpression(string, object, Type, IServiceProvider)':  'SecurityCriticalAttribute'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="QueryStringExpressionEditor" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AptcaTypesShouldOnlyExtendAptcaBaseTypes" Category="Microsoft.Security" CheckId="CA2117" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+           <Issue Certainty="25" Level="CriticalError">Do one of the following: 1) Remove the AllowPartiallyTrustedCallersAttribute from 'QueryStringExpressionEditor'. 2) If the attribute is necessary, verify that 'QueryStringExpressionEditor' does not expose any protected members of inherited types. 3) Add AllowPartiallyTrustedCallersAttribute to the base type 'ExpressionEditor', if you can ensure that this will not have negative implications on security.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="AptcaMethodsShouldOnlyCallAptcaMethods" Category="Microsoft.Security" CheckId="CA2116" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Certainty="25" Level="CriticalError">The method 'QueryStringExpressionEditor.QueryStringExpressionEditor()' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'ExpressionEditor.ExpressionEditor()', which is defined in an assembly ('System.Design.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EvaluateExpression(System.String,System.Object,System.Type,System.IServiceProvider)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Name="BaseOnly" Certainty="33" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Compilation\Design" File="QueryStringExpressionEditor.cs" Line="40">Add the following security attribute to 'QueryStringExpressionEditor.EvaluateExpression(string, object, Type, IServiceProvider)' in order to match a LinkDemand on base method 'ExpressionEditor.EvaluateExpression(string, object, Type, IServiceProvider)':  'SecurityCriticalAttribute'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ServerVariableExpressionEditor" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AptcaTypesShouldOnlyExtendAptcaBaseTypes" Category="Microsoft.Security" CheckId="CA2117" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+           <Issue Certainty="25" Level="CriticalError">Do one of the following: 1) Remove the AllowPartiallyTrustedCallersAttribute from 'ServerVariableExpressionEditor'. 2) If the attribute is necessary, verify that 'ServerVariableExpressionEditor' does not expose any protected members of inherited types. 3) Add AllowPartiallyTrustedCallersAttribute to the base type 'ExpressionEditor', if you can ensure that this will not have negative implications on security.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="AptcaMethodsShouldOnlyCallAptcaMethods" Category="Microsoft.Security" CheckId="CA2116" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Certainty="25" Level="CriticalError">The method 'ServerVariableExpressionEditor.ServerVariableExpressionEditor()' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'ExpressionEditor.ExpressionEditor()', which is defined in an assembly ('System.Design.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EvaluateExpression(System.String,System.Object,System.Type,System.IServiceProvider)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Name="BaseOnly" Certainty="33" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Compilation\Design" File="ServerVariableExpressionEditor.cs" Line="43">Add the following security attribute to 'ServerVariableExpressionEditor.EvaluateExpression(string, object, Type, IServiceProvider)' in order to match a LinkDemand on base method 'ExpressionEditor.EvaluateExpression(string, object, Type, IServiceProvider)':  'SecurityCriticalAttribute'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetExpressionEditorSheet(System.String,System.IServiceProvider)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Name="BaseOnly" Certainty="33" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Compilation\Design" File="ServerVariableExpressionEditor.cs" Line="61">Add the following security attribute to 'ServerVariableExpressionEditor.GetExpressionEditorSheet(string, IServiceProvider)' in order to match a LinkDemand on base method 'ExpressionEditor.GetExpressionEditorSheet(string, IServiceProvider)':  'SecurityCriticalAttribute'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ServerVariableExpressionEditor+ServerVariableExpressionEditorSheet" Kind="Class" Accessibility="Private" ExternallyVisible="False">
+         <Members>
+          <Member Name="#.ctor(System.String,BlogEngine.Core.Compilation.Design.ServerVariableExpressionEditor,System.IServiceProvider)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AptcaMethodsShouldOnlyCallAptcaMethods" Category="Microsoft.Security" CheckId="CA2116" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Compilation\Design" File="ServerVariableExpressionEditor.cs" Line="94">The method 'ServerVariableExpressionEditor.ServerVariableExpressionEditorSheet.ServerVariableExpressionEditorSheet(string, ServerVariableExpressionEditor, IServiceProvider)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'ExpressionEditorSheet.ExpressionEditorSheet(IServiceProvider)', which is defined in an assembly ('System.Design.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="SessionExpressionEditor" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AptcaTypesShouldOnlyExtendAptcaBaseTypes" Category="Microsoft.Security" CheckId="CA2117" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+           <Issue Certainty="25" Level="CriticalError">Do one of the following: 1) Remove the AllowPartiallyTrustedCallersAttribute from 'SessionExpressionEditor'. 2) If the attribute is necessary, verify that 'SessionExpressionEditor' does not expose any protected members of inherited types. 3) Add AllowPartiallyTrustedCallersAttribute to the base type 'ExpressionEditor', if you can ensure that this will not have negative implications on security.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="AptcaMethodsShouldOnlyCallAptcaMethods" Category="Microsoft.Security" CheckId="CA2116" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Certainty="25" Level="CriticalError">The method 'SessionExpressionEditor.SessionExpressionEditor()' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'ExpressionEditor.ExpressionEditor()', which is defined in an assembly ('System.Design.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#EvaluateExpression(System.String,System.Object,System.Type,System.IServiceProvider)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Name="BaseOnly" Certainty="33" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Compilation\Design" File="SessionExpressionEditor.cs" Line="40">Add the following security attribute to 'SessionExpressionEditor.EvaluateExpression(string, object, Type, IServiceProvider)' in order to match a LinkDemand on base method 'ExpressionEditor.EvaluateExpression(string, object, Type, IServiceProvider)':  'SecurityCriticalAttribute'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="BlogEngine.Core.FileSystem">
+       <Types>
+        <Type Name="FileSystemUtilities" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CompressDirectory(System.String,BlogEngine.Core.FileSystem.Directory)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\FileSystem" File="FileSystemUtilities.cs" Line="41">Object 'File.Create(ArchiveOutputLocation)' can be disposed more than once in method 'FileSystemUtilities.CompressDirectory(string, Directory)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 41</Issue>
+             <Issue Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\FileSystem" File="FileSystemUtilities.cs" Line="41">Object 'zStream' can be disposed more than once in method 'FileSystemUtilities.CompressDirectory(string, Directory)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 41</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="BlogEngine.Core.Packaging">
+       <Types>
+        <Type Name="FileSystem" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetPackageManifest(System.String,System.String)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="FileSystem.cs" Line="227">Object 'textReader' can be disposed more than once in method 'FileSystem.GetPackageManifest(string, string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 227</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Installer" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#_repository" Kind="Property" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get__repository()" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AptcaMethodsShouldOnlyCallAptcaMethods" Category="Microsoft.Security" CheckId="CA2116" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+               <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="20">The method 'Installer._repository.get()' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'PackageRepositoryFactory.CreateRepository(string)', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+               <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="20">The method 'Installer._repository.get()' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'PackageRepositoryFactory.Default.get()', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#InstallPackage(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="AptcaMethodsShouldOnlyCallAptcaMethods" Category="Microsoft.Security" CheckId="CA2116" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="37">The method 'Installer.InstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'DefaultPackagePathResolver.DefaultPackagePathResolver(string)', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="47">The method 'Installer.InstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'IPackageMetadata.Id.get()', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="50">The method 'Installer.InstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'IPackageMetadata.Id.get()', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="47">The method 'Installer.InstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'IPackageMetadata.Version.get()', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="50">The method 'Installer.InstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'IPackageMetadata.Version.get()', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="45">The method 'Installer.InstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'PackageManager.InstallPackage(IPackage, bool, bool)', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="37">The method 'Installer.InstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'PackageManager.PackageManager(IPackageRepository, IPackagePathResolver, IFileSystem)', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="43">The method 'Installer.InstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'PackageRepositoryExtensions.FindPackage(this IPackageRepository, string)', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="37">The method 'Installer.InstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'PhysicalFileSystem.PhysicalFileSystem(string)', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UninstallPackage(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="AptcaMethodsShouldOnlyCallAptcaMethods" Category="Microsoft.Security" CheckId="CA2116" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="83">The method 'Installer.UninstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'DefaultPackagePathResolver.DefaultPackagePathResolver(string)', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="96">The method 'Installer.UninstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'IPackageMetadata.Id.get()', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="83">The method 'Installer.UninstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'PackageManager.PackageManager(IPackageRepository, IPackagePathResolver, IFileSystem)', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="94">The method 'Installer.UninstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'PackageManager.UninstallPackage(IPackage, bool)', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="89">The method 'Installer.UninstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'PackageRepositoryExtensions.FindPackage(this IPackageRepository, string)', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+             <Issue Certainty="25" Level="CriticalError" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Packaging" File="Installer.cs" Line="83">The method 'Installer.UninstallPackage(string)' is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls 'PhysicalFileSystem.PhysicalFileSystem(string)', which is defined in an assembly ('NuGet.Core.dll') that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="BlogEngine.Core.Providers">
+       <Types>
+        <Type Name="DbBlogProvider" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#FillRights()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="704">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.FillRights()' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SavePingServices(System.Collections.Specialized.StringCollection)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="1211">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.SavePingServices(StringCollection)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SaveRights(System.Collections.Generic.IEnumerable`1&lt;BlogEngine.Core.Right&gt;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="1244">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.SaveRights(IEnumerable&lt;Right&gt;)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="1249">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.SaveRights(IEnumerable&lt;Right&gt;)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="1259">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.SaveRights(IEnumerable&lt;Right&gt;)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SaveSettings(System.Collections.Specialized.StringDictionary)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="1299">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.SaveSettings(StringDictionary)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SaveToDataStore(BlogEngine.Core.DataStore.ExtensionType,System.String,System.Object)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="1359">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.SaveToDataStore(ExtensionType, string, object)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SelectPost(System.Guid)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="1584">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.SelectPost(Guid)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="1599">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.SelectPost(Guid)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="1613">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.SelectPost(Guid)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="1679">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.SelectPost(Guid)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpdateCategories(BlogEngine.Core.Post,BlogEngine.Core.Providers.DbConnectionHelper)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="2796">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.UpdateCategories(Post, DbConnectionHelper)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpdateComments(BlogEngine.Core.Post,BlogEngine.Core.Providers.DbConnectionHelper)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="2833">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.UpdateComments(Post, DbConnectionHelper)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpdateNotify(BlogEngine.Core.Post,BlogEngine.Core.Providers.DbConnectionHelper)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="2881">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.UpdateNotify(Post, DbConnectionHelper)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpdateProfile(BlogEngine.Core.AuthorProfile)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="2396">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.UpdateProfile(AuthorProfile)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpdateTags(BlogEngine.Core.Post,BlogEngine.Core.Providers.DbConnectionHelper)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbBlogProvider.cs" Line="2913">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbBlogProvider.UpdateTags(Post, DbConnectionHelper)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DbConnectionHelper" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#CreateTextCommand(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbConnectionHelper.cs" Line="128">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbConnectionHelper.CreateTextCommand(string)' could contain the following variables 'commandText'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DbMembershipProvider" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ChangePassword(System.String,System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbMembershipProvider.cs" Line="234">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbMembershipProvider.ChangePassword(string, string, string)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PasswordAttemptWindow" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#get_PasswordAttemptWindow()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+               <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbMembershipProvider.cs" Line="126">'DbMembershipProvider.PasswordAttemptWindow.get()' creates an exception of type 'NotImplementedException', an exception type that should not be raised in a property. If this exception instance might be raised, use a different exception type, convert this property into a method, or change this property's logic so that it no longer raises an exception.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#PasswordStrengthRegularExpression" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#get_PasswordStrengthRegularExpression()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="Breaking">
+               <Issue Name="PropertyGetter" Certainty="90" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbMembershipProvider.cs" Line="148">'DbMembershipProvider.PasswordStrengthRegularExpression.get()' creates an exception of type 'NotImplementedException', an exception type that should not be raised in a property. If this exception instance might be raised, use a different exception type, convert this property into a method, or change this property's logic so that it no longer raises an exception.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#ResetPassword(System.String,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbMembershipProvider.cs" Line="669">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbMembershipProvider.ResetPassword(string, string)' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DbRoleProvider" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#AddUsersToRoles(System.String[],System.String[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbRoleProvider.cs" Line="104">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbRoleProvider.AddUsersToRoles(string[], string[])' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#RemoveUsersFromRoles(System.String[],System.String[])" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers" File="DbRoleProvider.cs" Line="513">The query string passed to 'DbCommand.CommandText.set(string)' in 'DbRoleProvider.RemoveUsersFromRoles(string[], string[])' could contain the following variables 'this.tablePrefix', 'this.parmPrefix'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="UNCFileSystemProvider" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#FileToByteArray(System.String)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers\FileSystemProviders" File="UNCFileSystemProvider.cs" Line="342">Object 'FileStream' can be disposed more than once in method 'UNCFileSystemProvider.FileToByteArray(string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 342, 343</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="XmlBlogProvider" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#InsertPost(BlogEngine.Core.Post)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers\XmlProvider" File="Posts.cs" Line="209">Object 'ms' can be disposed more than once in method 'XmlBlogProvider.InsertPost(Post)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 209</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="XmlFileSystemProvider" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#FileToByteArray(System.String)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Providers\FileSystemProviders" File="XmlFileSystemProvider.cs" Line="315">Object 'FileStream' can be disposed more than once in method 'XmlFileSystemProvider.FileToByteArray(string)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 315, 316</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="BlogEngine.Core.Web.Navigation">
+       <Types>
+        <Type Name="Pager" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#BlogEngine.Core.Web.Navigation.IPager.First" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#BlogEngine.Core.Web.Navigation.IPager.get_First()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Web\Navigation" File="Pager.cs" Line="87">Make 'Pager' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IPager.First.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#BlogEngine.Core.Web.Navigation.IPager.From" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#BlogEngine.Core.Web.Navigation.IPager.get_From()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Web\Navigation" File="Pager.cs" Line="101">Make 'Pager' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IPager.From.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#BlogEngine.Core.Web.Navigation.IPager.Last" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#BlogEngine.Core.Web.Navigation.IPager.get_Last()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Web\Navigation" File="Pager.cs" Line="122">Make 'Pager' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IPager.Last.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#BlogEngine.Core.Web.Navigation.IPager.Next" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#BlogEngine.Core.Web.Navigation.IPager.get_Next()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Web\Navigation" File="Pager.cs" Line="115">Make 'Pager' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IPager.Next.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#BlogEngine.Core.Web.Navigation.IPager.Previous" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#BlogEngine.Core.Web.Navigation.IPager.get_Previous()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Web\Navigation" File="Pager.cs" Line="94">Make 'Pager' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IPager.Previous.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#BlogEngine.Core.Web.Navigation.IPager.Render(System.Int32,System.String)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Web\Navigation" File="Pager.cs" Line="132">Make 'Pager' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IPager.Render(int, string)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#BlogEngine.Core.Web.Navigation.IPager.To" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#BlogEngine.Core.Web.Navigation.IPager.get_To()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2012-10-21 03:48:09Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="j:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Core\Web\Navigation" File="Pager.cs" Line="108">Make 'Pager' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IPager.To.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AptcaMethodsShouldOnlyCallAptcaMethods" Category="Microsoft.Security" CheckId="CA2116">
+   <Name>APTCA methods should only call APTCA methods</Name>
+   <Description>Methods with the AllowPartiallyTrustedCallersAttribute that call methods without that attribute might unintentionally expose functionality to partially trusted code. When a method has the AllowPartiallyTrustedCallersAttribute set, it is callable by partially trusted code. If it in turn calls methods without the attribute, a partially trusted caller is, in effect, being allowed to execute code that requires full trust. Depending on what full trust code is called and what parameter values are passed through from the partially trusted caller, malicious code might be able to exploit this security weakness.</Description>
+   <Resolution Name="Default">The method {0} is defined in an assembly that has AllowPartiallyTrustedCallersAttribute and calls {1}, which is defined in an assembly ({2}) that does not. Review the called methods to ensure they cannot be used in a destructive manner if called by malicious code.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182297(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="25">CriticalError</MessageLevel>
+   <File Name="securityrules.dll" Version="11.0.0.0" />
+  </Rule>
+  <Rule TypeName="AptcaTypesShouldOnlyExtendAptcaBaseTypes" Category="Microsoft.Security" CheckId="CA2117">
+   <Name>APTCA types should only extend APTCA base types</Name>
+   <Description>Types with the AllowPartiallyTrustedCallersAttribute that extend types without that attribute might unintentionally expose functionality in the base type to partially trusted callers. When a type has the AllowPartiallyTrustedCallersAttribute set, it is callable by partially trusted code. If the base type does not have this attribute, it requires callers to be fully trusted. If the derived type exposes protected members in the base type, the base type's data is made accessible to partially trusted callers, creating an exploitable security weakness.</Description>
+   <Resolution Name="Default">Do one of the following: 1) Remove the AllowPartiallyTrustedCallersAttribute from {0}. 2) If the attribute is necessary, verify that {0} does not expose any protected members of inherited types. 3) Add AllowPartiallyTrustedCallersAttribute to the base type {1}, if you can ensure that this will not have negative implications on security.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182298(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="25">CriticalError</MessageLevel>
+   <File Name="securityrules.dll" Version="11.0.0.0" />
+  </Rule>
+  <Rule TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>Do not dispose objects multiple times</Name>
+   <Description>A correctly implemented Dispose method can be called multiple times without throwing an exception. However, this is not guaranteed and to avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.</Description>
+   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 1318</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334(VS.100).aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="11.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotIndirectlyExposeMethodsWithLinkDemands" Category="Microsoft.Security" CheckId="CA2122">
+   <Name>Do not indirectly expose methods with link demands</Name>
+   <Description>Do not wrap a method protected by a LinkDemand with a method that does not perform a security check. A LinkDemand checks the permissions of the immediate caller rather than checking the permissions of all callers in the call stack. In this case, the permissions of the wrapper method will be checked. If the wrapper method does not, itself, check the permissions of callers higher in the call stack, malicious code might be able to execute the wrapped function even though it lacks permission to do so.</Description>
+   <Resolution Name="Default">{0} calls into {1} which has a LinkDemand. By making this call, {1} is indirectly exposed to user code. Review the following call stack that might expose a way to circumvent security protection: {2}</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182303(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="33">CriticalError</MessageLevel>
+   <File Name="securityrules.dll" Version="11.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotRaiseExceptionsInUnexpectedLocations" Category="Microsoft.Design" CheckId="CA1065">
+   <Name>Do not raise exceptions in unexpected locations</Name>
+   <Description>Do not explicitly raise exceptions from unexpected locations. There are some methods, such as Equals and GetHashCode, which users do not expect to raise exceptions. Therefore calls to these methods are not commonly wrapped in try catch blocks.</Description>
+   <Resolution Name="PropertyGetter">{0} creates an exception of type {1}, an exception type that should not be raised in a property. If this exception instance might be raised, use a different exception type, convert this property into a method, or change this property's logic so that it no longer raises an exception.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb386039(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Error, Warning</MessageLevel>
+   <File Name="designrules.dll" Version="11.0.0.0" />
+  </Rule>
+  <Rule TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240">
+   <Name>Implement ISerializable correctly</Name>
+   <Description>If a type is assignable to ISerializable, it should implement GetObjectData. For unsealed types, the GetObjectData method should be callable and overridable by derived types.</Description>
+   <Resolution Name="Default">Add an implementation of GetObjectData to type {0}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182342(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="60">Error</MessageLevel>
+   <File Name="usagerules.dll" Version="11.0.0.0" />
+  </Rule>
+  <Rule TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033">
+   <Name>Interface methods should be callable by child types</Name>
+   <Description>Explicit method implementations are defined with private accessibility. Classes that derive from classes with explicit method implementations and choose to re-declare them on the class will not be able to call into the base class implementation unless the base class has provided an alternate method with appropriate accessibility. When overriding a base class method that has been hidden by explicit interface implementation, in order to call into the base class implementation, a derived class must cast the base pointer to the relevant interface. When calling through this reference, however, the derived class implementation will actually be invoked, resulting in recursion and an eventual stack overflow.</Description>
+   <Resolution Name="Default">Make {0} sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of {1} and is visible to derived classes.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182153(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="designrules.dll" Version="11.0.0.0" />
+  </Rule>
+  <Rule TypeName="OverrideLinkDemandsShouldBeIdenticalToBase" Category="Microsoft.Security" CheckId="CA2123">
+   <Name>Override link demands should be identical to base</Name>
+   <Description>If a virtual method has a LinkDemand, in many cases, so should any override of it, and if an override has a LinkDemand, so should the overridden virtual method. Because it is possible to call any of the overrides of a virtual method explicitly, they should all have the same LinkDemand status or, if not, should be reviewed. This also applies to LinkDemand security checks for methods that part of an interface implementation, because the caller might use an interface-typed reference to access the method.</Description>
+   <Resolution Name="BaseOnly">Add the following security attribute to {0} in order to match a LinkDemand on base method {1}:  {2}.</Resolution>
+   <Resolution Name="OverrideOnly">Override {0} has the following LinkDemand that is not present on base method {1}: {2}. If possible, apply the same LinkDemand to the base method. Otherwise, replace it with a full Demand or remove it entirely.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182305(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="33">CriticalError</MessageLevel>
+   <File Name="securitytransparencyrules.dll" Version="4.0.0.0" />
+  </Rule>
+  <Rule TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100">
+   <Name>Review SQL queries for security vulnerabilities</Name>
+   <Description>A SQL command string built from user input is vulnerable to SQL injection attacks. Microsoft SQL Server and other database servers support stored procedures and parameterized SQL queries, which reduce the risk of injection attacks.</Description>
+   <Resolution Name="WithNonLiterals">The query string passed to {0} in {1} could contain the following variables {2}. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182310(VS.100).aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="11.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

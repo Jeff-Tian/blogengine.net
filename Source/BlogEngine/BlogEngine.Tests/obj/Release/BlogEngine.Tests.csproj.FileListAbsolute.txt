@@ -1,0 +1,10 @@
+J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tests\bin\Release\BlogEngine.Tests.dll
+J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tests\bin\Release\BlogEngine.Tests.pdb
+J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tests\bin\Release\Interop.SHDocVw.dll
+J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tests\bin\Release\nunit.framework.dll
+J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tests\bin\Release\WatiN.Core.dll
+J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tests\bin\Release\nunit.framework.xml
+J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tests\bin\Release\WatiN.Core.xml
+J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tests\obj\Release\BlogEngine.Tests.csprojResolveAssemblyReference.cache
+J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tests\obj\Release\BlogEngine.Tests.dll
+J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tests\obj\Release\BlogEngine.Tests.pdb

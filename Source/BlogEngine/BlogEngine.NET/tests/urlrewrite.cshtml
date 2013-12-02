@@ -1,0 +1,146 @@
+@using QuixoteWeb;
+@using BlogEngine.Core;
+@using BlogEngine.Core.Web.Navigation
+
+@{
+    Layout = "_layout.cshtml";
+
+    // setup - add test posts
+    var removeExt = BlogSettings.Instance.RemoveExtensionsFromUrls;
+    var useDate = BlogSettings.Instance.TimeStampPostLinks;
+    var postPerPage = BlogSettings.Instance.PostsPerPage;
+    DateTime startDate = new DateTime(2012, 6, 3);
+    
+    var defPage = "default";
+    BlogSettings.Instance.RemoveExtensionsFromUrls = false; 
+    
+    if (Request.QueryString["ext"] != null && Request.QueryString["ext"] == "off") 
+    {
+        BlogSettings.Instance.RemoveExtensionsFromUrls = true;
+        defPage = string.Empty;
+    }
+
+    var ext = BlogConfig.FileExtension;
+    
+    BlogSettings.Instance.PostsPerPage = 2;
+    BlogSettings.Instance.TimeStampPostLinks = false;
+
+    var cat = new Category("thetest", "the test category");
+    cat.Save();
+
+    List<Post> posts = new List<Post>();
+    for (int i = 0; i < 7; i++)
+    {
+        var p = "one";
+        if (i == 1) { p = "two"; }
+        if (i == 2) { p = "three"; }
+        if (i == 3) { p = "four"; }
+        if (i == 4) { p = "five"; }
+        if (i == 5) { p = "six"; }
+        if (i == 6) { p = "seven"; }
+
+        var post = new BlogEngine.Core.Post();
+        post.Author = Security.CurrentUser.Identity.Name;
+        post.Title = string.Format("Post {0}", p);
+        post.Content = string.Format("This is a test {0}", p);
+        post.Description = post.Title;
+        post.Slug = post.Title;
+        post.DateCreated = startDate.AddHours(-BlogSettings.Instance.Timezone).AddDays(-i);
+        post.IsPublished = true;
+        post.HasCommentsEnabled = true;
+        post.Tags.Add("Test");
+        post.Tags.Add(string.Format("T{0}", p));
+
+        if (i > 3) { post.Categories.Add(cat); }
+
+        post.Save();
+        posts.Add(post);
+    }
+}
+
+<div class="left-padded"><a href="default.cshtml"><span class="go-back"></span></a></div>
+
+@TheFollowing.Describes("URL rewrite (Core.Web.HttpModules.UrlRewrite)")
+
+@It.Should("load default document on '/' in the URL", () =>
+{
+    return Runner.Get("/").Body.ShouldContain("Post one");
+})
+
+@It.Should("load post list on default.aspx", () =>
+{
+    return Runner.Get("/default.aspx").Body.ShouldContain("Post one");
+})
+
+@It.Should("get post using \"/post/post-name[.aspx]\"", () =>
+{
+    return Runner.Get("/post/Post-three" + ext).Title.ShouldContain("Post three");
+})
+
+@It.Should("get page using \"/page/page-name[.aspx]\"", () =>
+{
+    return Runner.Get("/page/Example-page" + ext).Body.ShouldContain("Example page");
+})
+
+@It.Should("get posts by category using \"/category/categoryname[.aspx]\"", () =>
+{
+    return Runner.Get("/category/thetest" + ext).Body.ShouldContain("Post five");
+})
+
+@It.Should("get feeds by category using \"/category/feed/categoryname[.aspx]\"", () =>
+{
+    return Runner.Get("/category/feed/thetest" + ext).Html.ShouldContain("Post five");
+})
+
+@It.Should("get posts by tag using \"/tag/tagname[.aspx]\"", () =>
+{
+    return Runner.Get("/tag/Test" + ext).Body.ShouldContain("Post one");
+})
+
+@It.Should("get feeds by tag using \"/tag/feed/tagname[.aspx]\"", () =>
+{
+    return Runner.Get("/tag/feed/Test" + ext).Html.ShouldContain("Post one");
+})
+
+
+@It.Should("get posts by month using \"/2012/05/default[.aspx]\"", () =>
+{
+    return Runner.Get("/2012/05/default" + ext).Body.ShouldContain("Post four");
+})
+
+@It.Should("get posts by page using \"/default[.aspx]?page=2\"", () =>
+{
+    return Runner.Get("/" + defPage + ext + "?page=2").Body.ShouldContain("Post three");
+})
+
+@It.Should("get large calendar using \"/calendar/default[.aspx]\"", () =>
+{
+    return Runner.Get("/calendar/" + defPage + ext).Html.ShouldContain("cphBody_calendar");
+})
+
+@It.Should("get author posts using \"/author/admin[.aspx]\"", () =>
+{
+    return Runner.Get("/author/admin" + ext).Body.ShouldContain("Post one");
+})
+
+@It.Should("get blog posts using \"/blog[.aspx]\"", () =>
+{
+    return Runner.Get("/blog" + ext).Body.ShouldContain("Post one");
+})
+
+@{
+    // teardown
+    foreach (var pst in posts)
+    {
+        pst.Purge();
+    }
+
+    cat.Delete();
+    cat.Save();
+
+    BlogSettings.Instance.PostsPerPage = postPerPage;
+    BlogSettings.Instance.TimeStampPostLinks = useDate;
+    BlogSettings.Instance.RemoveExtensionsFromUrls = removeExt;
+}
+
+<div class="left-padded"><a href="default.cshtml"><span class="go-back"></span></a></div>

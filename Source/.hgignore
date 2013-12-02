@@ -1,0 +1,47 @@
+# Ignore file for Visual Studio
+
+# use glob syntax
+syntax: glob
+
+# Ignore Visual Studio files
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.scc
+*/extensions/**
+*/Scripts/Combined/**
+*/Styles/Combined/**
+[Bb]in
+[Db]ebug*/
+obj/
+Thumbs.db
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+[Bb]uild[Ll]og.*
+*.[Pp]ublish.xml
+glob:BlogEngine/BlogEngine.NET/App_Data/logger.txt
+*/{B02E9840-1261-47AB-AE40-D333E73BB2C0}/**
+*/PrecompiledWeb/**
+glob:BlogEngine/BlogEngine.NET/{B02E9840-1261-47AB-AE40-D333E73BB2C0}/CodeAnalysisLog.xml
+glob:BlogEngine/BlogEngine.NET/{B02E9840-1261-47AB-AE40-D333E73BB2C0}/WebProject.lastcodeanalysissucceeded
+
+BlogEngine/BlogEngine.NET/App_Data/posts/a092ddd5-91ee-4bfa-9310-476558668e5a.xml
+BlogEngine/BlogEngine.NET/App_Data/posts/c1a8e5a7-812c-4468-b664-9de20d93dcaa.xml
+BlogEngine/BlogEngine.NET/App_Data/quicknotes.xml
