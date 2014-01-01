@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="add" xml:space="preserve">
     <value>添加</value>
@@ -2189,7 +2189,7 @@
   </data>
   <data name="areYouSureDeletePage" xml:space="preserve">
     <value>您确定要删除这个页面吗?</value>
-  </data>  
+  </data>
   <data name="forceMainTheme" xml:space="preserve">
     <value>标准站点</value>
   </data>
@@ -2288,7 +2288,7 @@
   </data>
   <data name="nowUnsubscribed" xml:space="preserve">
     <value>您现在没有订阅</value>
-  </data>  
+  </data>
   <data name="commentRSS" xml:space="preserve">
     <value>评论 RSS</value>
   </data>
@@ -2328,5 +2328,11 @@
   <data name="serverTime" xml:space="preserve">
     <value>服务器时间</value>
     <comment>Server time</comment>
+  </data>
+  <data name="by" xml:space="preserve">
+    <value>由</value>
+  </data>
+  <data name="words" xml:space="preserve">
+    <value>字</value>
   </data>
 </root>

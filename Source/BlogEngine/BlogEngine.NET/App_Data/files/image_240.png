@@ -1,0 +1,709 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script type="text/javascript">
+   var _U = "undefined";
+   var g_HttpRelativeWebRoot = "/ocom/";
+   var SSContributor = false;
+   var SSForceContributor = false;
+   var SSHideContributorUI = false;
+   var ssUrlPrefix = "/us/";
+   var ssUrlType = "2";
+   
+   var g_navNode_Path = new Array();
+       g_navNode_Path[0] = '8';
+       g_navNode_Path[1] = 'ocomerror';
+   var g_ssSourceNodeId = "ocomerror";
+   var g_ssSourceSiteId = "ocomen";
+</script>
+<script id="SSNavigationFunctionsScript" type="text/javascript" src="/ocom/websites/ocomen/sitenavigationfunctions.js"></script>
+<script id="SSNavigationScript" type="text/javascript" src="/ocom/websites/ocomen/sitenavigation.js"></script>
+
+<script type="text/javascript">
+	var g_strLanguageId = "en";
+</script>
+	<script type="text/javascript" src="/ocom/resources/wcm/sitestudio/wcm.toggle.js"></script>
+	<script type="text/javascript" src="/ocom/resources/sitestudio/ssajax/ssajax.js"></script>
+
+
+  <script id="ssInfo" type="text/xml" warning="DO NOT MODIFY!">
+  <ssinfo>
+    <fragmentinstance id="fragment15" fragmentid="universal-error-page" library="server:UNIVERSAL-FRAGMENTS"></fragmentinstance>
+
+    <fragmentinstance id="fragment17" fragmentid="universal-error-page" library="server:UNIVERSAL-FRAGMENTS"></fragmentinstance>
+
+    <fragmentinstance id="fragment18" fragmentid="sitecatalyst-error-standard" library="server:SITECATALYST-ERROR-STANDARD"></fragmentinstance>
+
+    <region id="region1" name="cont-homepage" flags="111111100000" metadata="" dccommand="ssIncInlineDynamicConversion(SS_DATAFILE)">
+      <element id="region1_element1" name="wyg-maincontent" label="Home page content" type="1" flags="1111111111111111111111000001111000000000000011110011100000000000000000000000">
+        <description>This is home page content</description>
+
+        <linktoregioncontent createnewxml="true" createnewnative="false" choosemanaged="true" chooselocal="false" choosenone="false"><choosemanagedquerytext corecontentonly="FALSE"><![CDATA[xWebsiteObjectType <Matches> `Data File` <OR> xWebsiteObjectType <Matches> `Native Document`]]></choosemanagedquerytext></linktoregioncontent><objectproperties docname="SS_GENERIC_PROPERTIES_FORM"></objectproperties>
+      </element>
+
+      <switchregioncontent createnewxml="false" createnewnative="false" choosemanaged="true" chooselocal="false" choosenone="false"><choosemanagedquerytext corecontentonly="FALSE"><![CDATA[xWebsiteObjectType <Matches> `Data File` <OR> xWebsiteObjectType <Matches> `Native Document`]]></choosemanagedquerytext></switchregioncontent>
+    </region>
+
+    <region id="region2" name="region2" flags="111111110000" metadata="" dccommand="ssIncInlineDynamicConversion(SS_DATAFILE)">
+      <element id="region2_element1" name="wyg-maincontent" label="Main content" type="1" flags="1111111111111111111111000001111000000000000011110011100000000000000000000000">
+        <linktoregioncontent createnewxml="true" createnewnative="false" choosemanaged="true" chooselocal="false" choosenone="false"><choosemanagedquerytext corecontentonly="FALSE"><![CDATA[xWebsiteObjectType <Matches> `Data File` <OR> xWebsiteObjectType <Matches> `Native Document`]]></choosemanagedquerytext></linktoregioncontent><objectproperties docname="SS_GENERIC_PROPERTIES_FORM"></objectproperties>
+      </element>
+
+      <switchregioncontent createnewxml="false" createnewnative="false" choosemanaged="true" chooselocal="false" choosenone="false"><choosemanagedquerytext corecontentonly="FALSE"><![CDATA[xWebsiteObjectType <Matches> `Data File` <OR> xWebsiteObjectType <Matches> `Native Document`]]></choosemanagedquerytext></switchregioncontent>
+    </region>
+  </ssinfo>
+  </script>
+
+  <title>Error Page 404</title>
+  
+
+  <style type="text/css">
+  /* Global HTML */
+  /*Copied from oracle.css plus inline styles from the pages */
+  body {font-size: 11px; color: #000000; background:#ffffff; margin:10; font-family: arial, verdana, sans-serif; line-height: 15px }
+   .vertdotted {background-image: url('http://www.oracleimg.com/us/assets/dotted-vertical.gif'); background-repeat: repeat;}
+  .sngHeader {background:url('http://www.oracleimg.com/us/assets/signpost_arrow.gif') no-repeat; background-position:left; margin:0px 0px 0px 0px; padding-left:12px;color:#000000;font-size:13px;font-weight:bold; padding-bottom: 14px; padding-top: 15px}
+
+  .horidotted {background-image: url('http://www.oracleimg.com/us/assets/dotted-horizontal.gif'); background-repeat: repeat-x;}
+   
+  td {font-size: 11px; color: #000000; background:#ffffff; margin:10; font-family:arial,helvetica,sans-serif; line-height: 15px }
+
+  #wrap, #copyright, #header, #sectionheader, #topNav { width:900px; background:#ffffff;}
+
+  .wrap_de {  height:235px; }
+    table {font-size: 11px; color: #000000; font-family: arial, verdana, sans-serif; line-height: 15px }
+  .noul { text-decoration:none; }
+  h1 { font-size:16px; line-height:20px; margin:0 0 5px 0; color: #000000;}
+  h2 { font-size:16px; font-family:arial,helvetica,sans-serif; color:#000000; line-height:20px; margin:0 0 5px 0;}
+  h3 { font-size:15px; font-weight:bold; color: #000000; margin:0 0 5px 0;}
+  h4 { font-size:12px; font-weight:bold; margin:10px 0 0 0; color:#000000;}
+  h4 a { font-size:12px; font-weight:bold; margin:10px 0 0 0; color:#000000; text-decoration: underline;}
+  h4 a:hover { font-size:12px; font-weight:bold; margin:10px 0 0 0; color:#000000; text-decoration: none;}
+  h5 { font-size:12px; font-weight:bold; margin:0; color:#474747;}
+  h6 { font-size:12px; font-weight:bold; margin:0; color:#474747;}
+  a {color: #000000; text-decoration: underline;}
+  p { font-family:arial,helvetica,sans-serif;font-size:11px;line-height:14px;color:#000;text-decoration:none;} 
+  ul { margin:0 0 0 16px; padding:0; color:#000000; font-family: arial, verdana, sans-serif; font-size:11px; }
+  li { list-style-image: url(http://www.oracle.com/admin/images/crmondemand/bulletSquareBLK.gif); margin:5px; padding:0 0 0 0; color:#000000; font-family: arial, verdana, sans-serif; font-size:11px; }
+  select {font-size: 10px; color: #000000; }
+  img { border:0; }
+  .signin {font-family:Arial, Helvetica, sans-serif;font-size:10px;text-decoration:none}
+  a.signin:link {font-family:Arial, Helvetica, sans-serif;font-size:10px;color:#000000;text-decoration:none}
+  a.signin:active {font-family:Arial, Helvetica, sans-serif;font-size:10px;color:#000000;text-decoration:none}
+  a.signin:hover {font-family:Arial, Helvetica, sans-serif;font-size:10px;color:#000000;text-decoration:none}
+  a.signin:visited {font-family:Arial, Helvetica, sans-serif;font-size:10px;color:#000000;text-decoration:none}
+  .header {width:900px;height:auto;}
+  .logo {width:23%;float:left;padding: 15px 0px 0px 0px;}
+  .texttitle {padding: 15px 0px 0px 0px; width:27%;float:left;font-family:Arial, Helvetica, sans-serif;font-size:21px;color:#333333;line-height:22px;}
+  .headerright {float:right;width:450px;}
+  .custsignin {float:left;width:346px;padding: 0px 0px 0px 0px;vertical-align: top;text-align:right;}
+  .countrydropdown {float:right;vertical-align: top;padding: 0px 9px 0px 0px;text-align:right;}
+  .search {width:900px; float:right;padding: 0px 10px 0px 0px;text-align:right;}
+  body {text-align:center; min-width:900px;}
+  .wrapper {margin:0 auto; width:900px; text-align:left;}
+  a:link {color:#000;text-decoration:underline;}
+  a:visited {color:#999;text-decoration:underline;}
+  a:hover {color:#FF0000;text-decoration:underline;}
+  .contentarea{float:left; width:513px; padding:0px; margin:0px 0px 10px 20px;}
+
+  /* Footer */
+  .brandtagline { padding-left:8px; padding-top:5px; float:left;}
+  .footer {float:left;border-top:solid #ff0000 4px;width:900px;}
+  .legalese {color:#000;font-size:10px; text-align:right;padding-right:8px;padding-top:5px;}
+  .legalese a:link {color:#000;text-decoration:none;}
+  .legalese a:visited {color:#000;text-decoration:none;}
+  .legalese a:hover {color:#FF0000;text-decoration:underline;}
+
+  .sectionheader { float:left; width:900px;}
+  .leftnav{float:left; padding:0; width:179px; }
+
+  .crm_navHeadLine {border:1px solid #CCC;padding:0px 0px 0px 0px; width:178px;}
+  .crm_navHeadLine ul {list-style:none;padding:0px;margin:0px 0px 0px 6px;}
+  .crm_navHeadLine li {margin:0px; padding-bottom:4px;color:#FF0000;}
+  .crm_navHeadLine li a{padding-bottom:4px; font-family:arial,helvetica,sans-serif;font-size:11px;color:#FF0000;text-decoration:none;font-weight:bold;line-height:12px;margin:0 0 0 10px;}
+  .leftnavbartop {height:2px; width:178px; background-color:#DDDeDE;border-bottom:1px solid #CCC;}
+  .crm_subnavlink {border:1px solid #CCC;margin:10px 0px 0px 0px; width:178px;}
+  .crm_subnavlink ul {list-style:none;padding:0px;margin:0px;}
+  .crm_subnavlink li {margin:0px; padding:0px}
+  .crm_subnavlink li a{font-family:arial,helvetica,sans-serif;font-size:11px;color:#000;text-decoration:none;line-height:0px;margin-left:10px;}
+
+  /* Right Nav Box */
+
+  a:link {color:#000;text-decoration:underline;}
+  a:visited {color:#999;text-decoration:underline;}
+  a:hover {color:#FF0000;text-decoration:underline;}
+  .rnavBox {padding:0 0 0 0;margin:0 0 15px 0; width:180px; voice-family:"\"}\"";voice-family:inherit;width:178px;line-height:14px;border:1px solid #CCC;color:#000;text-align:left; font-family:arial,helvetica,sans-serif;}
+  html > body .rnavBox {width:178px;}
+  .rightnav {float:right; vertical-align: top;  }
+  .rnavBoxTitle {padding:2px 8px 2px 8px;margin:0 0 8px 0;font-size:11px;background-color:#EEE;}
+  .rnavBoxContent {padding:0 10px 7px 15px;}
+  .rnavBox li {list-style:none;padding:0 10px 7px 15px;background-color:#FFF;background-image:url(http://www.oracle.com/admin/images/crmondemand/global/arrow_gray.gif);background-repeat:no-repeat;}
+  .rnavBox ul {margin:0px;padding:0;} 
+
+  .navcontainer
+  {
+  width: 898px;
+  float: left;
+  margin-top: 17;
+  margin-bottom:14;
+  background:url('/ocom/groups/public/documents/systemobject/opn059428.gif') repeat-x top left;
+  border:1px #cccccc solid;
+  }
+
+  * html navcontainer 
+     {
+        \width:900px; 
+        w\idth:898px;
+    }
+
+  .topNav {font-family:Arial, Helvetica, sans-serif;
+  color:#000000;
+  font-size:12px;
+  margin:0;
+  padding:0;
+
+  }
+  .topNav li {
+  margin:0;
+  text-align:center;
+  float:left;
+  list-style:none;
+  border-right:1px #cccccc solid;
+  }
+  .topNav li a:link {
+  background:url('/ocom/groups/public/documents/systemobject/opn059428.gif') repeat-x top left;
+  padding:9px 17px 4px 17px;
+  margin:0;
+  text-align:center;
+  float:left;
+  list-style:none;
+  color:#000000;
+  }
+  .topNav li a:visited {
+  background:url('/ocom/groups/public/documents/systemobject/opn059428.gif') repeat-x top left;
+  padding:9px 17px 4px 17px;
+  margin:0;
+  text-align:center;
+  float:left;
+  list-style:none;
+  color:#000000;
+  }
+  .topNav li a:hover {
+  background:url('/ocom/groups/public/documents/systemobject/opn059429.gif') repeat-x top left;
+  padding:9px 17px 4px 17px;
+  margin:0;
+  text-align:center;
+  float:left;
+  list-style:none;
+  color:#ff0000;
+  }
+  .navBlank {background:url('/ocom/groups/public/documents/systemobject/opn059428.gif.gif') repeat-x top left;border-bottom:1px #cccccc solid;border-right:1px #cccccc solid;padding:9px 17px 4px 17px;margin:0;}
+  /* Additions from CRMOD CSS */
+  .more { padding-left:15px; font-size:11px; font-weight:normal; color:#71A2DF; background-image:  url(http://www.oracle.com/admin/images/crmondemand/arrow-blue.gif%27); background-position:center left; background-repeat:no-repeat; }
+  .hiliteBox {width: 495px; border: 1px solid #cccccc; padding: 1px; margin: 0 0 0 0;}
+  .hiliteBox p {font-size: 11px; font-weight: none; margin: 0 10px 10px 15px; line-height: 1.2; color: #666666;}
+  .hiliteBox a {font-size: 12px; font-weight: none; margin: 0 0 0 0; line-height: 1.2;}
+  .hiliteBox a:hover {font-size: 12px; font-weight: none; margin: 0 0 0 0; line-height: 1.2; text-decoration: none;}
+  .hiliteBox h1 { font-size:13px; font-weight:bold; color: #666666; margin:10px 0 10px 15px;}
+
+  .hiliteBox2 {width: 495px; padding: 0px; margin: 0 0 0 0;}
+  .hiliteBox2 p {font-size: 11px; color: #666666; font-weight: none; margin: 5px 0 0 0; line-height: 1.5;}
+  .hiliteBox2 a {font-size: 11px; font-weight: none; margin: 0 0 0 0; line-height: 1.2;}
+  .hiliteBox2 a:hover {font-size: 11px; font-weight: none; margin: 0 0 0 0; line-height: 1.2; text-decoration: none;}
+  .hiliteBox2 h1 { font-size:13px; font-weight:bold; color: #666666; margin:0 0 0 0;}
+  .top2 { width: 495px; border: 0px solid #B3B3B3; padding-left: 0px; margin-left: 0px; margin-bottom: 15px; }
+  .top2 ul { margin-top:5px; color:#000000; font-size: 11px; font-family: arial, verdana, sans-serif; line-height: 15px;}
+  .top2 li { list-style-image: url(http://www.oracle.com/admin/images/crmondemand/bulletSquareRed.gif); margin:0 0 5px 5px; color:#000000; font-size: 11px; font-family: arial, verdana, sans-serif;}
+  .top2 a { margin:0 0 5px 5px; color:#000000; font-size: 11px; font-family: arial, verdana, sans-serif; text-decoration: underline;}
+  .top3 ul { margin-top:15px; color:#000000; font-size: 13px; font-family: arial, verdana, sans-serif; line-height: 15px;}
+  .top3 li { margin-top:15px; margin-bottom:10px; color:#000000; font-size: 11px; font-family: arial, verdana, sans-serif; line-height: 15px;}
+  .top ul { font-family: arial, verdana, sans-serif; line-height: 15px;}
+  .top li { list-style-image: url(http://www.oracle.com/admin/images/crmondemand/bulletSquareBLK.gif); margin-bottom:5px; font-family: arial, verdana, sans-serif; font-size:11px; color: #000000; letter-spacing: 0pt; line-height: 1.5;}
+  .topHeader ul { margin-left:5px; margin-top:0px; font-family: arial, verdana, sans-serif; font-size:13;}
+  .topHeader li { margin-left:5px; margin-top:0px; margin-bottom:10px; color:#71A2DF; font-family: arial, verdana, sans-serif; font-size:13; font-weight:bold;}       
+
+  .dmHeaderTable {
+  width: 900px;
+  height: 27px;
+  padding:10px;
+  margin: 10px;
+  background-color:#71A2DF;
+  border-bottom: solid #F68F2C 4px; 
+  color: #FFFFFF;
+  font-size:13px; 
+  font-weight:bold;
+  }
+
+  .dmHeaderTable a:link { color: #FFFFFF; }
+  .dmHeaderTable a:visited { color: #FFFFFF; }
+  .dmHeaderTable a:hover { color: #FFFFFF; }
+  .dmHeaderTable a:active  { color: #FFFFFF; }
+  .bluArrow {
+    background-image: url(http://www.oracle.com/admin/images/crmondemand/arrow-blue.gif);
+    background-repeat: no-repeat;
+    font-size: 8px;
+    font-weight:bold;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 4px;
+    margin-top: 5px;
+    background-position: 0px 4px;
+    padding-left: 15px;
+    line-height: 1.2;
+     }
+  .bluArrow2 {
+    background-image: url(http://www.oracle.com/admin/images/crmondemand/arrow-blue.gif);
+    background-repeat: no-repeat;
+    font-size: 8px;
+    font-weight:normal;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 4px;
+    margin-top: 5px;
+    background-position: 0px 4px;
+    padding-left: 15px;
+    line-height: 1.5;
+    text-decoration:underline;
+     }
+  /* crmod css - Visitor */
+  #visitor { width:900px; height:20px; line-height:20px; background:#808080; color:#ffffff; clear:both;}
+  #visitor a { color:#ffffff; }
+  #visitor div { float:left; }
+  #visitor span { padding:0px 0px; }
+  #visitor .welcomeuser { padding-left:13px;width:450px; font-size:9pt; }
+  #visitor .logout {float:right; padding-right:15px; text-align:right; font-size:8pt; }
+  #visitor .contactuser { background:#cccccc; width:194px; text-align:center; font-size:8pt; }
+  .event {font-family:arial, helvetica, sans-serif;font-size: 11px;font-weight:normal;}
+
+  .subnav {font-family:arial,helvetica,sans-serif;font-size: 11px;font-weight:normal;}
+  .subnav a {text-decoration:none; color:#000000;}
+
+  .subnav_div, .subnav_div_on, .subnav_div_parent { border-bottom: solid white 1px; cursor:hand;padding-top:3px;padding-bottom:3px;margin:0px; }
+  .subnav_div {background-color:#ffffff;}
+  .subnav_div {padding-left:5px; background-color:#fffffF; text-decoration: none;}
+  .subnav_div_on {background-color:#ffffff;}
+  .subnav_div_on {padding-left:5; background-color:#fffffF; text-decoration: none;}
+  .subnav_div_parent {padding-left:5px;background-color:#ffffff;}
+  .subnav_div_lvl2 {padding-left:5px; color:#000000;}
+  .subnav_div_lvl2_on {padding-left:5px;color:#ff0000;}
+
+  .subnavParent {font-family:arial,helvetica,sans-serif;font-size: 11px;font-weight:700;}
+  .subnavParent a {text-decoration:none; color:#FF0000;}
+
+  .blueContent { background: #6393CE; color:#ffffff;} 
+  .blueContent a {color:#ffffff;}
+
+  /* Forms */
+  .formsStd, .formsSearch, .formsStdReadOnly { border-style: solid; border-width: 1px; font-size: 8pt; }
+  .formsStd { border-color : #cccccc; background-color : #ffffff; }
+  .formsSearch  { border-color : #CECECE; background-color : #ffffff;}
+  .formsStdReadOnly  { border-color : #cccccc; background-color : #eeeeee; }
+  .regfield { border:1px solid #000000; padding:7px; }
+
+  /* Lists */
+  .listheader { background-color:#666666; color:#ffffff; font-weight:bold;}
+
+  /* Highlighted Content */
+  .highlight { padding:10px; background-color:#cccccc; border:1px solid #999999; margin:0 0 10px 0;}
+  .highlight2 { clear:both; line-height:14px; margin:5px; padding:5px; border:1px solid #6395D0; width:150px; float:right; font-size:11px; color:#6395D0; }
+  .highlight2 h2 { margin:0; font-size:17px; line-height:18px; }
+
+  /* Misc */
+  .nd { display:none;}
+  .seminarheader { background-color:#6393CE; color:#ffffff;}
+  .seminarheader h1 { font-weight: bold; font-size: 14px; line-height:16px; color: #ffffff; }
+  .seminarheader a { font-size: 11px; text-decoration: underline; color:#FFEE7A; }
+
+  .offer1_outline { vertical-align:top; border:solid 1px #6393CE; padding:5px; background-color:#F5F5F5;}
+  .offerbox { border:1px solid #7F7F7F; }
+  .offerbox div { margin:5px 10px; }
+  .offerbox h2, .offerbox h3 { line-height:16px; }
+  .offerbox h3 { color:#054582;}
+
+  .imageMargin { 
+  margin-right: 15px;
+  margin-bottom: 10px;
+  margin-top: 5px;}
+
+  .special_reg { width:100%; vertical-align:top; border:solid 1px #6393CE; padding:5px; background-color:#e2e2e2;}
+
+  /* Links */
+  .lnkNavOn, .lnkNavOff, a:hover.lnkNavOff, .lnkNavLog {font-size: 13px; text-decoration: none; }
+  .lnkNavOn, a:hover.lnkNavOff { color: #ffffff;  }
+  .lnkNavOff { color: #9C9C9C;  }
+  .lnkNavLog { color: #F08517; }
+
+  .pr h2 { font-size:11px; padding:0 0 10px 0; font-style:italic; font-weight:normal; }
+  .pr h3 { font-size:11px; }
+  .pr h4 { font-size:11px; padding:0 0 10px 0; }
+  .pr .disclaimer { font-size:10px; }
+
+  .events { line-height:18px;}
+
+  /* Press Releases*/
+  #press div { margin:10px 0 0 0;}
+  #press h2 { font-size:16px; line-height:20px; margin:0 0 10px 0; }
+  #press h3 { font-style:italic; font-weight:normal; margin:0 0 10px 0;}
+  #press .about h3, #press .media h3 { font-style:normal; font-weight:bold; margin:0;}
+  #press .disclaimer { font-size:10px; }
+
+  .screenthumb { width:155px; padding:0; margin:5px; float:right; text-align:center; }
+
+  .prodlist, .prodoffers { width:500px; clear:both; margin: 0 0 5px; 0;}
+  .prodlist h2 { font-size: 14px; padding:2px; margin:1px 0; color:#ffffff; background-color:#71A2DF; font-weight:bold;}
+  .prodlist h3 { padding:5px 0; margin-bottom:1px; text-align:center; background:#BECFE3; font-size:10px; font-weight:bold; }
+  .prodlist ul { padding:5px 0; margin:0; list-style-type:none; background:#EBEFF7; font-size:10px; font-weight:bold;}
+  .prodlist li { padding:0 0 5px 3px; margin:3px 0 0 0; line-height:11px; list-style:none}
+  .prodlist .featureblock, .prodlist .featureblocklast { float:left; width:124px; margin:0 1px 0 0; height:200px; background:#EBEFF7; }
+  .prodlist .featureblocklast { width:125px; margin:0; }
+
+  .prodsummary img { float:left; margin:0 10px 0 0; }
+  .prodsummary h1 a { font-size:15px; color:#818181; text-decoration:none; }
+  .prodsummary h1 a:hover { font-size:15px; color:#818181; text-decoration:underline; }
+  .prodsummary h1 { font-size:15px; color:#818181; padding:0px 0px 0px 0px; line-height: 17px;}
+  .prodoffers a { width:165px; height:23px; line-height:20px; background:#FFFFFF; color:#000000; font-weight:bold; font-size:12px; text-decoration:none;}
+  .prodoffers span { padding-left:15px; background-image:  url(http://www.oracle.com/admin/images/crmondemand/arrow-red-14px.gif); background-position:center left; background-repeat:no-repeat; }
+  .prodoffers span {color:#000;text-decoration:none;font-weight:bold;font-size:100%;}
+  .prodoffers a:link{color:#000;text-decoration:none;}
+  .prodoffers a:hover{color:#000;text-decoration:none;}
+  .prodoffers a:visited{color:#000;text-decoration:none;}
+
+  .prodfeatures { padding:10px; clear:both; }
+  .prodfeatures div { float:left; width:245px; }
+  .prodfeatures h4 a { font-size:12px; font-weight:bold; margin:15px 0 5px 0; color:#CF7600; text-decoration: underline;}
+  .prodfeatures h4 a:hover { font-size:12px; font-weight:bold; margin:15px 0 5px 0; color:#CF7600; text-decoration: none;} margin-bottom:5px;}
+
+  /* Legacy CSS*/
+
+  .navBgOn {BACKGROUND: #054582; }
+  .navBgOff, .wht {BACKGROUND: #ffffff}
+  .dkGray {BACKGROUND: #999999}
+  .HdBlk {font-weight: bold; font-size: 14px; color: #000000;}
+  .lnkBdWht { color: #ffffff; }
+
+  /* Body */
+  .subBdCopyRight {font-size: 11px; color: #A6A5A6; line-height: 10px}
+  .BdWht, .BdWhtBld { background-color:#666666; color: #ffffff; }
+  .BdWht a { color: #ffffff; }
+  .BdWhtBld, .BdBlkBld {font-weight: bold; }
+  .boldbodycopy {font-family:arial,helvetica,sans-serif;font-size:12px;line-height:14px;font-weight:bold;color:#000;text-decoration:none;}
+
+  /*
+  The larger left side box uses the columnBody and the smaller content boxes use columnBodyTwo 
+  */
+
+  .columnBody {
+    width: 179px;
+    border: 1px solid #0000CC;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    background-color: #EEEEEE;
+    padding: 4px;
+    color: #000000;
+    text-align: left;
+    height: 274px;
+  }
+
+  .columnBody a:link, .columnBody a:visited {text-decoration: none;   color: #000000;}
+  .columnBody a:hover {text-decoration:underline; color: #000000;}
+  .columnBody li{
+    list-style-image:   url(http://www.oracle.com/admin/images/crmondemand/bullet_orng_circle.gif);
+    text-align: left;
+    vertical-align: middle;
+    margin-left: -20px;
+    margin-top: 11px;
+    margin-bottom: auto;
+  }
+
+  .bulletOrng {
+  }
+
+  .bulletOrng li {
+    list-style-image: url(http://www.oracle.com/admin/images/crmondemand/checkmark.gif);
+    list-style-type: none;
+    line-height: 15px;
+    padding-top: 5px;
+  }
+
+  .bulletGrey {
+  }
+
+  .bulletGrey li {
+    list-style-image: url(http://www.oracle.com/admin/images/crmondemand/checkmark_grey.gif);
+    list-style-type: none;
+    line-height: 15px;
+    padding-top: 5px;
+  }.datatable {
+    font: arial, verdana, sans-serif; font-size:11px; color: #000000;
+    font-weight: none;
+    border: 1px solid #cccccc;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .datatable h1 {
+    font: arial, verdana, sans-serif; font-size:13px; color: #FFFFFF;
+    margin: 0 0 0 0;
+    font-weight: bold;
+
+  }
+  .datatable td {
+    border: 1px solid #B4B4B4;
+    padding: 4px;
+   
+  }
+  .datatable1 {
+    border: 1px solid #B4B4B4;
+    padding: 4px;
+   background-color: #808080;
+  }
+  .datatable1 td {
+    border: 1px solid #B4B4B4;
+    padding: 4px;
+    background-color: #cccccc;
+   
+  }
+  .datatable th {
+    border: 1px solid #B4B4B4;
+    background-color: #cccccc;
+    font-weight: bold;
+    color: #000000;
+    text-align: left;
+    padding-left: 4px;
+  }
+  .datatable tr.altrow {
+    font: arial, verdana, sans-serif; font-size:11px; color: #595959;
+    font-weight: none;
+    background-color: #ffffff;
+    
+  }
+  .datatable tr:hover, .datatable tr.hilite {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  #subnavDash {
+    font-size: 1px;
+    line-height: 1px;
+    background: #B4B4B4 url(http://www.oracle.com/admin/images/crmondemand/dash.gif) repeat-x;
+    margin: 0 0 10px 0;}
+  /*Homepage section*/
+  #rnavBox .home_contentArrow a {color: #000000;}
+  .home_events { line-height:16px; font-size:12px;}
+  #home_subnavDash {font-size: 1px; line-height: 1px; background: #CCCCCC url(http://www.oracle.com/admin/images/crmondemand/dash.gif) repeat-x; margin-left: 3px; }
+  #suboffers { width:900px; height:32px; text-align:center;}
+  #suboffers div { padding:5px 0 0 0; }
+  #suboffers #1 { width:231px; text-align:right; }
+  #suboffers #2 { width:237px; }
+  #suboffers #3 { width:238px; text-align:left;}
+  #suboffers #4 { width:194px; background-color:#E9E9E9; }
+  .homecontent2 { font-family: arial, verdana, sans-serif; font-size:11px; color: #000000; margin:0 0 10px 0;}
+  .homecontent { width:900px; font-size:11px; margin:0; padding:0 0 0 0; border:0; }
+  .homecontent .left {  margin:10px; }
+  .homecontent .wrap { margin:10px 10px 10px 5px; border:1px solid #DDDDDD;}
+  .homecontent .wrap div { margin:10px; }
+
+  /*These h1 styles are used to maintain the older design until the new design launches */
+  .homecontent h1 { font-size:14px; color:#9C9C9E; font-weight:bold; }
+  .homecontent h1 { font-size:14px; padding-left:5px; background-color:#DDDDDD; color:#9C9C9E; font-weight:bold; }
+  .homecontent h1 a { text-decoration:none; color:#9C9C9E;}
+
+  /*END OF THE  h1 styles that are used to maintain the older design until the new design launches */
+  .homecontent h2 {font-family:arial,helvetica,sans-serif;color:#000000;font-size:15px;font-weight:bold;margin-top: -4px;margin-bottom: 8px;}
+  .homecontent h3 {font-weight:bold;margin-top: 10px;margin-bottom: 6px;}
+  .homecontent .rightcolumn {border: 1px solid #CCCCCC;width:180px; background:#FFFFFF;padding: 0 5px 5px 10px;}
+  .homecontent .rightcolumn a {text-decoration:underline;font-size: 11px;} 
+  .homecontent .rightcolumn h3 a {font-family:arial,helvetica,sans-serif;font-weight:bold;font-size:11px;text-decoration:none;color:#000000;padding: 5px 5px 5px 5px;background:#EEEEEE;}
+  .homecontent h4 {color:#000000;font-size: 11px;font-weight:bold;margin-bottom: 0px;}
+  .homecontent h4 a:link, .homecontent h4 a:visited, .homecontent h4 a:hover, .homecontent h4 a:active{color: #000000; text-decoration: underline;}
+  .blueBoldLink {color: #000000;font-weight:bold;}
+  .blueBoldLink a{color: #000000;font-weight:bold;}
+  .blueBoldLink a:link {color: #000000;}
+  .blueBoldLink a:visited {color: #000000;}
+  .blueBoldLink a:hover {color: #000000;}
+  .blueBoldLink a:active {color: #000000;}
+  .navCallOutTbl { width: 168px;border: #666666 solid 1px;border-collapse: collapse; margin-right: 4px;}
+  .navCallOutTbl th { background-color:#666666;font-size:11px;color: #FFFFFF;font-weight:bold;text-align: left;padding: 4px;}
+  .navCallOutTbl td{ background-color: FFFFFF;font-family: Arial, Helvetica, sans-serif;font-size:11px;text-align: left;color: #333333;padding: 4px;}
+  .navCallOutTbl a:link {color:#333333; text-decoration: none; font-weight:bold;}
+  .navCallOutTbl a:visited {color:#333333; text-decoration: none; font-weight:bold;}
+  .navCallOutTbl a:hover {color:#333333; font-weight:bold;}
+  .navCallOutTbl a:active {color:#333333; text-decoration: none; font-weight:bold;}
+  #quote0, #quote1, #quote2, #quote3, #quote4, #quote5 { display:none; padding:0; margin:0; position:absolute; height:130px; font-size:12px; background:#ffffff; color:#000000; width:320px; filter:alpha(opacity=0); -moz-opacity:1}
+  #quote0 div, #quote1 div, #quote2 div, #quote3 div, #quote4 div, #quote5 div { width:100%; text-align:center; }
+  #quote0 a, #quote1 a, #quote2 a, #quote3 a, #quote4 a, #quote5 a { text-decoration:none; }
+  .boilerplate a {text-decoration:none;}
+  .tableOne {
+  background-image: url(http://www.oracle.com/admin/images/crmondemand/homepage/verticaldots_1.gif);
+  background-repeat: repeat-y;
+  background-position: center;
+  border-collapse: collapse;
+  font-family:arial,helvetica,sans-serif; font-size:11px; color: #000000; margin:0 0 0 0;
+  width: 100%;
+  }
+  .tableTwo {background-image: url(http://www.oracle.com/admin/images/crmondemand/homepage/verticaldots3col_0.gif);background-repeat: repeat-y;
+  border-collapse: collapse;font-family:arial,helvetica,sans-serif; font-size:11px; color: #000000; margin:0 0 0 0;}
+
+  /*New added from Internal page css*/
+
+  .image1{ background-image:url(http://www.oracleimg.com/admin/images/crmondemand/hp/crmod_int-pakv2.gif); background-repeat:no-repeat; height:222;}
+  .image2{ background-image:url(http://www.oracleimg.com/admin/images/crmondemand/hp/Banner-US-UK.gif); background-repeat:no-repeat; height:222;}
+  .sectionHder {padding:0 0 10px 0;}
+  #section02 {margin: 0; padding: 0;}
+  .wrap { width:900px; background:#ffffff;}
+  .section02items {padding:0 6px 12px 8px;margin:0 0 0 12px;background-image:url(http://www.oracle.com/crmondemand/hpimages/arrowGRAYtrans.gif);background-repeat:no-repeat;background-position:top left; font-size:12px; line-height:14px;}
+  .sectin02subItems {padding-top:3px;font-size:11px;}
+  a.homeLink:link {color:#000;text-decoration:none;}
+  a.homeLink:visited {color:#666;text-decoration:none;}
+  a.homeLink:hover {color:#000;text-decoration:underline;} a.homeLink02:link {color:#000;text-decoration:underline;}
+  a.homeLink02:visited {color:#666;text-decoration:underline;}
+  a.homeLink02:hover {color:#ff0000;text-decoration:underline;}
+  #featureLink1 {padding:0px;margin:0px;}
+  #featureLink1 ul {list-style:none;padding:0px;margin:0px;}
+  #featureLink1 li {padding:0px;margin:0px;display:inline;}
+  #featureLink1 li a {height:222px;padding:0px;margin:0px;display:block;text-decoration:none;}
+  #site_lang_choice { display:inline; margin:0px 3px;}
+  .sngHeader1 {background:url('http://www.oracleimg.com/admin/images/css/signpost_arrow.gif') no-repeat; background-position:left; margin:0px 0px 0px 0px; padding-left:12px;color:#000000;font-size:13px;font-weight:bold;line-height:18px;}
+  .tblcontent {font-size:11px; font-family: arial, verdana, sans-serif; color:#000;}
+  .success {font-size:11px; font-family: arial, verdana, sans-serif; color:#000; line-height: 21px;}
+  .dropdown {padding-bottom: 15px}
+  .dropdownwidth {width: 195px}
+  .style1 {color: #FF0000;font-size: 14px;font-weight: bold;}
+  .content {font-size:11px; font-family: arial, verdana, sans-serif; color:#000; padding-bottom: 20px}
+  .mainheading {margin:12px 10px 0px 0px;padding-left:2px;color:#000000;font-size:18px;font-weight:bold;line-height:20px;  text-align:left;}
+
+  .subheading {padding:0px 0px 6px 8px;color:#000;margin:0px 0px 0px 10px; font-size:13px; line-height:13px; font-weight:bold}
+  .sngheading {padding:6px 0px 6px 8px;color:#000;margin:0px 0px 0px 10px; font-size:11px; line-height:13px; font-weight:bold}
+  .mainBkgBlankPS {background: url(/test/homepage/img/mainfeat_blank.gif) no-repeat; height: 177px; width: 100%;display: block;}
+  #divtable {padding:18px 0px 0px 0px} 
+  .absPS {width: 90px;position: absolute;float: right;right: 300px;z-index: 100;top: 153px;}
+  .absIEPS {width: 90px; position: absolute; float: right;right: 0px;z-index: 100;}
+  #centerSectBlankPS {display: block;min-width: 585px;border:#cccccc 1px solid;}
+  #featureLink1PS {padding:0px;margin:0px;}
+  #featureLink1PS ul {list-style:none;padding:0px;margin:0px;}
+  #featureLink1PS li {padding:0px;margin:0px;display:inline;} 
+  #featureLink1PS li a {height:155px;padding:0px;margin:0px;display:block;text-decoration:none;}
+  #featureLink1PS a:link {text-decoration:none;color:#000000;}
+  #featureLink1PS a:visited {text-decoration:none;color:#000000;}
+  #featureLink1PS a:hover {text-decoration:none;color:#000000;}
+  .backToTop {font-size:9px;}
+  .backToTop a:link {color:#000000;text-decoration:underline;} 
+  .backToTop a:visited {color:#000000;text-decoration:underline;} 
+  .backToTop a:hover {color:#000000;text-decoration:underline;}
+  .arrow {background:url('http://www.oracle.com/database/images/arrow_play.gif') no-repeat; background-position:left; margin:0px 0px 0px 0px; padding-left:0px;color:#cccccc;font-weight:bold;}
+  .arrow a:link {color:#ADACAC;text-decoration:none;}
+  .arrow a:visited {color:#ADACAC;text-decoration:none;}
+  .arrow a:hover {color:#ADACAC;text-decoration:none;}
+  #L3photo {padding: 0 10px 15px 0; margin: 0; float: left;}
+  .subheader{font-size:16px; font-family: arial, verdana, sans-serif; color:#000; font-weight:bold}
+  </style>
+  <meta content="MSHTML 6.00.6000.17102" name="GENERATOR" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <!--outer wrapper for the whole page start-->
+
+    <div class="header">
+      <!--header section start -->
+    </div><!--header section end --><!--error page fragment-->
+<!--SS_BEGIN_SNIPPET(fragment17,errorpage)-->				
+<div id="banner">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td rowspan="2" valign="middle" nowrap>
+				<a href="http://www.oracle.com"><img src="http://www.oracleimg.com/us/assets/oralogo-small.gif" alt="" width="133" height="18" hspace="10" border="0"></a>
+			</td>
+			<td align="right" valign="top" width="70%" nowrap class="padMid">
+				<div id="bannerMid"></div>
+			</td>
+			<td width="30%" align="left" valign="bottom" nowrap></td>
+		</tr>
+		<tr>
+			<td align="right" valign="bottom" nowrap class="padMid"></td>
+			<td width="30%" align="left" valign="bottom" nowrap></td>
+		</tr>
+	</table>
+</div>
+
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td><IMG SRC="/ocom/groups/public/documents/digitalasset/spacer.gif" BORDER=0 ALT="" height="15"></td>
+	</tr>
+	<tr>
+		<td class="parahead1"><h1>We're sorry, the page you requested was not found.</h1></td>
+	</tr>
+	<tr>
+		<td><IMG SRC="/ocom/groups/public/documents/digitalasset/spacer.gif" BORDER=0 ALT="" height="5"></td>
+	</tr>
+	<tr>
+		<td class="bodycopy">We have recorded this error (404) to help us fix the problem.<br>You may wish to try again using one of the tools below.</td>
+	</tr>
+	<tr>
+		<td><IMG SRC="/ocom/groups/public/documents/digitalasset/spacer.gif" BORDER=0 ALT="" height="5"></td>
+	</tr>
+</table>
+<table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
+	<tr valign="middle">
+		<td align="right" class="bodycopy" valign="top" width="2%"><img src="/ocom/groups/public/documents/webcontent/004894.gif" width="7" height="7" vspace="3"></td>
+		<td class="bodycopy"><a href="javascript:history.back(-1)" class="bodylink">Back to Previous Page</a></td>
+	</tr>
+	<tr valign="middle">
+		<td align="right" class="bodycopy" valign="top"><img src="/ocom/groups/public/documents/webcontent/004894.gif" width="7" height="7" vspace="3"></td>
+		<td class="bodycopy"><a href="/us/sitemaps/index.html" class="bodylink">Site Map</a></td>
+	</tr>
+	<tr valign="middle">
+		<td align="right" class="bodycopy" valign="top"><img src="/ocom/groups/public/documents/webcontent/004894.gif" width="7" height="7" vspace="3"></td>
+		<td class="bodycopy"><a href="/us/products/productslist/index.html" class="bodylink">Product Index</a></td>
+	</tr>
+	<tr valign="middle">
+		<td align="right" class="bodycopy" valign="top"><img src="/ocom/groups/public/documents/webcontent/004894.gif" width="7" height="7" vspace="3"></td>
+		<td class="bodycopy">To <span class="boldbodycopy">search</span> for your page, try our Search function.</td>
+	</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr valign="top">
+		<td width="99%">
+			<form name=searchForm onSubmit="javascript: return isNotNull(this.keyword.value)" action="http://search.oracle.com/search/search" method=get target=_top>
+				<table cellspacing="0" cellpadding="0" border="0">
+					<tr>
+						<td width="23">&nbsp;&nbsp;</td>
+						<td align="left">
+							<input type="hidden" name="default" value="true"/>
+							<input class="textA" name="keyword" size="35" maxlength="2048" value="search site" onClick="javascript: document.searchForm.keyword.value = ''" title="Search"/>
+							<input type="hidden" name="start" value="1"/>
+						</td>
+						<td align="left">&nbsp;&nbsp;</td>
+						<td align="left">
+							<input type="hidden" name="nodeid" value=""/>
+							<input type="hidden" name="fid" value=""/>
+							<input type="hidden" name="showSimilarDoc" value="true"/>
+							<select name="group" onchange="javascript: setFormValues(document.searchForm,document.searchForm.group.value)" class="textA" size=1>
+								<option value="All">All</option>
+								<option value="Oracle Technology Network">Technology Network</option>
+								<option value="Oracle PartnerNetwork (Public)">PartnerNetwork (Public Only)</option>
+								<!-- <option value="Documentation">Documentation</option> -->
+								<option value="Video and Multimedia">Video and Multimedia</option>
+							</select>
+						</td>
+						<td align="left">&nbsp;</td>
+						<td align="left"><a onClick="javascript: return isNotNull(document.searchForm.keyword.value)" href="javascript:document.searchForm.submit()">
+							<img src="http://www.oracleimg.com/us/assets/search-icon-search-icon.gif" width="21" height="20" vspace="1" hspace="1" border="0" /></a>
+						</td>
+						<td align="left">&nbsp;&nbsp;</td>
+						<td align="left"><a href="http://search.oracle.com/search/search" class="suggestedLink">Refine Search</a></td>
+					</tr>
+				</table>
+			</form>
+		</td>
+	</tr>
+</table>
+			<!--SS_END_SNIPPET(fragment17,errorpage)-->
+
+<!--SS_BEGIN_SNIPPET(fragment18,1)-->
+				<!-- Start SiteCatalyst code -->
+<script language="JavaScript" src="http://www.oracleimg.com/us/assets/metrics/ora_error.js"></script>
+<!-- End SiteCatalyst code --> 
+			<!--SS_END_SNIPPET(fragment18,1)-->
+
+  </div><!--End of outer wrapper for left-center-right (W-LCR) -->
+</body>
+</html>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ManagedExtension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SyntaxHighlighter">
+  <AdminPage />
+  <Author>&lt;a target="_new" href="http://dotnetblogengine.net/"&gt;BlogEngine.NET&lt;/a&gt;</Author>
+  <Description>Adds &lt;a target="_new" href="http://alexgorbatchev.com/wiki/SyntaxHighlighter"&gt;Alex Gorbatchev's&lt;/a&gt; source code formatter</Description>
+  <Enabled>true</Enabled>
+  <Priority>0</Priority>
+  <Settings>
+    <Delimiter>44</Delimiter>
+    <Help>&lt;p&gt;This extension implements excellent Alex Gorbatchev's syntax highlighter JS library for source code formatting. Please refer to &lt;a target="_new" href="http://alexgorbatchev.com/wiki/SyntaxHighlighter:Usage"&gt;this site&lt;/a&gt; for usage.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;cdnScriptsPath&lt;/b&gt;: Allows you to load the SyntaxHighlighter script from a CDN. Leave empty for local files&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;cdnStylesPath&lt;/b&gt;: Allows you to load the SyntaxHighlighter styles from a CDN. Leave empty for local files&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;auto-links&lt;/b&gt;: Allows you to turn detection of links in the highlighted element on and off. If the option is turned off, URLs won't be clickable.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;collapse&lt;/b&gt;: Allows you to force highlighted elements on the page to be collapsed by default.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;gutter&lt;/b&gt;:	Allows you to turn gutter with line numbers on and off.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;smart-tabs&lt;/b&gt;:	Allows you to turn smart tabs feature on and off.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;tab-size&lt;/b&gt;: Allows you to adjust tab size.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;toolbar&lt;/b&gt;: Toggles toolbar on/off.&lt;/p&gt;
+&lt;p&gt;&lt;a target="_new" href="http://alexgorbatchev.com/wiki/SyntaxHighlighter:Configuration"&gt;more...&lt;/a&gt;&lt;/p&gt;
+</Help>
+    <Hidden>false</Hidden>
+    <Index>0</Index>
+    <IsScalar>true</IsScalar>
+    <Name>Options</Name>
+    <Parameters>
+      <KeyField>false</KeyField>
+      <Label>CDN Script Path</Label>
+      <MaxLength>250</MaxLength>
+      <Name>cdnScriptsPath</Name>
+      <ParamType>String</ParamType>
+      <Required>false</Required>
+      <SelectedValue />
+      <Values />
+    </Parameters>
+    <Parameters>
+      <KeyField>false</KeyField>
+      <Label>CDN Styles Path</Label>
+      <MaxLength>250</MaxLength>
+      <Name>cdnStylesPath</Name>
+      <ParamType>String</ParamType>
+      <Required>false</Required>
+      <SelectedValue />
+      <Values />
+    </Parameters>
+    <Parameters>
+      <KeyField>false</KeyField>
+      <Label>Gutter</Label>
+      <MaxLength>100</MaxLength>
+      <Name>gutter</Name>
+      <ParamType>Boolean</ParamType>
+      <Required>false</Required>
+      <SelectedValue />
+      <Values>True</Values>
+    </Parameters>
+    <Parameters>
+      <KeyField>false</KeyField>
+      <Label>Smart tabs</Label>
+      <MaxLength>100</MaxLength>
+      <Name>smart-tabs</Name>
+      <ParamType>Boolean</ParamType>
+      <Required>false</Required>
+      <SelectedValue />
+      <Values>True</Values>
+    </Parameters>
+    <Parameters>
+      <KeyField>false</KeyField>
+      <Label>Auto links</Label>
+      <MaxLength>100</MaxLength>
+      <Name>auto-links</Name>
+      <ParamType>Boolean</ParamType>
+      <Required>false</Required>
+      <SelectedValue />
+      <Values>True</Values>
+    </Parameters>
+    <Parameters>
+      <KeyField>false</KeyField>
+      <Label>Collapse</Label>
+      <MaxLength>100</MaxLength>
+      <Name>collapse</Name>
+      <ParamType>Boolean</ParamType>
+      <Required>false</Required>
+      <SelectedValue />
+      <Values>False</Values>
+    </Parameters>
+    <Parameters>
+      <KeyField>false</KeyField>
+      <Label>Tab size</Label>
+      <MaxLength>100</MaxLength>
+      <Name>tab-size</Name>
+      <ParamType>Integer</ParamType>
+      <Required>false</Required>
+      <SelectedValue />
+      <Values>4</Values>
+    </Parameters>
+    <Parameters>
+      <KeyField>false</KeyField>
+      <Label>Toolbar</Label>
+      <MaxLength>100</MaxLength>
+      <Name>toolbar</Name>
+      <ParamType>Boolean</ParamType>
+      <Required>false</Required>
+      <SelectedValue />
+      <Values>True</Values>
+    </Parameters>
+    <ShowAdd>true</ShowAdd>
+    <ShowDelete>true</ShowDelete>
+    <ShowEdit>true</ShowEdit>
+  </Settings>
+  <Settings>
+    <Delimiter>44</Delimiter>
+    <Help />
+    <Hidden>false</Hidden>
+    <Index>1</Index>
+    <IsScalar>true</IsScalar>
+    <Name>Themes</Name>
+    <Parameters>
+      <KeyField>false</KeyField>
+      <Label>Themes</Label>
+      <MaxLength>20</MaxLength>
+      <Name>SelectedTheme</Name>
+      <ParamType>ListBox</ParamType>
+      <Required>false</Required>
+      <SelectedValue>Default</SelectedValue>
+      <Values>Default</Values>
+      <Values>Django</Values>
+      <Values>Eclipse</Values>
+      <Values>Emacs</Values>
+      <Values>FadeToGrey</Values>
+      <Values>MDUltra</Values>
+      <Values>Midnight</Values>
+      <Values>Dark</Values>
+    </Parameters>
+    <ShowAdd>true</ShowAdd>
+    <ShowDelete>true</ShowDelete>
+    <ShowEdit>true</ShowEdit>
+  </Settings>
+  <ShowSettings>true</ShowSettings>
+  <Version>2.5.1</Version>
+</ManagedExtension>

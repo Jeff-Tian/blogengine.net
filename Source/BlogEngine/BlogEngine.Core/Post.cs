@@ -101,6 +101,12 @@
         private float rating;
 
         /// <summary>
+        ///     The post views;
+        ///     <remarks>jeff@zizhujy.com</remarks>
+        /// </summary>
+        private int views;
+
+        /// <summary>
         ///     The slug of the post.
         /// </summary>
         private string slug;
@@ -551,6 +557,22 @@
             set
             {
                 base.SetValue("Rating", value, ref this.rating);
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the views for the post.
+        ///     <remarks>jeff@zizhujy.com</remarks>
+        /// </summary>
+        public int Views
+        {
+            get
+            {
+                return this.views;
+            }
+            set
+            {
+                base.SetValue("Views", value, ref this.views);
             }
         }
 
@@ -1084,6 +1106,16 @@
 
             this.DataUpdate();
             this.OnRated(this);
+        }
+
+        /// <summary>
+        /// Increase the views to the post. 
+        /// <remarks>jeff@zizhujy.com</remarks>
+        /// </summary>
+        public void View()
+        {
+            this.Views++;
+            this.DataUpdate();
         }
 
         /// <summary>

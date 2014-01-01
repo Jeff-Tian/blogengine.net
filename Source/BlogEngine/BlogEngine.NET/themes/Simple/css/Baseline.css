@@ -1,0 +1,191 @@
+﻿/* BLOCK ELEMENTS */
+html, div, map, dt, form
+{
+    display: block;
+}
+body
+{
+    display: block;
+    margin: 8px;
+    font-family: Serif;
+    font-size: medium;
+}
+p, dl
+{
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+dd
+{
+    display: block;
+    margin-left: 40px;
+}
+address
+{
+    display: block;
+    font-style: italic;
+}
+blockquote
+{
+    display: block;
+    margin: 1em 40px;
+}
+h1
+{
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.67em 0;
+}
+h2
+{
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0.83em 0;
+}
+h3
+{
+    display: block;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin: 1em 0;
+}
+h4
+{
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 1.33em 0;
+}
+h5
+{
+    display: block;
+    font-size: 0.75em;
+    font-weight: bold;
+    margin: 1.67em 0;
+}
+h6
+{
+    display: block;
+    font-size: 0.5625em;
+    font-weight: bold;
+    margin: 2.33em 0;
+}
+pre
+{
+    display: block;
+    font-family: Monospace;
+    white-space: pre;
+    margin: 1em 0;
+}
+hr
+{
+    display: block;
+    height: 2px;
+    border: 1px;
+    margin: 0.5em auto 0.5em auto;
+}
+
+/* TABLE ELEMENTS */
+table
+{
+    border-spacing: 2px;
+    border-collapse: separate;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-indent: 0;
+}
+caption
+{
+    text-align: center;
+}
+td
+{
+    padding: 1px;
+}
+th
+{
+    font-weight: bold;
+    padding: 1px;
+}
+tbody, thead, tfoot
+{
+    vertical-align: middle;
+}
+
+/* INLINE ELEMENTS */
+strong
+{
+    font-weight: bold;
+}
+cite, em, var, dfn
+{
+    font-style: italic;
+}
+code, kbd, samp
+{
+    font-family: Monospace;
+}
+ins
+{
+    text-decoration: underline;
+}
+del
+{
+    text-decoration: line-through;
+}
+sub
+{
+    vertical-align: -0.25em;
+    font-size: smaller;
+    line-height: normal;
+}
+sup
+{
+    vertical-align: 0.5em;
+    font-size: smaller;
+    line-height: normal;
+}
+abbr[title], acronym[title]
+{
+    border-bottom: dotted 1px;
+}
+
+/* LIST ELEMENTS */
+ul
+{
+    list-style-type: disc;
+    margin: 1em 0;
+    margin-left: 40px;
+    padding-left: 0;
+}
+ol
+{
+    list-style-type: decimal;
+    margin: 1em 0;
+    margin-left: 40px;
+    padding-left: 0;
+}
+/* remove top & bottom margins for nested lists */
+ul ul, ul ol, ul dl, ol ul, ol ol, ol dl, dl ul, dl ol, dl dl
+{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+/* use circle when ul nested 2 deep */
+ol ul, ul ul
+{
+    list-style-type: circle;
+}
+/* use square when ul nested 3 deep */
+ol ol ul, ol ul ul, ul ol ul, ul ul ul
+{
+    list-style-type: square;
+}
+
+.clearFloat {
+    float: none;
+    clear: both;
+}
