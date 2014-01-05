@@ -194,7 +194,21 @@ public class SyntaxHighlighter
         css.Attributes["type"] = "text/css";
         css.Attributes["rel"] = "stylesheet";
         css.Attributes["href"] = GetUrl(StylesFolder(), href);
-        page.Header.Controls.Add(css);
+        //begin: jeff@zizhujy.com
+        try
+        {
+            if (page != null && page.Header != null && page.Header.Controls != null)
+                page.Header.Controls.Add(css);
+        }
+        catch (NullReferenceException ex)
+        {
+            throw ex;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        //end: jeff@zizhujy.com
     }
 
     private static void AddOptions(Page page)

@@ -127,6 +127,9 @@
                         "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture));
                 writer.WriteElementString("raters", post.Raters.ToString(CultureInfo.InvariantCulture));
                 writer.WriteElementString("rating", post.Rating.ToString(CultureInfo.InvariantCulture));
+                //begin: jeff@zizhujy.com
+                writer.WriteElementString("views", post.Views.ToString(CultureInfo.InvariantCulture));
+                //end: jeff@zizhujy.com
                 writer.WriteElementString("slug", post.Slug);
 
                 // Tags
@@ -272,6 +275,13 @@
                 post.Rating = float.Parse(
                     doc.SelectSingleNode("post/rating").InnerText, CultureInfo.GetCultureInfo("en-gb"));
             }
+
+            //begin: jeff@zizhujy.com
+            if (doc.SelectSingleNode("post/views") != null)
+            {
+                post.Views = int.Parse(doc.SelectSingleNode("post/views").InnerText, CultureInfo.InvariantCulture);
+            }
+            //end: jeff@zizhujy.com
 
             if (doc.SelectSingleNode("post/slug") != null)
             {

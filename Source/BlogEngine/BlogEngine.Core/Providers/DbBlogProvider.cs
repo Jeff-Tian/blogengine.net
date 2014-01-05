@@ -932,7 +932,9 @@ namespace BlogEngine.Core.Providers
                 {
                     if (conn.HasConnection)
                     {
-                        var sqlQuery = string.Format("INSERT INTO {0}Posts (BlogID, PostID, Title, Description, PostContent, DateCreated, DateModified, Author, IsPublished, IsCommentEnabled, Raters, Rating, Slug, IsDeleted) VALUES ({1}blogid, {1}id, {1}title, {1}desc, {1}content, {1}created, {1}modified, {1}author, {1}published, {1}commentEnabled, {1}raters, {1}rating, {1}slug, {1}isdeleted)", this.tablePrefix, this.parmPrefix);
+                        //begin: jeff@zizhujy.com
+                        var sqlQuery = string.Format("INSERT INTO {0}Posts (BlogID, PostID, Title, Description, PostContent, DateCreated, DateModified, Author, IsPublished, IsCommentEnabled, Raters, Rating, Views, Slug, IsDeleted) VALUES ({1}blogid, {1}id, {1}title, {1}desc, {1}content, {1}created, {1}modified, {1}author, {1}published, {1}commentEnabled, {1}raters, {1}rating, {1}views, {1}slug, {1}isdeleted)", this.tablePrefix, this.parmPrefix);
+                        //end: jeff@zizhujy.com
 
                         using (var cmd = conn.CreateTextCommand(sqlQuery))
                         {
@@ -950,6 +952,9 @@ namespace BlogEngine.Core.Providers
                             parms.Add(conn.CreateParameter(FormatParamName("commentEnabled"), post.HasCommentsEnabled));
                             parms.Add(conn.CreateParameter(FormatParamName("raters"), post.Raters));
                             parms.Add(conn.CreateParameter(FormatParamName("rating"), post.Rating));
+                            //begin: jeff@zizhujy.com
+                            parms.Add(conn.CreateParameter(FormatParamName("views"), post.Views));
+                            //end: jeff@zizhujy.com
                             parms.Add(conn.CreateParameter(FormatParamName("slug"), (post.Slug ?? string.Empty)));
                             parms.Add(conn.CreateParameter(FormatParamName("isdeleted"), post.IsDeleted));
 
@@ -1522,7 +1527,9 @@ namespace BlogEngine.Core.Providers
             {
                 if (conn.HasConnection)
                 {
-                    var sqlQuery = string.Format("SELECT PostID, Title, Description, PostContent, DateCreated, DateModified, Author, IsPublished, IsCommentEnabled, Raters, Rating, Slug, IsDeleted FROM {0}Posts WHERE BlogID = {1}blogid AND PostID = {1}id", this.tablePrefix, this.parmPrefix);
+                    //begin: jeff@zizhujy.com
+                    var sqlQuery = string.Format("SELECT PostID, Title, Description, PostContent, DateCreated, DateModified, Author, IsPublished, IsCommentEnabled, Raters, Rating, Slug, IsDeleted, Views FROM {0}Posts WHERE BlogID = {1}blogid AND PostID = {1}id", this.tablePrefix, this.parmPrefix);
+                    //end: jeff@zizhujy.com
                     using (var cmd = conn.CreateTextCommand(sqlQuery))
                     {
                         cmd.Parameters.Add(conn.CreateParameter(FormatParamName("blogid"), Blog.CurrentInstance.Id.ToString()));
@@ -1577,6 +1584,13 @@ namespace BlogEngine.Core.Providers
                                 {
                                     post.IsDeleted = rdr.GetBoolean(12);
                                 }
+
+                                //begin: jeff@zizhujy.com
+                                if (!rdr.IsDBNull(13))
+                                {
+                                    post.Views = rdr.GetInt32(13);
+                                }
+                                //end: jeff@zizhujy.com
                             }
                         }
 
@@ -2250,7 +2264,9 @@ namespace BlogEngine.Core.Providers
                 {
                     if (conn.HasConnection)
                     {
-                        var sqlQuery = string.Format("UPDATE {0}Posts SET Title = {1}title, Description = {1}desc, PostContent = {1}content, DateCreated = {1}created, DateModified = {1}modified, Author = {1}Author, IsPublished = {1}published, IsCommentEnabled = {1}commentEnabled, Raters = {1}raters, Rating = {1}rating, Slug = {1}slug, IsDeleted = {1}isdeleted WHERE BlogID = {1}blogid AND PostID = {1}id", this.tablePrefix, this.parmPrefix);
+                        //begin: jeff@zizhujy.com
+                        var sqlQuery = string.Format("UPDATE {0}Posts SET Title = {1}title, Description = {1}desc, PostContent = {1}content, DateCreated = {1}created, DateModified = {1}modified, Author = {1}Author, IsPublished = {1}published, IsCommentEnabled = {1}commentEnabled, Raters = {1}raters, Rating = {1}rating, Views = {1}views, Slug = {1}slug, IsDeleted = {1}isdeleted WHERE BlogID = {1}blogid AND PostID = {1}id", this.tablePrefix, this.parmPrefix);
+                        //end: jeff@zizhujy.com
 
                         using (var cmd = conn.CreateTextCommand(sqlQuery))
                         {
@@ -2269,6 +2285,9 @@ namespace BlogEngine.Core.Providers
                             p.Add(conn.CreateParameter(FormatParamName("commentEnabled"), post.HasCommentsEnabled));
                             p.Add(conn.CreateParameter(FormatParamName("raters"), post.Raters));
                             p.Add(conn.CreateParameter(FormatParamName("rating"), post.Rating));
+                            //begin: jeff@zizhujy.com
+                            p.Add(conn.CreateParameter(FormatParamName("views"), post.Views));
+                            //end: jeff@zizhujy.com
                             p.Add(conn.CreateParameter(FormatParamName("slug"), (post.Slug ?? string.Empty)));
                             p.Add(conn.CreateParameter(FormatParamName("isdeleted"), post.IsDeleted));
 
