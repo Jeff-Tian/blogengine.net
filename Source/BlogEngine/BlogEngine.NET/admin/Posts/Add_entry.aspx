@@ -47,7 +47,7 @@
 
                     setTimeout("AutoSave()", 5000);
 
-                    var currentDate = new Date()
+                    var currentDate = new Date();
                     document.getElementById('autoSaveLabel').innerHTML = "Autosaved on " + currentDate;
                 }
 
@@ -317,7 +317,7 @@
                                {%>
                             <a href="Posts.aspx" title="<%=Resources.labels.cancel %>"><%=Resources.labels.cancel %></a>
                             <%} %>
-                            <span id="autoSaveLabel" style="display:none;"></span>
+                            <span id="autoSaveLabel" style="display:block;">Post not saved yet.</span>
                         </div>
             <% if (Request.QueryString["id"] == null)
                { %>

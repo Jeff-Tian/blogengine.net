@@ -8,3 +8,13 @@ J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tes
 J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tests\obj\Release\BlogEngine.Tests.csprojResolveAssemblyReference.cache
 J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tests\obj\Release\BlogEngine.Tests.dll
 J:\Projects\BlogEngine_2_7_0_0\blogengine_4f5eed923a57\BlogEngine\BlogEngine.Tests\obj\Release\BlogEngine.Tests.pdb
+C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Tests\bin\Release\BlogEngine.Tests.dll
+C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Tests\bin\Release\BlogEngine.Tests.pdb
+C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Tests\bin\Release\Interop.SHDocVw.dll
+C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Tests\bin\Release\nunit.framework.dll
+C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Tests\bin\Release\WatiN.Core.dll
+C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Tests\bin\Release\nunit.framework.xml
+C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Tests\bin\Release\WatiN.Core.xml
+C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Tests\obj\Release\BlogEngine.Tests.csprojResolveAssemblyReference.cache
+C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Tests\obj\Release\BlogEngine.Tests.dll
+C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Tests\obj\Release\BlogEngine.Tests.pdb
