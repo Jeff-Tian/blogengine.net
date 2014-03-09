@@ -208,6 +208,8 @@ ul.menu li a:active {
 }
 
 #banner #logo #logoText span {
+    position: absolute;
+    top: 33px;
     font-family: Arial,Helvetica,sans-serif; 
 }
 
