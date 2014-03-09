@@ -1,10 +1,13 @@
 ﻿using System;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Globalization;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Collections.Generic;
 using System.IO;
+using RequestContext = System.Web.Routing.RequestContext;
 
 namespace BlogEngine.Core.Web.Scripting
 {
@@ -133,7 +136,7 @@ namespace BlogEngine.Core.Web.Scripting
                 sb.Append("</script> \n");
             }
 
-            if (!string.IsNullOrEmpty(BlogSettings.Instance.TrackingScript))
+            if (!string.IsNullOrEmpty(BlogSettings.Instance.TrackingScript) && !page.Request.IsLocal)
             {
                 sb.Append(BlogSettings.Instance.TrackingScript);
             }
