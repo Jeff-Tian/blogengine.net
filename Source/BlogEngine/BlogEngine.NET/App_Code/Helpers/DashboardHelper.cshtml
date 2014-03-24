@@ -145,7 +145,14 @@
                     {
                         <h4>@p.Title <span> - @Resources.labels.version: @p.OnlineVersion</span></h4> 
                     }
-                    <p>@if(p.Description.Length > 140){@string.Format("{0}...",p.Description.Substring(0, 140))}else{@p.Description}</p>
+                    <p>@if (p.Description.Length > 140)
+                       {
+	                       <text>@string.Format("{0}...", p.Description.Substring(0, 140))</text>
+                       }
+                       else
+                       {
+	                       <text>@p.Description</text>
+                       }</p>
                 </div>
             </div>
         </li>

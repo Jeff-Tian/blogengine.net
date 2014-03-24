@@ -22,3 +22,14 @@ C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Core\bin\Release\N
 C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Core\obj\Release\BlogEngine.Core.csprojResolveAssemblyReference.cache
 C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Core\obj\Release\BlogEngine.Core.dll
 C:\Users\v-jetian\BlogEngine.NET\Source\BlogEngine\BlogEngine.Core\obj\Release\BlogEngine.Core.pdb
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Release\BlogEngine.Core.XML
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Release\BlogEngine.Core.dll
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Release\BlogEngine.Core.pdb
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Release\BlogEngine.Core.dll.CodeAnalysisLog.xml
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Release\BlogEngine.Core.dll.lastcodeanalysissucceeded
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Release\AjaxMin.dll
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Release\BlogML.dll
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Release\NuGet.Core.dll
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.Core\obj\Release\BlogEngine.Core.dll
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.Core\obj\Release\BlogEngine.Core.pdb
