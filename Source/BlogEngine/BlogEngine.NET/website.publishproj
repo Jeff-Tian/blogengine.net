@@ -20,10 +20,8 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
     <SourceWebVirtualPath>/BlogEngine.NET</SourceWebVirtualPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <SourceWebProject>
-    </SourceWebProject>
-    <SourceWebMetabasePath>
-    </SourceWebMetabasePath>
+    <SourceWebProject>C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.NET</SourceWebProject>
+    <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/4/ROOT</SourceWebMetabasePath>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

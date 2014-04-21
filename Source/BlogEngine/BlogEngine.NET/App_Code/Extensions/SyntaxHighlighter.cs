@@ -8,7 +8,7 @@ using Page=System.Web.UI.Page;
 using System.Collections.Generic;
 using System;
 
-[Extension("Adds <a target=\"_new\" href=\"http://alexgorbatchev.com/wiki/SyntaxHighlighter\">Alex Gorbatchev's</a> source code formatter", "2.5.1", "<a target=\"_new\" href=\"http://dotnetblogengine.net/\">BlogEngine.NET</a>")]
+[Extension("Adds <a target=\"_new\" href=\"http://alexgorbatchev.com/wiki/SyntaxHighlighter\">Alex Gorbatchev's</a> source code formatter", "2.5.2", "<a target=\"_new\" href=\"http://dotnetblogengine.net/\">BlogEngine.NET</a>")]
 public class SyntaxHighlighter
 {
     #region Private members
@@ -214,8 +214,39 @@ public class SyntaxHighlighter
     private static void AddOptions(Page page)
     {
         StringBuilder sb = new StringBuilder();
+
+        var executeOn = @"
+        if (typeof executeOn === 'undefined') {
+            window.executeOn = function (condition, func) {
+                var interval = setInterval(function () {
+                    try {
+                        var result = false;
+
+                        if (typeof condition === ""function"") {
+                            result = condition();
+                        } else if (typeof condition === ""string"") {
+                            result = eval(condition);
+                        } else {
+                            throw ""argument 'condition' must be a bool function or a bool expression."";
+                        }
+
+                        if (result === true) {
+                            clearInterval(interval);
+                            func();
+                        }
+                    } catch (ex) {
+                        clearInterval(interval);
+                        throw ex;
+                    }
+                }, 100);
+            };
+        }";
+
         
         sb.AppendLine("<script type=\"text/javascript\" defer=\"defer\">");
+        sb.AppendLine(executeOn);
+
+        sb.AppendLine(@"executeOn(""typeof SyntaxHighlighter !== 'undefined' "", function() {");
 
         // add not-default options
         if (Options != null)
@@ -240,6 +271,13 @@ public class SyntaxHighlighter
         }  
         
         //sb.AppendLine("\tSyntaxHighlighter.all();");
+
+        sb.AppendLine(@"
+            executeOn(""document.readyState === 'loaded' || document.readyState === 'complete'"", function() {
+                SyntaxHighlighter.all();
+            });");
+
+        sb.AppendLine(@"});");
         sb.AppendLine("</script>");
         page.ClientScript.RegisterStartupScript(page.GetType(), "SyntaxHighlighter", sb.ToString(), false);
     }
@@ -283,9 +321,11 @@ public class SyntaxHighlighter
         if (Options != null)
         {
             string pattern = "\tSyntaxHighlighter.defaults['{0}'] = {1};";
+
             string val = Options.GetSingleValue(opt).ToLowerInvariant();
             return string.Format(pattern, opt, val);
         }
+
         return "";
     }
 
