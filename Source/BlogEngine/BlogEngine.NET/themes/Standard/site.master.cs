@@ -31,7 +31,7 @@ public partial class StandardSite : System.Web.UI.MasterPage
             base.Render(htmlwriter);
             string html = htmlwriter.InnerWriter.ToString();
 
-            html = reg.Replace(html, string.Empty).Trim();
+            //html = reg.Replace(html, string.Empty).Trim();
 
             writer.Write(html);
         }
