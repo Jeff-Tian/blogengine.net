@@ -1,0 +1,10 @@
+C:\Users\Jeff\Source\Repos\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Debug\BlogEngine.Core.XML
+C:\Users\Jeff\Source\Repos\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Debug\BlogEngine.Core.dll
+C:\Users\Jeff\Source\Repos\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Debug\BlogEngine.Core.pdb
+C:\Users\Jeff\Source\Repos\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Debug\AjaxMin.dll
+C:\Users\Jeff\Source\Repos\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Debug\BlogML.dll
+C:\Users\Jeff\Source\Repos\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\Jeff\Source\Repos\blogengine.net\Source\BlogEngine\BlogEngine.Core\bin\Debug\NuGet.Core.dll
+C:\Users\Jeff\Source\Repos\blogengine.net\Source\BlogEngine\BlogEngine.Core\obj\Debug\BlogEngine.Core.csprojResolveAssemblyReference.cache
+C:\Users\Jeff\Source\Repos\blogengine.net\Source\BlogEngine\BlogEngine.Core\obj\Debug\BlogEngine.Core.dll
+C:\Users\Jeff\Source\Repos\blogengine.net\Source\BlogEngine\BlogEngine.Core\obj\Debug\BlogEngine.Core.pdb
