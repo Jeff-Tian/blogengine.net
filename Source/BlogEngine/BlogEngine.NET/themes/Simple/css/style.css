@@ -408,7 +408,6 @@ div.post .pubDate {
 }
 
 div.post .text {
-	margin-top: 30px;
 }
 
 div.post .text h2 {
@@ -1052,4 +1051,9 @@ input[type="submit"]:hover, input[type="button"]:hover {
 
 #newsletterform input[type="text"] {
     margin: 10px 0;
+}
+
+.clear-float {
+    clear: both;
+    float: none;
 }
