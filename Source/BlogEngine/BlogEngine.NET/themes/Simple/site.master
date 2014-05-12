@@ -1,5 +1,7 @@
 ﻿<%@ Reference Control="~/themes/Standard/site.master" %>
-<%@ master language="C#" autoeventwireup="true" inherits="StandardSite" %>
+
+<%@ Master Language="C#" AutoEventWireup="true" Inherits="StandardSite" %>
+
 <%@ Import Namespace="BlogEngine.Core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -8,78 +10,81 @@
     <link rel="stylesheet" href="css/Baseline.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="css/tables.css" type="text/css" />
-    <link rel="shortcut icon" href="img/icon-media-rss.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="css/effects.css" type="text/css" />
+    <link rel="shortcut icon" href="img/icon-media-rss.ico" type="image/x-icon" />
 </head>
 <body>
 
-  <form runat="Server" class="body">
-    <div id="page">
-        <div id="header">
-            <div id="menucontainer">
-                <ul class="menu" style="float: left;">                    
-                      <li pathname="default.aspx"><a href="<%=Utils.AbsoluteWebRoot %>" rel="home"><%=Resources.labels.home %></a></li>
-                      <li pathname="archive.aspx"><a href="<%=Utils.AbsoluteWebRoot %>archive.aspx"><%=Resources.labels.archive %></a></li>
-                      <li pathname="contact.aspx"><a href="<%=Utils.AbsoluteWebRoot %>contact.aspx"><%=Resources.labels.contact %></a></li>
-                      <li pathname="syndication.axd"><a href="<%=Utils.FeedUrl %>" class="feed"><img src="<%=Utils.ApplicationRelativeWebRoot %>pics/rssButton.png" alt="Feed" /><%=Resources.labels.subscribe %></a></li>
-                      <li><a href="javascript:void(BlogEngine.filterByAPML())" class="apmlfilter"><%=Resources.labels.filterByApml %></a></li>
-                      <% if (Utils.IsMobile)
-                         { %>
-                      <li><blog:MobileThemeSwitch ID="MobileThemeSwitch1" runat="server" /></li>
-                      <%
+    <form runat="Server" class="body">
+        <div id="page">
+            <div id="header">
+                <div id="menucontainer">
+                    <ul class="menu" style="float: left;">
+                        <li pathname="default.aspx"><a href="<%=Utils.AbsoluteWebRoot %>" rel="home"><%=Resources.labels.home %></a></li>
+                        <li pathname="archive.aspx"><a href="<%=Utils.AbsoluteWebRoot %>archive.aspx"><%=Resources.labels.archive %></a></li>
+                        <li pathname="contact.aspx"><a href="<%=Utils.AbsoluteWebRoot %>contact.aspx"><%=Resources.labels.contact %></a></li>
+                        <li pathname="syndication.axd"><a href="<%=Utils.FeedUrl %>" class="feed">
+                            <img src="<%=Utils.ApplicationRelativeWebRoot %>pics/rssButton.png" alt="Feed" /><%=Resources.labels.subscribe %></a></li>
+                        <li><a href="javascript:void(BlogEngine.filterByAPML())" class="apmlfilter"><%=Resources.labels.filterByApml %></a></li>
+                        <% if (Utils.IsMobile)
+                           { %>
+                        <li>
+                            <blog:MobileThemeSwitch ID="MobileThemeSwitch1" runat="server" /></li>
+                        <%
                          }
-                      %>
-                </ul>
-                <ul class="menu" style="float: right; right: 0">
-                    <li class="login"><span runat="server" id="aUser"></span><a runat="server" id="aLogin"></a></li>
-                </ul>         
-                <script type="text/javascript">
+                        %>
+                    </ul>
+                    <ul class="menu" style="float: right; right: 0">
+                        <li class="login"><span runat="server" id="aUser"></span><a runat="server" id="aLogin"></a></li>
+                    </ul>
+                    <script type="text/javascript">
                 <!--
-                    (function ($) {
-                        // 选择菜单项
-                        var pathName = location.pathname;
-                        pathName = pathName.replace(/\/(BlogEngine.NET|blog)\//i, "").replace(/[\/\\]$/, "");
-                        if (pathName.length <= 0) pathName = "default.aspx";
-                        $("#menucontainer ul li[pathname='" + pathName + "']").addClass("selected");
+    (function ($) {
+        // 选择菜单项
+        var pathName = location.pathname;
+        pathName = pathName.replace(/\/(BlogEngine.NET|blog)\//i, "").replace(/[\/\\]$/, "");
+        if (pathName.length <= 0) pathName = "default.aspx";
+        $("#menucontainer ul li[pathname='" + pathName + "']").addClass("selected");
 
-                        $(document).ready(function () {
-                            // 增加Logo特效
-                            $("#logo #logoImage").bind("mouseover mouseout", function () { $(this).toggleClass("hover"); });
-                        });
-                    })(jQuery);
-                //-->
-                </script>       
-                <div class="clearFloat"></div>
-            </div>
-            <div id="banner">
-                <div id="logo">
-                    <div id="logoImage"></div>
-                    <div id="logoText">
-                        <h1><a href="<%=Utils.AbsoluteWebRoot %>"><%=BlogSettings.Instance.Name %></a></h1>
-                        <span><%=BlogSettings.Instance.Description %></span>
+        $(document).ready(function () {
+            // 增加Logo特效
+            $("#logo #logoImage").bind("mouseover mouseout", function () { $(this).toggleClass("hover"); });
+        });
+    })(jQuery);
+    //-->
+                    </script>
+                    <div class="clearFloat"></div>
+                </div>
+                <div id="banner">
+                    <div id="logo">
+                        <div id="logoImage"></div>
+                        <div id="logoText">
+                            <h1><a href="<%=Utils.AbsoluteWebRoot %>"><%=BlogSettings.Instance.Name %></a></h1>
+                            <span><%=BlogSettings.Instance.Description %></span>
+                        </div>
+                    </div>
+                    <div id="topAd">
                     </div>
                 </div>
-                <div id="topAd">
-                </div>
             </div>
-        </div>
-  
-        <div id="content">
-          <blog:SearchOnSearch runat="server" MaxResults="3" Headline="You searched for" Text="Here are some results for the search term on this website" />
-          <asp:ContentPlaceHolder ID="cphBody" runat="server" />
-      
-          <p id="footer">
-            Powered by <a href="http://www.dotnetblogengine.net">BlogEngine.NET</a> <%=BlogSettings.Instance.Version() %><br />
-            Theme by <a href="http://zizhujy.com">Jeff Tian</a>
-          </p>
-        </div>
 
-        <div id="sidepanel">
-            <blog:WidgetZone runat="server" ZoneName="be_WIDGET_ZONE" />
-        </div>
+            <div id="content">
+                <blog:SearchOnSearch runat="server" MaxResults="3" Headline="You searched for" Text="Here are some results for the search term on this website" />
+                <asp:ContentPlaceHolder ID="cphBody" runat="server" />
 
-        <div class="clearFloat"></div>
-    </div>
-  </form>
-  
+                <p id="footer">
+                    Powered by <a href="http://www.dotnetblogengine.net">BlogEngine.NET</a> <%=BlogSettings.Instance.Version() %><br />
+                    Theme by <a href="http://zizhujy.com">Jeff Tian</a>
+                </p>
+            </div>
+
+            <div id="sidepanel">
+                <blog:WidgetZone runat="server" ZoneName="be_WIDGET_ZONE" />
+            </div>
+
+            <div class="clearFloat"></div>
+        </div>
+    </form>
+
 </body>
 </html>
