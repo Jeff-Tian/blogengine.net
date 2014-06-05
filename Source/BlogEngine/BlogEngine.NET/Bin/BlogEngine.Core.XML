@@ -1972,6 +1972,11 @@
             The regex used to identify mobile devices so a different theme can be shown
             </summary>
         </member>
+        <member name="P:BlogEngine.Core.BlogConfig.ReservedBlogNames">
+            <summary>
+            Prevent creating new blog that will conflict with existing folder or path
+            </summary>
+        </member>
         <member name="P:BlogEngine.Core.BlogConfig.StorageLocation">
             <summary>
             Storage location on web server
@@ -2003,6 +2008,95 @@
         <member name="P:BlogEngine.Core.BlogConfig.GenericPageSize">
             <summary>
             Default number of items per page in admin data grids.
+            </summary>
+        </member>
+        <member name="T:BlogEngine.Core.BlogGenerator">
+            <summary>
+            This class should generate new blog from scratch
+            instead of using existing blog as a template
+            This way it can be used by self-registed users
+            to create pre-configured blog on the fly.
+            </summary>
+        </member>
+        <member name="M:BlogEngine.Core.BlogGenerator.CreateNewBlog(System.String,System.String,System.String,System.String,System.String@)">
+            <summary>
+            Creates new blog
+            </summary>
+            <param name="blogName">Name of the blog</param>
+            <param name="userName">Name of the first user which will be set up as blog admin</param>
+            <param name="email">Email address</param>
+            <param name="password">Password</param>
+            <param name="message">Return message</param>
+            <returns>New blog object</returns>
+        </member>
+        <member name="M:BlogEngine.Core.BlogGenerator.ValidateProperties(System.String,System.String,System.String,System.String@)">
+            <summary>
+            Validates the blog properties.
+            </summary>
+        </member>
+        <member name="M:BlogEngine.Core.BlogGenerator.CopyTemplateBlogFolder(System.String,System.String,System.String,System.String)">
+            <summary>
+            Copy template files for new blog
+            </summary>
+            <param name="blogName">Name of the blog</param>
+            <param name="userName">User name</param>
+            <param name="email">Email address</param>
+            <param name="password">Password</param>
+            <returns>True if successful</returns>
+        </member>
+        <member name="T:BlogEngine.Core.BlogGeneratorConfig">
+            <summary>
+            Reads default values for a new blog from configuration file
+            </summary>
+        </member>
+        <member name="M:BlogEngine.Core.BlogGeneratorConfig.SetDefaults(System.String@)">
+            <summary>
+            Sets default values for new blog
+            </summary>
+            <param name="message">Error message</param>
+            <returns>True if successful</returns>
+        </member>
+        <member name="M:BlogEngine.Core.BlogGeneratorConfig.Init(System.String)">
+            <summary>
+            Initiates properties by reading values from config file
+            </summary>
+            <param name="fileName">File name</param>
+        </member>
+        <member name="M:BlogEngine.Core.BlogGeneratorConfig.CreateConfig(System.String)">
+            <summary>
+            Generates conig file if one does not exist
+            </summary>
+            <param name="fileName">File name</param>
+        </member>
+        <member name="P:BlogEngine.Core.BlogGeneratorConfig.BlogDescription">
+            <summary>
+            Descripton of the blog
+            </summary>
+        </member>
+        <member name="P:BlogEngine.Core.BlogGeneratorConfig.PostsFileName">
+            <summary>
+            File name of the post
+            </summary>
+        </member>
+        <member name="P:BlogEngine.Core.BlogGeneratorConfig.PostTitle">
+            <summary>
+            Post title
+            </summary>
+        </member>
+        <member name="P:BlogEngine.Core.BlogGeneratorConfig.PostContent">
+            <summary>
+            Post content
+            </summary>
+        </member>
+        <member name="P:BlogEngine.Core.BlogGeneratorConfig.WidgetZone">
+            <summary>
+            Reads widget zone from file in the template folder and serializes it 
+            as WidgetData to format that can be saved  to database
+            </summary>
+        </member>
+        <member name="P:BlogEngine.Core.BlogGeneratorConfig.NewBlogSettings">
+            <summary>
+            Default settings from blogs/_new/settings.xml
             </summary>
         </member>
         <member name="T:BlogEngine.Core.Category">
@@ -4414,6 +4508,12 @@
             <param name="vals">Values</param>
             <returns>Response</returns>
         </member>
+        <member name="M:BlogEngine.Core.Json.JsonTrashList.PurgeLogfile">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:BlogEngine.Core.Notes.QuickNote">
             <summary>
             Quick Note
@@ -5980,7 +6080,7 @@
             </summary>
             <returns>A list of Blogs.</returns>
         </member>
-        <member name="M:BlogEngine.Core.Providers.BlogProvider.FillCategories">
+        <member name="M:BlogEngine.Core.Providers.BlogProvider.FillCategories(BlogEngine.Core.Blog)">
             <summary>
             Retrieves all Categories from the provider and returns them in a List.
             </summary>
@@ -6103,7 +6203,7 @@
             A StringCollection.
             </returns>
         </member>
-        <member name="M:BlogEngine.Core.Providers.BlogProvider.LoadSettings">
+        <member name="M:BlogEngine.Core.Providers.BlogProvider.LoadSettings(BlogEngine.Core.Blog)">
             <summary>
             Loads the settings from the provider.
             </summary>
@@ -6220,6 +6320,16 @@
             <param name="existingBlog">The existing blog instance to base the new blog instance off of.</param>
             <param name="newBlog">The new blog instance.</param>
             <returns>A boolean indicating if the setup process was successful.</returns>
+        </member>
+        <member name="M:BlogEngine.Core.Providers.BlogProvider.SetupNewBlog(BlogEngine.Core.Blog,System.String,System.String,System.String)">
+            <summary>
+            Setup new blog
+            </summary>
+            <param name="newBlog">New blog</param>
+            <param name="userName">User name</param>
+            <param name="email">Email</param>
+            <param name="password">Password</param>
+            <returns>True if successful</returns>
         </member>
         <member name="M:BlogEngine.Core.Providers.BlogProvider.UpdateBlogRollItem(BlogEngine.Core.BlogRollItem)">
             <summary>
@@ -6410,6 +6520,16 @@
             The new blog to copy to.
             </param>
         </member>
+        <member name="M:BlogEngine.Core.Providers.XmlBlogProvider.SetupNewBlog(BlogEngine.Core.Blog,System.String,System.String,System.String)">
+            <summary>
+            Setup new blog
+            </summary>
+            <param name="newBlog">New blog</param>
+            <param name="userName">User name</param>
+            <param name="email">Email</param>
+            <param name="password">Password</param>
+            <returns>True if successful</returns>
+        </member>
         <member name="M:BlogEngine.Core.Providers.XmlBlogProvider.SavePackage(BlogEngine.Core.Packaging.InstalledPackage)">
             <summary>
             Log of all installed packages
@@ -6558,7 +6678,7 @@
             Must be a valid Category object.
             </param>
         </member>
-        <member name="M:BlogEngine.Core.Providers.XmlBlogProvider.FillCategories">
+        <member name="M:BlogEngine.Core.Providers.XmlBlogProvider.FillCategories(BlogEngine.Core.Blog)">
             <summary>
             Fills an unsorted list of categories.
             </summary>
@@ -6767,7 +6887,7 @@
             A StringCollection.
             </returns>
         </member>
-        <member name="M:BlogEngine.Core.Providers.XmlBlogProvider.LoadSettings">
+        <member name="M:BlogEngine.Core.Providers.XmlBlogProvider.LoadSettings(BlogEngine.Core.Blog)">
             <summary>
             Loads the settings from the provider.
             </summary>
@@ -8576,22 +8696,12 @@
             The priority.
             </summary>
         </member>
-        <member name="M:BlogEngine.Core.Web.Controls.ExtensionAttribute.#ctor(System.String,System.String,System.String)">
+        <member name="F:BlogEngine.Core.Web.Controls.ExtensionAttribute.subBlogEnabled">
             <summary>
-            Initializes a new instance of the <see cref="T:BlogEngine.Core.Web.Controls.ExtensionAttribute"/> class. 
-            Creates an instance of the attribute and assigns a description.
+            Enabled in sub-blog.
             </summary>
-            <param name="description">
-            The description.
-            </param>
-            <param name="version">
-            The version.
-            </param>
-            <param name="author">
-            The author.
-            </param>
         </member>
-        <member name="M:BlogEngine.Core.Web.Controls.ExtensionAttribute.#ctor(System.String,System.String,System.String,System.Int32)">
+        <member name="M:BlogEngine.Core.Web.Controls.ExtensionAttribute.#ctor(System.String,System.String,System.String,System.Int32,System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:BlogEngine.Core.Web.Controls.ExtensionAttribute"/> class. 
             Creates an instance of the attribute and assigns a description.
@@ -8608,6 +8718,7 @@
             <param name="priority">
             The priority.
             </param>
+            <param name="subBlogEnabled">The sub-blog enabled.</param>
         </member>
         <member name="P:BlogEngine.Core.Web.Controls.ExtensionAttribute.Author">
             <summary>
@@ -8629,6 +8740,14 @@
             </summary>
             <value>The priority.</value>
         </member>
+        <member name="P:BlogEngine.Core.Web.Controls.ExtensionAttribute.SubBlogEnabled">
+            <summary>
+            This determins if extension settings should
+            be available for sub-blogs. Some extensions
+            can be application-wide, others on blog level
+            </summary>
+            <value>True if enabled.</value>
+        </member>
         <member name="P:BlogEngine.Core.Web.Controls.ExtensionAttribute.Version">
             <summary>
                 Gets the version number of the extension
@@ -8639,13 +8758,14 @@
             Helper class for sorting extensions by priority
             </summary>
         </member>
-        <member name="M:BlogEngine.Core.Web.Controls.SortedExtension.#ctor(System.Int32,System.String,System.String)">
+        <member name="M:BlogEngine.Core.Web.Controls.SortedExtension.#ctor(System.Int32,System.String,System.String,System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:BlogEngine.Core.Web.Controls.SortedExtension"/> class.
             </summary>
             <param name="priority">The extension priority.</param>
             <param name="name">The extension name.</param>
             <param name="type">The extension type.</param>
+            <param name="subBlogEnabled">The sub-blog enabled.</param>
         </member>
         <member name="P:BlogEngine.Core.Web.Controls.SortedExtension.Name">
             <summary>
@@ -8655,6 +8775,11 @@
         <member name="P:BlogEngine.Core.Web.Controls.SortedExtension.Priority">
             <summary>
                 Gets or sets the order in which extensions are sorted and respond to events
+            </summary>
+        </member>
+        <member name="P:BlogEngine.Core.Web.Controls.SortedExtension.SubBlogEnabled">
+            <summary>
+                Gets or sets if extension settings valid for sub-blogs
             </summary>
         </member>
         <member name="P:BlogEngine.Core.Web.Controls.SortedExtension.Type">
@@ -9461,7 +9586,7 @@
             A list of BlogRollItem.
             </returns>
         </member>
-        <member name="M:BlogEngine.Core.Providers.BlogService.FillCategories">
+        <member name="M:BlogEngine.Core.Providers.BlogService.FillCategories(BlogEngine.Core.Blog)">
             <summary>
             The fill categories.
             </summary>
@@ -9600,7 +9725,7 @@
             </summary>
             <returns>A StringCollection.</returns>
         </member>
-        <member name="M:BlogEngine.Core.Providers.BlogService.LoadSettings">
+        <member name="M:BlogEngine.Core.Providers.BlogService.LoadSettings(BlogEngine.Core.Blog)">
             <summary>
             Loads the settings from the provider and returns
             them in a StringDictionary for the BlogSettings class to use.
@@ -9715,6 +9840,16 @@
             <param name="existingBlog">The existing blog instance to base the new blog instance off of.</param>
             <param name="newBlog">The new blog instance.</param>
             <returns>A boolean indicating if the setup process was successful.</returns>
+        </member>
+        <member name="M:BlogEngine.Core.Providers.BlogService.SetupNewBlog(BlogEngine.Core.Blog,System.String,System.String,System.String)">
+            <summary>
+            Setup new blog
+            </summary>
+            <param name="newBlog">New blog</param>
+            <param name="userName">User name</param>
+            <param name="email">Email</param>
+            <param name="password">Password</param>
+            <returns>True if successful</returns>
         </member>
         <member name="M:BlogEngine.Core.Providers.BlogService.UpdateBlogRoll(BlogEngine.Core.BlogRollItem)">
             <summary>
@@ -10048,6 +10183,12 @@
                 Initializes a new instance of the <see cref="T:BlogEngine.Core.BlogSettings"/> class.
             </summary>
         </member>
+        <member name="M:BlogEngine.Core.BlogSettings.#ctor(BlogEngine.Core.Blog)">
+            <summary>
+            
+            </summary>
+            <param name="blog"></param>
+        </member>
         <member name="M:BlogEngine.Core.BlogSettings.GetInstanceSettings(BlogEngine.Core.Blog)">
             <summary>
             Returns the settings for the requested blog instance.
@@ -10089,7 +10230,7 @@
             The version.
             </returns>
         </member>
-        <member name="M:BlogEngine.Core.BlogSettings.Load">
+        <member name="M:BlogEngine.Core.BlogSettings.Load(BlogEngine.Core.Blog)">
             <summary>
             Initializes the singleton instance of the <see cref="T:BlogEngine.Core.BlogSettings"/> class.
             </summary>
@@ -10340,6 +10481,12 @@
                 Gets or sets the initial role assigned to users who self register.
             </summary>
             <value>The role name.</value>
+        </member>
+        <member name="P:BlogEngine.Core.BlogSettings.CreateBlogOnSelfRegistration">
+            <summary>
+            If we need to create blog for self-registered user
+            (instead of just add user to existing blog)
+            </summary>
         </member>
         <member name="P:BlogEngine.Core.BlogSettings.HandleWwwSubdomain">
             <summary>
@@ -11836,12 +11983,6 @@
                 The rating.
             </summary>
         </member>
-        <member name="F:BlogEngine.Core.Post.views">
-            <summary>
-                The post views;
-                <remarks>jeff@zizhujy.com</remarks>
-            </summary>
-        </member>
         <member name="F:BlogEngine.Core.Post.slug">
             <summary>
                 The slug of the post.
@@ -11887,6 +12028,13 @@
             A list of Post.
             </returns>
         </member>
+        <member name="M:BlogEngine.Core.Post.GetBlogByAuthor(System.String)">
+            <summary>
+            Get blog by author
+            </summary>
+            <param name="author">Post author</param>
+            <returns>Blog if author wrote any posts there</returns>
+        </member>
         <member name="M:BlogEngine.Core.Post.GetPostsByCategory(System.Guid)">
             <summary>
             Returns all posts in the specified category
@@ -11897,6 +12045,13 @@
             <returns>
             A list of Post.
             </returns>
+        </member>
+        <member name="M:BlogEngine.Core.Post.GetPostsByCategory(BlogEngine.Core.Category)">
+            <summary>
+            Returns all posts in the specified category
+            </summary>
+            <param name="cat">Category objuect</param>
+            <returns>A list of posts</returns>
         </member>
         <member name="M:BlogEngine.Core.Post.GetPostsByDate(System.DateTime,System.DateTime)">
             <summary>
@@ -11973,11 +12128,13 @@
             The rating.
             </param>
         </member>
-        <member name="M:BlogEngine.Core.Post.View">
+        <member name="M:BlogEngine.Core.Post.GetUniqueSlug(System.String,System.Guid)">
             <summary>
-            Increase the views to the post. 
-            <remarks>jeff@zizhujy.com</remarks>
+            Check if slug is unique and if not generate it
             </summary>
+            <param name="slug">Post slug</param>
+            <param name="postId">Post id</param>
+            <returns>Slug that is unique across blogs</returns>
         </member>
         <member name="M:BlogEngine.Core.Post.ToString">
             <summary>
@@ -12243,6 +12400,14 @@
             The comment.
             </param>
         </member>
+        <member name="M:BlogEngine.Core.Post.IsUniqueSlug(System.String,System.Guid)">
+            <summary>
+            Check if post slug is unique accross all blogs
+            </summary>
+            <param name="slug">Post slug</param>
+            <param name="postId">Post id</param>
+            <returns>True if unique</returns>
+        </member>
         <member name="E:BlogEngine.Core.Post.AddingComment">
             <summary>
                 Occurs before a new comment is added.
@@ -12336,11 +12501,6 @@
                 Sorted by date.
             </summary>
         </member>
-        <member name="P:BlogEngine.Core.Post.AbsoluteLink">
-            <summary>
-                Gets the absolute link to the post.
-            </summary>
-        </member>
         <member name="P:BlogEngine.Core.Post.Author">
             <summary>
                 Gets or sets the Author or the post.
@@ -12418,10 +12578,9 @@
                 Gets or sets the rating or the post.
             </summary>
         </member>
-        <member name="P:BlogEngine.Core.Post.Views">
+        <member name="P:BlogEngine.Core.Post.AbsoluteLink">
             <summary>
-                Gets or sets the views for the post.
-                <remarks>jeff@zizhujy.com</remarks>
+                Gets the absolute link to the post.
             </summary>
         </member>
         <member name="P:BlogEngine.Core.Post.RelativeLink">
@@ -12933,13 +13092,18 @@
             The remove illegal characters.
             </returns>
         </member>
-        <member name="M:BlogEngine.Core.Utils.SendMailMessage(System.Net.Mail.MailMessage)">
+        <member name="M:BlogEngine.Core.Utils.SendMailMessage(System.Net.Mail.MailMessage,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Sends a MailMessage object using the SMTP settings.
             </summary>
             <param name="message">
             The message.
             </param>
+            <param name="smtpServer">SMTP server</param>
+            <param name="smtpServerPort">SMTP server port</param>
+            <param name="smtpUserName">User name</param>
+            <param name="smtpPassword">Password</param>
+            <param name="enableSsl">Enable SSL</param>
             <returns>
             Error message, if any.
             </returns>
@@ -14122,6 +14286,26 @@
             Last page
             </summary>
         </member>
+        <member name="T:BlogEngine.Core.Web.Scripting.PageHeader">
+            <summary>
+            Class to process links dynamically injected into page header
+            </summary>
+        </member>
+        <member name="M:BlogEngine.Core.Web.Scripting.PageHeader.AddLink(System.String,System.String,System.String,System.String)">
+            <summary>
+            Add link to collection
+            </summary>
+            <param name="type">Type</param>
+            <param name="rel">Relation</param>
+            <param name="title">Title</param>
+            <param name="href">Href</param>
+        </member>
+        <member name="M:BlogEngine.Core.Web.Scripting.PageHeader.Render(System.Web.UI.Page)">
+            <summary>
+            Render links by adding them to the page header
+            </summary>
+            <param name="page">Base page</param>
+        </member>
         <member name="T:BlogEngine.Core.Web.Scripting.Helpers">
             <summary>
             Helper methods for script manipulations
@@ -14174,18 +14358,6 @@
             <remarks>
             You must add the script tags to the BlogSettings.Instance.TrackingScript.
             </remarks>
-        </member>
-        <member name="M:BlogEngine.Core.Web.Scripting.Helpers.AddBundledStylesAndScripts(System.Web.UI.Page)">
-            <summary>
-            Add bundles created by web.optimization
-            </summary>
-            <param name="page">Base page</param>
-        </member>
-        <member name="M:BlogEngine.Core.Web.Scripting.Helpers.AddStylesAndScripts(System.Web.UI.Page)">
-            <summary>
-            
-            </summary>
-            <param name="page"></param>
         </member>
         <member name="T:BlogEngine.Core.Web.Scripting.JavascriptMinifier">
             <summary>
@@ -15360,12 +15532,6 @@
             post to delete
             </param>
         </member>
-        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.DeleteProfile(BlogEngine.Core.AuthorProfile)">
-            <summary>
-            Remove AuthorProfile from database
-            </summary>
-            <param name="profile">An AuthorProfile.</param>
-        </member>
         <member name="M:BlogEngine.Core.Providers.DbBlogProvider.FillBlogRoll">
             <summary>
             Gets all BlogRolls in database
@@ -15382,7 +15548,7 @@
             List of Blogs
             </returns>
         </member>
-        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.FillCategories">
+        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.FillCategories(BlogEngine.Core.Blog)">
             <summary>
             Gets all categories in database
             </summary>
@@ -15404,14 +15570,6 @@
             </summary>
             <returns>
             List of posts
-            </returns>
-        </member>
-        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.FillProfiles">
-            <summary>
-            Return collection for AuthorProfiles from database
-            </summary>
-            <returns>
-            List of AuthorProfile
             </returns>
         </member>
         <member name="M:BlogEngine.Core.Providers.DbBlogProvider.FillReferrers">
@@ -15479,12 +15637,6 @@
             The new post.
             </param>
         </member>
-        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.InsertProfile(BlogEngine.Core.AuthorProfile)">
-            <summary>
-            Adds AuthorProfile to database
-            </summary>
-            <param name="profile">An AuthorProfile.</param>
-        </member>
         <member name="M:BlogEngine.Core.Providers.DbBlogProvider.InsertReferrer(BlogEngine.Core.Referrer)">
             <summary>
             Adds a new Referrer to the database.
@@ -15515,7 +15667,7 @@
             collection of PingServices
             </returns>
         </member>
-        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.LoadSettings">
+        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.LoadSettings(BlogEngine.Core.Blog)">
             <summary>
             Gets the settings from the database
             </summary>
@@ -15629,13 +15781,6 @@
             The Post..
             </returns>
         </member>
-        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.SelectProfile(System.String)">
-            <summary>
-            Loads AuthorProfile from database
-            </summary>
-            <param name="id">The user name.</param>
-            <returns>An AuthorProfile.</returns>
-        </member>
         <member name="M:BlogEngine.Core.Providers.DbBlogProvider.SelectReferrer(System.Guid)">
             <summary>
             Gets a Referrer based on an Id.
@@ -15657,6 +15802,16 @@
             <param name="newBlog">
             The new blog to copy to.
             </param>
+        </member>
+        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.SetupNewBlog(BlogEngine.Core.Blog,System.String,System.String,System.String)">
+            <summary>
+            Setup new blog from scratch
+            </summary>
+            <param name="newBlog">New blog</param>
+            <param name="userName">User name</param>
+            <param name="email">Email</param>
+            <param name="password">Password</param>
+            <returns>True if successful</returns>
         </member>
         <member name="M:BlogEngine.Core.Providers.DbBlogProvider.UpdateBlogRollItem(BlogEngine.Core.BlogRollItem)">
             <summary>
@@ -15698,6 +15853,35 @@
             post to be saved
             </param>
         </member>
+        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.UpdateReferrer(BlogEngine.Core.Referrer)">
+            <summary>
+            Saves an existing Referrer to the database.
+            </summary>
+            <param name="referrer">
+            Referrer to be saved.
+            </param>
+        </member>
+        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.FillProfiles">
+            <summary>
+            Return collection for AuthorProfiles from database
+            </summary>
+            <returns>
+            List of AuthorProfile
+            </returns>
+        </member>
+        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.SelectProfile(System.String)">
+            <summary>
+            Loads AuthorProfile from database
+            </summary>
+            <param name="id">The user name.</param>
+            <returns>An AuthorProfile.</returns>
+        </member>
+        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.InsertProfile(BlogEngine.Core.AuthorProfile)">
+            <summary>
+            Adds AuthorProfile to database
+            </summary>
+            <param name="profile">An AuthorProfile.</param>
+        </member>
         <member name="M:BlogEngine.Core.Providers.DbBlogProvider.UpdateProfile(BlogEngine.Core.AuthorProfile)">
             <summary>
             Updates AuthorProfile to database
@@ -15706,13 +15890,11 @@
             An AuthorProfile.
             </param>
         </member>
-        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.UpdateReferrer(BlogEngine.Core.Referrer)">
+        <member name="M:BlogEngine.Core.Providers.DbBlogProvider.DeleteProfile(BlogEngine.Core.AuthorProfile)">
             <summary>
-            Saves an existing Referrer to the database.
+            Remove AuthorProfile from database
             </summary>
-            <param name="referrer">
-            Referrer to be saved.
-            </param>
+            <param name="profile">An AuthorProfile.</param>
         </member>
         <member name="M:BlogEngine.Core.Providers.DbBlogProvider.SavePackage(BlogEngine.Core.Packaging.InstalledPackage)">
             <summary>
@@ -17078,6 +17260,12 @@
             <param name="username"></param>
             <returns></returns>
         </member>
+        <member name="M:BlogEngine.Core.AuthorProfile.RemoveProfile(System.Guid)">
+            <summary>
+            Removes profile for a specific blog
+            </summary>
+            <param name="blogId">Blog ID</param>
+        </member>
         <member name="M:BlogEngine.Core.AuthorProfile.DataDelete">
             <summary>
             Datas the delete.
@@ -17300,17 +17488,6 @@
             </param>
             <returns>
             Extension object or null
-            </returns>
-        </member>
-        <member name="M:BlogEngine.Core.Web.Extensions.ExtensionManager.GetSettings(System.String)">
-            <summary>
-            Method to get settings collection
-            </summary>
-            <param name="extensionName">
-            Extension Name
-            </param>
-            <returns>
-            Collection of settings
             </returns>
         </member>
         <member name="M:BlogEngine.Core.Web.Extensions.ExtensionManager.GetSettings(System.String,System.String)">
@@ -17697,68 +17874,6 @@
             Parameter Name
             </param>
         </member>
-        <member name="M:BlogEngine.Core.Web.Extensions.ExtensionSettings.AddParameter(System.String,System.String)">
-            <summary>
-            Add Parameter to settings
-            </summary>
-            <param name="name">
-            Parameter Name
-            </param>
-            <param name="label">
-            Parameter Label, used in the UI
-            </param>
-        </member>
-        <member name="M:BlogEngine.Core.Web.Extensions.ExtensionSettings.AddParameter(System.String,System.String,System.Int32)">
-            <summary>
-            Add Parameter to settings
-            </summary>
-            <param name="name">
-            Parameter Name
-            </param>
-            <param name="label">
-            Parameter Label
-            </param>
-            <param name="maxLength">
-            Maximum number of chars values will hold
-            </param>
-        </member>
-        <member name="M:BlogEngine.Core.Web.Extensions.ExtensionSettings.AddParameter(System.String,System.String,System.Int32,System.Boolean)">
-            <summary>
-            Add Parameter to settings
-            </summary>
-            <param name="name">
-            Parameter Name
-            </param>
-            <param name="label">
-            Parameter Label
-            </param>
-            <param name="maxLength">
-            Maximum Length
-            </param>
-            <param name="required">
-            Set if value in the parameter required when added/apdated
-            </param>
-        </member>
-        <member name="M:BlogEngine.Core.Web.Extensions.ExtensionSettings.AddParameter(System.String,System.String,System.Int32,System.Boolean,System.Boolean)">
-            <summary>
-            Add Parameter
-            </summary>
-            <param name="name">
-            Parameter Name
-            </param>
-            <param name="label">
-            Parameter Label
-            </param>
-            <param name="maxLength">
-            Maximum Length
-            </param>
-            <param name="required">
-            Set if value in the parameter required when added/apdated
-            </param>
-            <param name="keyfield">
-            Mark field as primary key, unique and required
-            </param>
-        </member>
         <member name="M:BlogEngine.Core.Web.Extensions.ExtensionSettings.AddParameter(System.String,System.String,System.Int32,System.Boolean,System.Boolean,BlogEngine.Core.Web.Extensions.ParameterType)">
             <summary>
             Add Parameter
@@ -18112,6 +18227,11 @@
             </summary>
             <value><c>true</c> if [show edit]; otherwise, <c>false</c>.</value>
         </member>
+        <member name="P:BlogEngine.Core.Web.Extensions.ExtensionSettings.BlogId">
+            <summary>
+            Blog ID
+            </summary>
+        </member>
         <member name="T:BlogEngine.Core.Web.Extensions.ManagedExtension">
             <summary>
             Serializable object that holds extension,
@@ -18215,9 +18335,19 @@
                 Gets or sets Extension Priority
             </summary>
         </member>
+        <member name="P:BlogEngine.Core.Web.Extensions.ManagedExtension.SubBlogEnabled">
+            <summary>
+                True if extenstion properties enabled in sub-blog
+            </summary>
+        </member>
         <member name="P:BlogEngine.Core.Web.Extensions.ManagedExtension.Settings">
             <summary>
                 Gets or sets Settings for the extension
+            </summary>
+        </member>
+        <member name="P:BlogEngine.Core.Web.Extensions.ManagedExtension.BlogSettings">
+            <summary>
+            Blog specific extension settings
             </summary>
         </member>
         <member name="P:BlogEngine.Core.Web.Extensions.ManagedExtension.Blogs">
@@ -18234,6 +18364,19 @@
             <summary>
                 Gets or sets Extension Version
             </summary>
+        </member>
+        <member name="T:BlogEngine.Core.Web.Extensions.GenericHelper`1">
+            <summary>
+            Helper class
+            </summary>
+            <typeparam name="T">Object type</typeparam>
+        </member>
+        <member name="M:BlogEngine.Core.Web.Extensions.GenericHelper`1.Copy(System.Object)">
+            <summary>
+            To copy collection by value
+            </summary>
+            <param name="objectToCopy">Object to copy from</param>
+            <returns>New object, as oppose to object reference</returns>
         </member>
         <member name="T:BlogEngine.Core.Web.HttpHandlers.BlogMLExportHandler">
             <summary>

@@ -9,9 +9,7 @@
 </h3>
 <%} %>
 
-<div id="commentlist" style="display:block">
-  <asp:PlaceHolder runat="server" ID="phComments" />  
-</div>
+<div id="commentlist" style="display:block"><asp:PlaceHolder runat="server" ID="phComments" /></div>
 
 <asp:PlaceHolder runat="server" ID="phTrckbacks"></asp:PlaceHolder>
 
@@ -149,4 +147,4 @@ coco =
     }
 </script>
 
-<asp:label runat="server" id="lbCommentsDisabled" visible="false"><%=Resources.labels.commentsAreClosed %></asp:label>
+<asp:label runat="server" id="lbCommentsDisabled" CssClass="lbl-CommentsDisabled" visible="false"><%=Resources.labels.commentsAreClosed %></asp:label>

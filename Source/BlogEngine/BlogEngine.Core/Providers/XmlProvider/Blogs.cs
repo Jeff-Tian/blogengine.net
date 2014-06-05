@@ -185,6 +185,19 @@ namespace BlogEngine.Core.Providers
             return copyResult;
         }
 
+        /// <summary>
+        /// Setup new blog
+        /// </summary>
+        /// <param name="newBlog">New blog</param>
+        /// <param name="userName">User name</param>
+        /// <param name="email">Email</param>
+        /// <param name="password">Password</param>
+        /// <returns>True if successful</returns>
+        public override bool SetupNewBlog(Blog newBlog, string userName, string email, string password)
+        {
+            return BlogGenerator.CopyTemplateBlogFolder(newBlog.Name, userName, email, password);
+        }
+
         #endregion
     }
 }

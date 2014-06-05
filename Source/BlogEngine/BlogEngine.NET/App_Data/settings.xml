@@ -5,6 +5,7 @@
   <showpostnavigation>True</showpostnavigation>
   <mobiletheme>JQ-Mobile</mobiletheme>
   <enablehttpcompression>False</enablehttpcompression>
+  <disqusaddcommentstopages>False</disqusaddcommentstopages>
   <htmlheader />
   <theme>Standard</theme>
   <emailsubjectprefix>Weblog</emailsubjectprefix>
@@ -23,11 +24,11 @@
   <themecookiename>theme</themecookiename>
   <remotefiledownloadtimeout>30000</remotefiledownloadtimeout>
   <trustauthenticatedusers>True</trustauthenticatedusers>
-  <enablecountryincomments>True</enablecountryincomments>
+  <enablecountryincomments>False</enablecountryincomments>
   <contactformmessage>&lt;p&gt;I'll answer the mail as soon as I can.&lt;/p&gt;</contactformmessage>
   <searchbuttontext>Search</searchbuttontext>
   <showincludecommentsoption>False</showincludecommentsoption>
-  <israzortheme>False</israzortheme>
+  <createblogonselfregistration>False</createblogonselfregistration>
   <numberofrecentcomments>10</numberofrecentcomments>
   <endorsement>http://www.dotnetblogengine.net/syndication.axd</endorsement>
   <blogrollmaxlength>23</blogrollmaxlength>
@@ -41,14 +42,13 @@
   <useblognameinpagetitles>True</useblognameinpagetitles>
   <removeextensionsfromurls>True</removeextensionsfromurls>
   <smtpusername>username</smtpusername>
-  <allowservertodownloadremotefiles>True</allowservertodownloadremotefiles>
   <enablepasswordreset>True</enablepasswordreset>
-  <disqusaddcommentstopages>False</disqusaddcommentstopages>
+  <enableerrorlogging>True</enableerrorlogging>
   <alternatefeedurl />
   <email>name@example.com</email>
   <enabletrackbacksend>True</enabletrackbacksend>
   <commentwhitelistcount>1</commentwhitelistcount>
-  <enableerrorlogging>True</enableerrorlogging>
+  <allowservertodownloadremotefiles>True</allowservertodownloadremotefiles>
   <enablereferrertracking>False</enablereferrertracking>
   <disquswebsitename />
   <handlewwwsubdomain />
@@ -57,24 +57,26 @@
   <sendmailoncomment>True</sendmailoncomment>
   <enablerecaptchaoncontactform>False</enablerecaptchaoncontactform>
   <remotemaxfilesize>524288</remotemaxfilesize>
+  <redirecttoremovefileextension>False</redirecttoremovefileextension>
   <syndicationformat>Rss</syndicationformat>
   <contactthankmessage>&lt;h1&gt;Thank you&lt;/h1&gt;&lt;p&gt;The message was sent.&lt;/p&gt;</contactthankmessage>
   <blogrollvisibleposts>3</blogrollvisibleposts>
   <geocodinglatitude>0</geocodinglatitude>
   <numberofreferrerdays>1</numberofreferrerdays>
-  <thumbnailserviceapi />
+  <israzortheme>False</israzortheme>
+  <thumbnailserviceapi>http://www.robothumb.com/src/?url={0}</thumbnailserviceapi>
   <iscommentsenabled>True</iscommentsenabled>
   <searchdefaulttext>Enter search term or APML url</searchdefaulttext>
   <smtpserverport>25</smtpserverport>
   <smtppassword>password</smtppassword>
   <blockauthoroncommentdelete>False</blockauthoroncommentdelete>
   <enablecommentsmoderation>True</enablecommentsmoderation>
-  <timestamppostlinks>True</timestamppostlinks>
+  <timestamppostlinks>False</timestamppostlinks>
   <avatar>wavatar</avatar>
   <postsperfeed>3</postsperfeed>
   <addiptoblacklistfilteronrejection>False</addiptoblacklistfilteronrejection>
   <timezone>0</timezone>
-  <enableoptimization>True</enableoptimization>
+  <enableoptimization>False</enableoptimization>
   <name>Name of the blog</name>
   <moderationtype>Auto</moderationtype>
   <enablepingbackreceive>True</enablepingbackreceive>
@@ -96,6 +98,7 @@
   <selfregistrationinitialrole>Select</selfregistrationinitialrole>
   <enableselfregistration>False</enableselfregistration>
   <blogrollupdateminutes>60</blogrollupdateminutes>
+  <securityvalidationkey>ede308e723ae42aab289b04350133355accaa0f0da9743e7a8529a0cbbf5bceee5bcafc4eac741f68d2d63d80e21bf8e</securityvalidationkey>
   <requiresslmetaweblogapi>False</requiresslmetaweblogapi>
   <enablerating>True</enablerating>
   <enablecommentsearch>True</enablecommentsearch>

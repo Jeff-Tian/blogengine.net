@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
 using BlogEngine.Core;
 using System.Text.RegularExpressions;
 
@@ -9,11 +7,29 @@ public partial class StandardSite : System.Web.UI.MasterPage
 {
     private static Regex reg = new Regex(@"(?<=[^])\t{2,}|(?<=[>])\s{2,}(?=[<])|(?<=[>])\s{2,11}(?=[<])|(?=[\n])\s{2,}");
 
+    protected static string ShRoot = Utils.ApplicationRelativeWebRoot + "editors/tiny_mce_3_5_8/plugins/syntaxhighlighter/";
+
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        // for supported of RTL languages
+        if (Resources.labels.LangDirection.Equals("rtl", StringComparison.OrdinalIgnoreCase))
+        {
+            var lc = new LiteralControl("<link href=\"/themes/standard/include/rtl.css\" rel=\"stylesheet\" />");
+            HeadContent.Controls.Add(lc);
+        }
+
+        // needed to make <%# %> binding work in the page header
+        Page.Header.DataBind();
+        if (!Utils.IsMono)
+        {
+            var lc = new LiteralControl("\n<!--[if lt IE 9]>" +
+                "\n<script type=\"text/javascript\" src=\"/themes/standard/include/html5.js\"></script>" +
+                "\n<![endif]-->\n");
+            HeadContent.Controls.Add(lc);
+        }
         if (Security.IsAuthenticated)
         {
-            aUser.InnerText = "Welcome " + Page.User.Identity.Name + "!";
             aLogin.InnerText = Resources.labels.logoff;
             aLogin.HRef = Utils.RelativeWebRoot + "Account/login.aspx?logoff";
         }
@@ -29,11 +45,7 @@ public partial class StandardSite : System.Web.UI.MasterPage
         using (HtmlTextWriter htmlwriter = new HtmlTextWriter(new System.IO.StringWriter()))
         {
             base.Render(htmlwriter);
-            string html = htmlwriter.InnerWriter.ToString();
-
-            //html = reg.Replace(html, string.Empty).Trim();
-
-            writer.Write(html);
+            writer.Write(htmlwriter.InnerWriter.ToString());
         }
     }
 

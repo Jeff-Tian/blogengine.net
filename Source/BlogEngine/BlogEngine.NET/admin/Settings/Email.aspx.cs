@@ -147,7 +147,7 @@ namespace admin.Settings
                 body.Append("</div>");
                 mail.Body = body.ToString();
 
-                string error = Utils.SendMailMessage(mail);
+                string error = Utils.SendMailMessage(mail, smtpServer, smtpServerPort, smtpUserName, smtpPassword, enableSsl.ToString());
                 if (!string.IsNullOrEmpty(error))
                     errorMsg.Append(error);
             }

@@ -170,6 +170,11 @@ namespace Widgets.RecentPosts
                     continue;
                 }
 
+                // in rear case when aggregated blog has cached list of posts
+                // and child blog was deleted, skip this post
+                // TODO: remove posts from aggregated cache on child blog delete
+                try { var link = post.RelativeLink; } catch { continue; }
+
                 var rating = Math.Round(post.Rating, 1).ToString(CultureInfo.InvariantCulture);
 
                 const string LinkFormat = "<li><a href=\"{0}\">{1}</a>{2}{3}</li>";

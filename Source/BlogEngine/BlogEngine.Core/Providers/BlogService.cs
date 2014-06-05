@@ -198,9 +198,9 @@ namespace BlogEngine.Core.Providers
         /// <returns>
         /// A list of Category.
         /// </returns>
-        public static List<Category> FillCategories()
+        public static List<Category> FillCategories(Blog blog)
         {
-            return Provider.FillCategories();
+            return Provider.FillCategories(blog);
         }
 
         /// <summary>
@@ -384,9 +384,9 @@ namespace BlogEngine.Core.Providers
         /// them in a StringDictionary for the BlogSettings class to use.
         /// </summary>
         /// <returns>A StringDictionary.</returns>
-        public static StringDictionary LoadSettings()
+        public static StringDictionary LoadSettings(Blog blog)
         {
-            return Provider.LoadSettings();
+            return Provider.LoadSettings(blog);
         }
 
         /// <summary>
@@ -541,6 +541,19 @@ namespace BlogEngine.Core.Providers
         public static bool SetupBlogFromExistingBlog(Blog existingBlog, Blog newBlog)
         {
             return Provider.SetupBlogFromExistingBlog(existingBlog, newBlog);
+        }
+
+        /// <summary>
+        /// Setup new blog
+        /// </summary>
+        /// <param name="newBlog">New blog</param>
+        /// <param name="userName">User name</param>
+        /// <param name="email">Email</param>
+        /// <param name="password">Password</param>
+        /// <returns>True if successful</returns>
+        public static bool SetupNewBlog(Blog newBlog, string userName, string email, string password)
+        {
+            return Provider.SetupNewBlog(newBlog, userName, email, password);
         }
 
         /// <summary>

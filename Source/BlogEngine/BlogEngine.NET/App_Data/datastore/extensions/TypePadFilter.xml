@@ -5,6 +5,7 @@
   <Description>TypePad anti-spam comment filter (based on AkismetFilter)</Description>
   <Enabled>false</Enabled>
   <Priority>0</Priority>
+  <SubBlogEnabled>false</SubBlogEnabled>
   <Settings>
     <Delimiter>44</Delimiter>
     <Help />
@@ -35,6 +36,7 @@
     <ShowAdd>true</ShowAdd>
     <ShowDelete>true</ShowDelete>
     <ShowEdit>true</ShowEdit>
+    <BlogId>96d5b379-7e1d-4dac-a6ba-1e50db561b04</BlogId>
   </Settings>
   <ShowSettings>true</ShowSettings>
   <Version>1.0</Version>

@@ -653,7 +653,15 @@ namespace BlogEngine.Core
             // ------------------------------------------------------------
             // Write required channel item elements
             // ------------------------------------------------------------
-            writer.WriteElementString("title", publishable.Title);
+            if (comment != null)
+            {
+                writer.WriteElementString("title", publishable.Author + " on " + comment.Parent.Title);
+            }
+            else
+            {
+                writer.WriteElementString("title", publishable.Title);
+            }
+
             writer.WriteElementString("description", content);
             writer.WriteElementString("link", publishable.AbsoluteLink.ToString());
 

@@ -97,7 +97,7 @@ public partial class contact : BlogBasePage, ICallbackEventHandler
 			using (MailMessage mail = new MailMessage())
 			{
 				mail.From = new MailAddress(BlogSettings.Instance.Email, name);
-				mail.ReplyTo = new MailAddress(email, name);
+				mail.ReplyToList.Add(new MailAddress(email, name));
 
 				mail.To.Add(BlogSettings.Instance.Email);
 				mail.Subject = BlogSettings.Instance.EmailSubjectPrefix + " " + Resources.labels.email.ToLower() + " - " + subject;

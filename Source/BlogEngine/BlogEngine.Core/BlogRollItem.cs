@@ -126,7 +126,9 @@
                                 blogRolls = new Dictionary<Guid, List<BlogRollItem>>();
 
                             blogRolls[blog.Id] = BlogService.FillBlogRolls();
-                            blogRolls[blog.Id].Sort();
+
+                            if(blogRolls[blog.Id] != null)
+                                blogRolls[blog.Id].Sort();
                         }
                     }
                 }

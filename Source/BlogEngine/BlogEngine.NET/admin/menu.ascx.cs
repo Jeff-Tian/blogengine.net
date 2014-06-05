@@ -73,7 +73,13 @@ namespace Admin
         private static string SubUrl(string url, bool isFromCurrentHttpRequest)
         {
             if (isFromCurrentHttpRequest && Blog.CurrentInstance.IsSubfolderOfApplicationWebRoot)
-                url = Utils.ApplicationRelativeWebRoot + url.Substring(Blog.CurrentInstance.RelativeWebRoot.Length);
+            {
+                if(url.Length > Blog.CurrentInstance.RelativeWebRoot.Length)
+                    url = url.Substring(Blog.CurrentInstance.RelativeWebRoot.Length);
+
+                if(!url.StartsWith(Utils.ApplicationRelativeWebRoot))
+                    url = Utils.ApplicationRelativeWebRoot + url;
+            }
 
             var i = url.LastIndexOf("/");
 

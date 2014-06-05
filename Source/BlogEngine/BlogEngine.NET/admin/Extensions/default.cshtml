@@ -35,19 +35,20 @@
 </script>
 
 <div class="content-box-outer">
-    @if (Blog.CurrentInstance.IsPrimary)
-    {
 	<div class="content-box-right">
         <ul>   
         @foreach (var x in manExtensions)
         {
-            var lnk = string.IsNullOrEmpty(x.AdminPage) ?
+            if (Blog.CurrentInstance.IsPrimary || x.SubBlogEnabled)
+            {
+                var lnk = string.IsNullOrEmpty(x.AdminPage) ?
                 string.Format(Utils.RelativeWebRoot + "admin/Extensions/Settings.aspx?ext={0}&enb={1}", x.Name, x.Enabled) :
                 string.Format(x.AdminPage, x.Name, x.Enabled);
 
-            if (x.Settings.Count > 0 && x.Settings[0] != null && x.ShowSettings != false)
-            {
-            <li><a href="@Href(lnk)">@x.Name</a></li>
+                if (x.Settings.Count > 0 && x.Settings[0] != null && x.ShowSettings != false)
+                {
+                <li><a href="@Href(lnk)">@x.Name</a></li>
+                }
             }
         }   
         </ul>
@@ -89,39 +90,7 @@
             </div>
         </div>
        
-
         <div>@Helpers.ExtensionsHelper.GetExtensions(true)</div>
         <div>@Helpers.ExtensionsHelper.GetExtensions(false)</div>
 	</div>
-    }
-    else
-    {
-    <div class="content-box-full">
-        
-        <div class="TabRow">
-            <div class="AlternatePagesDivder"></div>
-            <div class="AlternatePageDivTab">
-	            <span class="AlternatePageTab AlternatePageTabSelected">Extensions</span>
-            </div>
-            <div class="AlternatePagesDivder"></div>
-            <div class="AlternatePageDivTab">
-	            <span class="AlternatePageTab" onclick="location.href='Themes.cshtml'">@Resources.labels.themes</span>
-            </div>
-            <div class="AlternatePagesDivder"></div>
-            <div class="AlternatePageDivTab">
-	            <span class="AlternatePageTab" onclick="location.href='Widgets.cshtml'">Widgets</span>
-            </div>
-            <div class="TabRight">
-                @Resources.labels.installed
-                @if (canManagePackages)
-                {
-                    <span>|</span> <a href="Extensions.cshtml">@Resources.labels.gallery</a>
-                }
-            </div>
-        </div>
-
-        <div>@Helpers.ExtensionsHelper.GetBlogExtensions(true)</div>
-        <div>@Helpers.ExtensionsHelper.GetBlogExtensions(false)</div>
-    </div>
-    }
 </div>

@@ -63,6 +63,21 @@ namespace BlogEngine.Core
 
         #endregion
 
+        #region ReservedBlogNames
+
+        /// <summary>
+        /// Prevent creating new blog that will conflict with existing folder or path
+        /// </summary>
+        public static string ReservedBlogNames
+        {
+            get
+            {
+                return WebConfigurationManager.AppSettings["BlogEngine.ReservedBlogNames"] ?? @"(account|admin|api|app_code|app_data|app_globalresources|bin|content|editors|modules|pics|scripts|setup|templates|tests|themes|user controls|widgets|post|page|category|author|tag|calendar)";
+            }
+        }
+
+        #endregion
+
         #region StorageLocation
 
         /// <summary>

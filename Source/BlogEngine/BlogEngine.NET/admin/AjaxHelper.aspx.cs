@@ -231,10 +231,12 @@ namespace Admin
                 post.Content = content;
                 post.Description = desc;
 
-                if (!string.IsNullOrEmpty(slug))
+                if (string.IsNullOrEmpty(slug))
                 {
-                    post.Slug = Utils.RemoveIllegalCharacters(slug.Trim());
+                    slug = title;
                 }
+
+                post.Slug = Post.GetUniqueSlug(slug, post.Id);
 
                 post.DateCreated =
                 DateTime.ParseExact(date + " " + time, "yyyy-MM-dd HH\\:mm", null).AddHours(
@@ -265,13 +267,7 @@ namespace Admin
                 }
                
                 post.Save();
-
-                // If this is an unpublished post and the user does not have rights to
-                // view unpublished posts, then redirect to the Posts list.
-                if (post.IsVisible)
-                    response.Data = post.RelativeLink;
-                else
-                    response.Data = string.Format("{0}admin/Posts/Posts.aspx", Utils.RelativeWebRoot);
+                response.Data = post.Id.ToString();
 
                 HttpContext.Current.Session.Remove("content");
                 HttpContext.Current.Session.Remove("title");
@@ -371,14 +367,7 @@ namespace Admin
                     page.Parent = new Guid(parent);
 
                 page.Save();
-
-                // If this is an unpublished page and the user does not have rights to
-                // view unpublished pages, then redirect to the Pages list.
-                if (page.IsVisible)
-                    response.Data = page.RelativeLink;
-                else
-                    response.Data = string.Format("{0}admin/Pages/Pages.aspx", Utils.RelativeWebRoot);
-
+                response.Data = page.Id.ToString();
             }
             catch (Exception ex)
             {

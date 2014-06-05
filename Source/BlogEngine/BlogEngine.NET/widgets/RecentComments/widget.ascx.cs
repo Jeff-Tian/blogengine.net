@@ -44,6 +44,7 @@ namespace Widgets.RecentComments
         {
             Post.CommentAdded += ClearCache;
             Post.CommentRemoved += ClearCache;
+            Post.CommentUpdated += ClearCache;
             BlogSettings.Changed += ClearCache;
         }
 

@@ -17,8 +17,8 @@
     string tag = Avatar.GetAvatarImageTag("me@us.com", null, null, null, 0, 0);
     BlogSettings.Instance.Avatar = temp;
 
-    return (tag.StartsWith("<img src=\"http://localhost") && 
-        tag.EndsWith("/themes/Standard/noavatar.jpg\" alt=\"\" width=\"80\" height=\"80\" />")).ShouldBeTrue();
+    return (tag.StartsWith("<img") && 
+        tag.Contains("noavatar.jpg")).ShouldBeTrue();
 })
 
 @It.Should("get global image for themes without noavatar.jpg if avatar set to \"none\" and not pingback/trackback", () => {
@@ -74,7 +74,7 @@
     string tag = Avatar.GetAvatarImageTag("trackback", new Uri("ftp://blah.test"));
 
     return (tag.StartsWith("<img src=\"http://localhost") &&
-        tag.EndsWith("/themes/Standard/noavatar.jpg\" alt=\"\" width=\"80\" height=\"80\" />")).ShouldBeTrue();
+        tag.Contains("noavatar.jpg")).ShouldBeTrue();
 })
 
 @It.Should("get wavatar image when avatar set to \"wavatar\"", () =>

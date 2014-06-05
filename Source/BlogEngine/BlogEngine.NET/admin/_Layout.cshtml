@@ -15,10 +15,18 @@
         }
         else
         {
+        if (Utils.GetDefaultCulture().TextInfo.IsRightToLeft)
+        {
+        <link href="@string.Format("{0}admin/style-rtl.css", Utils.ApplicationRelativeWebRoot)" rel="stylesheet" type="text/css" />
+        }
+        else
+        {
         <link href="@string.Format("{0}admin/style.css", Utils.ApplicationRelativeWebRoot)" rel="stylesheet" type="text/css" />
+        }
         <link href="@string.Format("{0}admin/colorbox.css", Utils.ApplicationRelativeWebRoot)" rel="stylesheet" type="text/css" />
         <link href="@string.Format("{0}admin/tipsy.css", Utils.ApplicationRelativeWebRoot)" rel="stylesheet" type="text/css" />
-        }      
+        }     
+ 
     </head>
     <body>
         <script type="text/javascript">
@@ -31,15 +39,15 @@
         <script type="text/javascript" src="admin.res.axd"></script>
         @if (BlogSettings.Instance.EnableOptimization)
         {
-        <script type="text/javascript" src="@BundleTable.Bundles.ResolveBundleUrl("~/admin/js")"></script> 
+        <script type="text/javascript" src="@BundleTable.Bundles.ResolveBundleUrl("~/Scripts/adminjs")"></script> 
         }
         else
         {
-        <script type="text/javascript" src="@string.Format("{0}Scripts/jQuery/01-jquery.js", Utils.ApplicationRelativeWebRoot)"></script> 
-        <script type="text/javascript" src="@string.Format("{0}Scripts/jQuery/02-jquery.cookie.js", Utils.ApplicationRelativeWebRoot)"></script> 
-        <script type="text/javascript" src="@string.Format("{0}Scripts/jQuery/03-jquery.validate.min.js", Utils.ApplicationRelativeWebRoot)"></script> 
-        <script type="text/javascript" src="@string.Format("{0}Scripts/jQuery/04-jquery-jtemplates.js", Utils.ApplicationRelativeWebRoot)"></script> 
-        <script type="text/javascript" src="@string.Format("{0}Scripts/jQuery/05-json2.js", Utils.ApplicationRelativeWebRoot)"></script> 
+        <script type="text/javascript" src="@string.Format("{0}Scripts/jquery-1.8.2.min.js", Utils.ApplicationRelativeWebRoot)"></script> 
+        <script type="text/javascript" src="@string.Format("{0}Scripts/jquery.cookie.js", Utils.ApplicationRelativeWebRoot)"></script> 
+        <script type="text/javascript" src="@string.Format("{0}Scripts/jquery.validate.min.js", Utils.ApplicationRelativeWebRoot)"></script> 
+        <script type="text/javascript" src="@string.Format("{0}Scripts/jquery-jtemplates.min.js", Utils.ApplicationRelativeWebRoot)"></script> 
+        <script type="text/javascript" src="@string.Format("{0}Scripts/json2.min.js", Utils.ApplicationRelativeWebRoot)"></script> 
         <script type="text/javascript" src="@string.Format("{0}admin/admin.js", Utils.ApplicationRelativeWebRoot)"></script> 
         }    
         <div class="page">

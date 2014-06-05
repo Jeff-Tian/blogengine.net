@@ -21,9 +21,9 @@
         /// Loads the settings from the provider.
         /// </summary>
         /// <returns>A StringDictionary.</returns>
-        public override StringDictionary LoadSettings()
+        public override StringDictionary LoadSettings(Blog blog)
         {
-            var filename = HttpContext.Current.Server.MapPath(string.Format("{0}settings.xml", Blog.CurrentInstance.StorageLocation));
+            var filename = HttpContext.Current.Server.MapPath(string.Format("{0}settings.xml", blog.StorageLocation));               
             var dic = new StringDictionary();
 
             var doc = new XmlDocument();

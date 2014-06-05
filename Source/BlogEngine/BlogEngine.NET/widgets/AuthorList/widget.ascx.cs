@@ -7,6 +7,7 @@
 namespace Widgets.AuthorList
 {
 	using App_Code.Controls;
+    using System.Collections.Specialized;
 
 	/// <summary>
 	/// The widget.
@@ -14,6 +15,10 @@ namespace Widgets.AuthorList
 	public partial class Widget : WidgetBase
 	{
 		#region Properties
+
+        string maxcount = "maxcount";
+        string pattern = "pattern";
+        string patternaggregated = "patternaggregated";
 
 		/// <summary>
 		/// Gets a value indicating whether the Widget is editable.
@@ -41,7 +46,23 @@ namespace Widgets.AuthorList
 		/// </summary>
 		public override void LoadWidget()
 		{
-			// nothing to load
+            StringDictionary settings = GetSettings();
+
+            int intCount = 10;
+            if (settings.ContainsKey(maxcount))
+                int.TryParse(settings[maxcount], out intCount);
+
+            var strPatrn = "{0} ({1})";
+            if (settings.ContainsKey(pattern))
+                strPatrn = settings[pattern];
+
+            var strAgrg = "{0}@{1} ({2})";
+            if (settings.ContainsKey(patternaggregated))
+                strAgrg = settings[patternaggregated];
+
+            AuthorList1.MaxAuthors = intCount;
+            AuthorList1.DisplayPattern = strPatrn;
+            AuthorList1.PatternAggregated = strAgrg;
 		}
 
 		#endregion

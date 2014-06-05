@@ -294,5 +294,23 @@
             }
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static JsonResponse PurgeLogfile()
+        {
+            string fileLocation = System.Web.Hosting.HostingEnvironment.MapPath(System.IO.Path.Combine(BlogConfig.StorageLocation, "logger.txt"));
+            if (System.IO.File.Exists(fileLocation))
+            {
+                System.IO.StreamWriter sw = System.IO.File.CreateText(fileLocation);
+        
+                sw.WriteLine("Purged at " + DateTime.Now);
+                sw.Close();
+                return new JsonResponse { Success = true, Message = "Log file purged" };
+            }
+            return new JsonResponse { Success = false, Message = "Log file not found" };
+        }
     }
 }

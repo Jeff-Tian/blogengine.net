@@ -35,13 +35,11 @@
             // HTML header section
             // -----------------------------------------------------------------------
             txtHtmlHeader.Text = BlogSettings.Instance.HtmlHeader;
-            if (!Blog.CurrentInstance.IsPrimary) { txtHtmlHeader.Enabled = false; }
 
             // -----------------------------------------------------------------------
             // Visitor tracking settings
             // -----------------------------------------------------------------------
             txtTrackingScript.Text = BlogSettings.Instance.TrackingScript;
-            if (!Blog.CurrentInstance.IsPrimary) { txtTrackingScript.Enabled = false; }
         }
 
         /// <summary>

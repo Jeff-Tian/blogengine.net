@@ -94,7 +94,10 @@ namespace App_Code.Controls
             var ul = new HtmlGenericControl("ul") { ID = "bloglist" };
             ul.Attributes.Add("class", "bloglist");
 
-            foreach (var blog in Blog.Blogs.Where(b => b.IsActive))
+            var blogs = Blog.Blogs.Where(b => b.IsActive).ToList();
+
+            // blog used for aggregation always on top, then all alphabetically sorted
+            foreach (var blog in blogs.OrderByDescending(b => b.IsSiteAggregation).ThenBy(b => b.Name))
             {
                 var li = new HtmlGenericControl("li");
                 var href = blog.RelativeWebRoot;

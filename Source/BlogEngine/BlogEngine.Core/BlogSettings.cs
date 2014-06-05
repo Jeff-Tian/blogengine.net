@@ -81,7 +81,16 @@
         /// </summary>
         private BlogSettings()
         {
-            this.Load();
+            this.Load(Blog.CurrentInstance);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="blog"></param>
+        private BlogSettings(Blog blog)
+        {
+            this.Load(blog);
         }
 
         #endregion
@@ -114,7 +123,7 @@
                     if (!blogSettingsSingleton.TryGetValue(blog.Id, out blogSettings))
                     {
                         // settings will be loaded in constructor.
-                        blogSettings = new BlogSettings();
+                        blogSettings = new BlogSettings(blog);
 
                         blogSettingsSingleton[blog.Id] = blogSettings;
                     }
@@ -243,7 +252,7 @@
         /// RSS feed author
         /// </summary>
         public string FeedAuthor { get; set; }
-        
+
         #endregion
 
         #region TimeStampPostLinks
@@ -592,7 +601,7 @@
 
         #endregion
 
-        #region EnableSelfRegistration
+        #region SelfRegistration
 
         /// <summary>
         ///     Gets or sets a value indicating whether or not to enable self registration.
@@ -600,15 +609,17 @@
         /// <value><c>true</c> if [enable self registration]; otherwise, <c>false</c>.</value>
         public bool EnableSelfRegistration { get; set; }
 
-        #endregion
-
-        #region SelfRegistrationInitialRole
-
         /// <summary>
         ///     Gets or sets the initial role assigned to users who self register.
         /// </summary>
         /// <value>The role name.</value>
         public string SelfRegistrationInitialRole { get; set; }
+
+        /// <summary>
+        /// If we need to create blog for self-registered user
+        /// (instead of just add user to existing blog)
+        /// </summary>
+        public bool CreateBlogOnSelfRegistration { get; set; }
 
         #endregion
 
@@ -1343,13 +1354,13 @@
         /// <summary>
         /// Initializes the singleton instance of the <see cref="BlogSettings"/> class.
         /// </summary>
-        private void Load()
+        private void Load(Blog blog)
         {
 
             // ------------------------------------------------------------
             // 	Enumerate through individual settings nodes
             // ------------------------------------------------------------
-            var dic = BlogService.LoadSettings();
+            var dic = BlogService.LoadSettings(blog);
             var settingsProps = GetSettingsTypePropertyDict();
 
             foreach (System.Collections.DictionaryEntry entry in dic)
@@ -1368,7 +1379,11 @@
                         {
                             string value = (string)entry.Value;
                             var propType = property.PropertyType;
-
+                            // Optimizations not working under Mono dirty fix
+                            if (property.Name == "EnableOptimization" && Utils.IsMono)
+                            {
+                                value = "false";
+                            }
                             if (propType.IsEnum)
                             {
                                 property.SetValue(this, Enum.Parse(propType, value), null);

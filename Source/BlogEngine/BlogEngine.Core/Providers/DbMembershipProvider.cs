@@ -395,15 +395,31 @@
             {
                 if (conn.HasConnection)
                 {
-                    using (var cmd = conn.CreateTextCommand(string.Format("SELECT username, EmailAddress, lastLoginTime FROM {0}Users WHERE BlogID = {1}blogid ", this.tablePrefix, this.parmPrefix)))
+                    if (Blog.CurrentInstance.IsSiteAggregation)
                     {
-                        cmd.Parameters.Add(conn.CreateParameter(FormatParamName("blogid"), Blog.CurrentInstance.Id.ToString()));
-
-                        using (var rdr = cmd.ExecuteReader())
+                        using (var cmd = conn.CreateTextCommand(string.Format("SELECT username, EmailAddress, lastLoginTime FROM {0}Users ", this.tablePrefix, this.parmPrefix)))
                         {
-                            while (rdr.Read())
+                            using (var rdr = cmd.ExecuteReader())
                             {
-                                users.Add(this.GetMembershipUser(rdr.GetString(0), rdr.GetString(1), rdr.GetDateTime(2)));
+                                while (rdr.Read())
+                                {
+                                    users.Add(this.GetMembershipUser(rdr.GetString(0), rdr.GetString(1), rdr.GetDateTime(2)));
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        using (var cmd = conn.CreateTextCommand(string.Format("SELECT username, EmailAddress, lastLoginTime FROM {0}Users WHERE BlogID = {1}blogid ", this.tablePrefix, this.parmPrefix)))
+                        {
+                            cmd.Parameters.Add(conn.CreateParameter(FormatParamName("blogid"), Blog.CurrentInstance.Id.ToString()));
+
+                            using (var rdr = cmd.ExecuteReader())
+                            {
+                                while (rdr.Read())
+                                {
+                                    users.Add(this.GetMembershipUser(rdr.GetString(0), rdr.GetString(1), rdr.GetDateTime(2)));
+                                }
                             }
                         }
                     }

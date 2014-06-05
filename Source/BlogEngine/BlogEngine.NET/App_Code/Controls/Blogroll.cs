@@ -183,9 +183,12 @@ namespace App_Code.Controls
                 {
                     if (Items.Count == 0)
                     {
-                        foreach (var roll in BlogRollItem.BlogRolls)
+                        if (BlogRollItem.BlogRolls != null)
                         {
-                            AddBlog(roll);
+                            foreach (var roll in BlogRollItem.BlogRolls)
+                            {
+                                AddBlog(roll);
+                            }
                         }
                     }
                 }

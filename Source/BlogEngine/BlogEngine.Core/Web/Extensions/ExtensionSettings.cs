@@ -183,6 +183,11 @@
         [XmlElement]
         public bool ShowEdit { get; set; }
 
+        /// <summary>
+        /// Blog ID
+        /// </summary>
+        public Nullable<Guid> BlogId { get; set; }
+
         #endregion
 
         #region Public Methods
@@ -197,80 +202,6 @@
         public void AddParameter(string name)
         {
             this.AddParameter(name, name);
-        }
-
-        /// <summary>
-        /// Add Parameter to settings
-        /// </summary>
-        /// <param name="name">
-        /// Parameter Name
-        /// </param>
-        /// <param name="label">
-        /// Parameter Label, used in the UI
-        /// </param>
-        public void AddParameter(string name, string label)
-        {
-            this.AddParameter(name, label, 100);
-        }
-
-        /// <summary>
-        /// Add Parameter to settings
-        /// </summary>
-        /// <param name="name">
-        /// Parameter Name
-        /// </param>
-        /// <param name="label">
-        /// Parameter Label
-        /// </param>
-        /// <param name="maxLength">
-        /// Maximum number of chars values will hold
-        /// </param>
-        public void AddParameter(string name, string label, int maxLength)
-        {
-            this.AddParameter(name, label, maxLength, false);
-        }
-
-        /// <summary>
-        /// Add Parameter to settings
-        /// </summary>
-        /// <param name="name">
-        /// Parameter Name
-        /// </param>
-        /// <param name="label">
-        /// Parameter Label
-        /// </param>
-        /// <param name="maxLength">
-        /// Maximum Length
-        /// </param>
-        /// <param name="required">
-        /// Set if value in the parameter required when added/apdated
-        /// </param>
-        public void AddParameter(string name, string label, int maxLength, bool required)
-        {
-            this.AddParameter(name, label, maxLength, required, false);
-        }
-
-        /// <summary>
-        /// Add Parameter
-        /// </summary>
-        /// <param name="name">
-        /// Parameter Name
-        /// </param>
-        /// <param name="label">
-        /// Parameter Label
-        /// </param>
-        /// <param name="maxLength">
-        /// Maximum Length
-        /// </param>
-        /// <param name="required">
-        /// Set if value in the parameter required when added/apdated
-        /// </param>
-        /// <param name="keyfield">
-        /// Mark field as primary key, unique and required
-        /// </param>
-        public void AddParameter(string name, string label, int maxLength, bool required, bool keyfield)
-        {
-            this.AddParameter(name, label, maxLength, required, keyfield, ParameterType.String);
         }
 
         /// <summary>
@@ -295,7 +226,7 @@
         /// Parameter type (integer, string, boolean etc.)
         /// </param>
         public void AddParameter(
-            string name, string label, int maxLength, bool required, bool keyfield, ParameterType parType)
+            string name, string label, int maxLength = 100, bool required = false, bool keyfield = false, ParameterType parType = ParameterType.String)
         {
             if (this.Parameters == null)
             {

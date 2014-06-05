@@ -430,9 +430,25 @@
             this.ReadMembershipDataStore();
             var membershipUserCollection = new MembershipUserCollection();
 
-            foreach (var pair in this.users[Blog.CurrentInstance.Id])
+            if (Blog.CurrentInstance.IsSiteAggregation)
             {
-                membershipUserCollection.Add(pair.Value);
+                foreach (Blog b in Blog.Blogs)
+                {
+                    if (!b.IsDeleted && b.IsActive)
+                    {
+                        foreach (var pair in this.users[b.Id])
+                        {
+                            membershipUserCollection.Add(pair.Value);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (var pair in this.users[Blog.CurrentInstance.Id])
+                {
+                    membershipUserCollection.Add(pair.Value);
+                }
             }
 
             totalRecords = membershipUserCollection.Count;
@@ -820,44 +836,67 @@
                     this.users = new Dictionary<Guid, Dictionary<string, MembershipUser>>();
                 }
 
-                if (!this.users.ContainsKey(Blog.CurrentInstance.Id))
-                {
-                    this.users[Blog.CurrentInstance.Id] = new Dictionary<string, MembershipUser>(16, StringComparer.OrdinalIgnoreCase);
-                    var doc = new XmlDocument();
-                    doc.Load(XmlFullyQualifiedPath);
-                    var nodes = doc.GetElementsByTagName("User");
+                ReadFromFile(XmlFullyQualifiedPath, Blog.CurrentInstance.Id);
 
-                    foreach (var user in
-                        nodes.Cast<XmlNode>().Select(
-                            node => new MembershipUser(
-                                        this.Name,
-                                        // Provider name
-                                        node["UserName"].InnerText,
-                                        // Username
-                                        node["UserName"].InnerText,
-                                        // providerUserKey
-                                        node["Email"].InnerText,
-                                        // Email
-                                        string.Empty,
-                                        // passwordQuestion
-                                        node["Password"].InnerText,
-                                        // Comment
-                                        true,
-                                        // approved
-                                        false,
-                                        // isLockedOut
-                                        DateTime.Now,
-                                        // creationDate
-                                        DateTime.Parse(node["LastLoginTime"].InnerText, CultureInfo.InvariantCulture),
-                                        // lastLoginDate
-                                        DateTime.Now,
-                                        // lastActivityDate
-                                        DateTime.Now,
-                                        // lastPasswordChangedDate
-                                        new DateTime(1980, 1, 1))))
+                if (Blog.CurrentInstance.IsSiteAggregation)
+                {
+                    foreach (Blog b in Blog.Blogs)
                     {
-                        this.users[Blog.CurrentInstance.Id].Add(user.UserName, user);
+                        if (b.IsPrimary || b.IsDeleted || !b.IsActive)
+                            continue;
+
+                        string path = HostingEnvironment.MapPath(Path.Combine(Blog.CurrentInstance.StorageLocation, "blogs", b.Name, "users.xml"));
+
+                        if (!File.Exists(path))
+                        {
+                            Utils.Log(string.Format("XmlMembershipProvider: can not read users from file \"{0}\"", path));
+                        }
+
+                        ReadFromFile(path, b.Id);
                     }
+                }
+            }
+        }
+
+        private void ReadFromFile(string fileName, Guid blogId)
+        {
+            if (!this.users.ContainsKey(blogId))
+            {
+                this.users[blogId] = new Dictionary<string, MembershipUser>(16, StringComparer.OrdinalIgnoreCase);
+                var doc = new XmlDocument();
+                doc.Load(fileName);
+                var nodes = doc.GetElementsByTagName("User");
+
+                foreach (var user in
+                    nodes.Cast<XmlNode>().Select(
+                        node => new MembershipUser(
+                                    this.Name,
+                            // Provider name
+                                    node["UserName"].InnerText,
+                            // Username
+                                    node["UserName"].InnerText,
+                            // providerUserKey
+                                    node["Email"].InnerText,
+                            // Email
+                                    string.Empty,
+                            // passwordQuestion
+                                    node["Password"].InnerText,
+                            // Comment
+                                    true,
+                            // approved
+                                    false,
+                            // isLockedOut
+                                    DateTime.Now,
+                            // creationDate
+                                    DateTime.Parse(node["LastLoginTime"].InnerText, CultureInfo.InvariantCulture),
+                            // lastLoginDate
+                                    DateTime.Now,
+                            // lastActivityDate
+                                    DateTime.Now,
+                            // lastPasswordChangedDate
+                                    new DateTime(1980, 1, 1))))
+                {
+                    this.users[blogId].Add(user.UserName, user);
                 }
             }
         }

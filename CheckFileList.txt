@@ -1,0 +1,6 @@
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.Core\Post.cs
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.Core\Providers\DbBlogProvider.cs
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.NET\App_GlobalResources\labels.resx
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.NET\App_GlobalResources\labels.zh-CN.resx
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.NET\App_GlobalResources\labels.zh-TW.resx
+C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.NET\Web.Config

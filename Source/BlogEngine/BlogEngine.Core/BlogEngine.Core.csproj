@@ -127,6 +127,8 @@
     <Compile Include="Avatar.cs" />
     <Compile Include="Blog.cs" />
     <Compile Include="BlogConfig.cs" />
+    <Compile Include="BlogGenerator.cs" />
+    <Compile Include="BlogGeneratorConfig.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Compilation\BaseServerObjectExpressionBuilder.cs" />
     <Compile Include="Compilation\CodeExpressionBuilder.cs" />
@@ -254,6 +256,7 @@
     <Compile Include="Web\HttpModules\UrlRewrite.cs" />
     <Compile Include="Web\Navigation\IPager.cs" />
     <Compile Include="Web\Navigation\Pager.cs" />
+    <Compile Include="Web\Scripting\PageHeader.cs" />
     <Compile Include="Web\Scripting\Helpers.cs" />
     <Compile Include="Web\Scripting\JavascriptMinifier.cs" />
     <Compile Include="Web\Scripting\WebResourceFilter.cs" />
@@ -345,10 +348,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(SolutionDir)..\lib\optimization\System.Web.Optimization.dll" "$(SolutionDir)BlogEngine.NET\Bin\" /F /R /Y /I
-xcopy "$(SolutionDir)..\lib\razor\*.dll" "$(SolutionDir)BlogEngine.NET\Bin\" /F /R /Y /I
-xcopy "$(SolutionDir)..\lib\watin\Interop.SHDocVw.dll" "$(SolutionDir)BlogEngine.Tests\Bin\Debug\" /F /R /Y /I
-xcopy "$(SolutionDir)..\lib\watin\BlogEngine.Tests.dll.config" "$(SolutionDir)BlogEngine.Tests\Bin\Debug\" /F /R /Y /I</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(SolutionDir)..\lib\watin\Interop.SHDocVw.dll" "$(SolutionDir)BlogEngine.Tests\Bin\Debug\" /F /R /Y /I
+xcopy "$(SolutionDir)..\lib\watin\BlogEngine.Tests.dll.config" "$(SolutionDir)BlogEngine.Tests\Bin\Debug\" /F /R /Y /I
+xcopy "$(SolutionDir)packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll" "$(SolutionDir)BlogEngine.NET\Bin\" /F /R /Y /I
+xcopy "$(SolutionDir)packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll" "$(SolutionDir)BlogEngine.NET\Bin\" /F /R /Y /I
+xcopy "$(SolutionDir)packages\WebGrease.1.1.0\lib\WebGrease.dll" "$(SolutionDir)BlogEngine.NET\Bin\" /F /R /Y /I
+xcopy "$(SolutionDir)packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\*.dll" "$(SolutionDir)BlogEngine.NET\Bin\" /F /R /Y /I
+xcopy "$(SolutionDir)packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll" "$(SolutionDir)BlogEngine.NET\Bin\" /F /R /Y /I</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

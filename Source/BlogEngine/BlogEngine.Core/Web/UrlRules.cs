@@ -54,7 +54,7 @@ namespace BlogEngine.Core.Web
             // Allow for Year/Month only dates in URL (in this case, day == 0), as well as Year/Month/Day dates.
             // first make sure the Year and Month match.
             // if a day is also available, make sure the Day matches.
-            var post = Post.Posts.Find(
+            var post = Post.ApplicablePosts.Find(
                 p =>
                 (!haveDate || (p.DateCreated.Year == year && p.DateCreated.Month == month)) &&
                 ((!haveDate || (day == 0 || p.DateCreated.Day == day)) &&
@@ -66,7 +66,7 @@ namespace BlogEngine.Core.Web
             }
 
             var q = GetQueryString(context);
-            if (q.Contains("id=", StringComparison.OrdinalIgnoreCase))
+            if (q.Contains("id=" + post.Id, StringComparison.OrdinalIgnoreCase))
                 q = string.Format("{0}post.aspx?{1}", Utils.ApplicationRelativeWebRoot, q);
             else
                 q = string.Format("{0}post.aspx?id={1}{2}", Utils.ApplicationRelativeWebRoot, post.Id, q);
@@ -150,7 +150,7 @@ namespace BlogEngine.Core.Web
         public static void RewriteCategory(HttpContext context, string url)
         {
             var title = ExtractTitle(context, url);
-            foreach (var cat in from cat in Category.Categories
+            foreach (var cat in from cat in Category.ApplicableCategories
                                 let legalTitle = Utils.RemoveIllegalCharacters(cat.Title).ToLowerInvariant()
                                 where title.Equals(legalTitle, StringComparison.OrdinalIgnoreCase)
                                 select cat)
@@ -340,7 +340,7 @@ namespace BlogEngine.Core.Web
             {
                 var s = string.Format("{0}{1}DEFAULT{2}", Utils.AbsoluteWebRoot, m.ToString().Substring(1), BlogConfig.FileExtension);
 
-                Utils.Log("Url: " + url + "; s: " + s);
+                //Utils.Log("Url: " + url + "; s: " + s);
 
                 if (url.Contains(s, StringComparison.OrdinalIgnoreCase))
                     return true;

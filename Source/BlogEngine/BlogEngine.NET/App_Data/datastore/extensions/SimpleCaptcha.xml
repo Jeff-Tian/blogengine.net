@@ -4,7 +4,8 @@
   <Author>&lt;a href="http://www.aaronstannard.com"&gt;Aaron Stannard&lt;/a&gt;</Author>
   <Description>Settings for the SimpleCaptcha control</Description>
   <Enabled>true</Enabled>
-  <Priority>0</Priority>
+  <Priority>2</Priority>
+  <SubBlogEnabled>true</SubBlogEnabled>
   <Settings>
     <Delimiter>44</Delimiter>
     <Help>To get started with SimpleCaptcha, just provide some captcha instructions for your users in the &lt;b&gt;CaptchaLabel&lt;/b&gt;
@@ -47,6 +48,7 @@
     <ShowAdd>true</ShowAdd>
     <ShowDelete>true</ShowDelete>
     <ShowEdit>true</ShowEdit>
+    <BlogId>96d5b379-7e1d-4dac-a6ba-1e50db561b04</BlogId>
   </Settings>
   <ShowSettings>true</ShowSettings>
   <Version>1.0</Version>

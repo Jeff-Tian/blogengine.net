@@ -134,7 +134,11 @@
             if (!string.IsNullOrEmpty(context.Request.QueryString["category"]))
             {
                 // All posts in the specified category
-                var categoryId = new Guid(context.Request.QueryString["category"]);
+                if (context.Request.QueryString["category"].Length < 36)
+                    return null;
+                // for aggregated blog there can be multiple categories with same title
+                // get the first one, then we match all posts based on category title
+                var categoryId = new Guid(context.Request.QueryString["category"].Substring(0, 36));
                 return Post.GetPostsByCategory(categoryId).ConvertAll(ConvertToIPublishable);
             }
 
@@ -264,13 +268,14 @@
 
             if (!string.IsNullOrEmpty(context.Request.QueryString["category"]))
             {
-                if (context.Request.QueryString["category"].Length != 36)
+                if (context.Request.QueryString["category"].Length < 36)
                 {
                     StopServing(context);
                 }
 
-                var categoryId = new Guid(context.Request.QueryString["category"]);
-                var currentCategory = Category.GetCategory(categoryId);
+                var firstCat = context.Request.QueryString["category"].Substring(0, 36);
+                var categoryId = new Guid(firstCat);
+                var currentCategory = Category.GetCategory(categoryId, Blog.CurrentInstance.IsSiteAggregation);
                 if (currentCategory == null)
                 {
                     StopServing(context);

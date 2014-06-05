@@ -61,6 +61,8 @@
     <Compile Include="FileSystem\Crud.cs" />
     <Compile Include="FileSystem\IO.cs" />
     <Compile Include="Navigation\CustomPages.cs" />
+    <Compile Include="Navigation\SubBlog.cs" />
+    <Compile Include="Navigation\SubBlogAggregation.cs" />
     <Compile Include="Packaging\Installer.cs" />
     <Compile Include="PageTemplates\Account\Login.cs" />
     <Compile Include="PageTemplates\Admin\CommentsPending.cs" />

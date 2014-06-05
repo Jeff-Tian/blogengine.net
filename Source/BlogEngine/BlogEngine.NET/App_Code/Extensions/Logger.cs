@@ -13,7 +13,7 @@ namespace App_Code.Extensions
     /// <summary>
     /// Subscribes to Log events and records the events in a file.
     /// </summary>
-    [Extension("Subscribes to Log events and records the events in a file.", "1.0", "BlogEngine.NET")]
+    [Extension("Subscribes to Log events and records the events in a file.", "1.0", "BlogEngine.NET", 0, false)]
     public class Logger
     {
         #region Constants and Fields

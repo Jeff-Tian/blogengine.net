@@ -10,7 +10,17 @@ namespace BlogEngine.Tests.PageTemplates.Admin
         }
         public Button PurgeAll
         {
-            get { return Document.Button(Find.ById("btnPurgeAll")); }
+            get 
+            {
+                try
+                {
+                    return Document.Button(Find.ById("btnPurgeAll")); 
+                }
+                catch
+                {
+                    return null;
+                }
+            }
         }
     }
 }

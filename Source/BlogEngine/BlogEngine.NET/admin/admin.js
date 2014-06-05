@@ -1,7 +1,7 @@
 ﻿
 $(document).ready(function () {
-   $('.editButton').live("click", function () { return EditRow(this); });
-   $('.deleteButton').live("click", function () { return DeleteRow(this); });
+   $(document).on("click", ".editButton", function () { return EditRow(this); });
+   $(document).on("click", ".deleteButton", function () { return DeleteRow(this); });
    $('.loader').hide();
 });
 
@@ -304,6 +304,28 @@ function LoadTrashPager(page) {
             $('.Pager').html(msg.d);
         }
     });
+    return false;
+}
+
+function PurgeLogfile() {
+    $('#AjaxLoader').addClass('loader');
+    $.ajax({
+        url: SiteVars.ApplicationRelativeWebRoot + "admin/Trash.aspx/PurgeLogfile",
+        type: "post",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        beforeSend: onAjaxBeforeSend,
+        success: function (result) {
+            var rt = result.d;
+            if (rt.Success) {
+                ShowStatus("success", rt.Message);
+            }
+            else {
+                ShowStatus("warning", rt.Message);
+            }
+        }
+    });
+    //$('#AjaxLoader').removeClass('loader');
     return false;
 }
 

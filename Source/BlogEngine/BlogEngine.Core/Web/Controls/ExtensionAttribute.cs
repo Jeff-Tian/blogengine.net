@@ -36,6 +36,11 @@
         /// </summary>
         private readonly int priority;
 
+        /// <summary>
+        /// Enabled in sub-blog.
+        /// </summary>
+        private readonly bool subBlogEnabled;
+
         #endregion
 
         #region Constructors and Destructors
@@ -53,35 +58,17 @@
         /// <param name="author">
         /// The author.
         /// </param>
-        public ExtensionAttribute(string description, string version, string author)
-        {
-            this.description = description;
-            this.version = version;
-            this.author = author;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ExtensionAttribute"/> class. 
-        /// Creates an instance of the attribute and assigns a description.
-        /// </summary>
-        /// <param name="description">
-        /// The description.
-        /// </param>
-        /// <param name="version">
-        /// The version.
-        /// </param>
-        /// <param name="author">
-        /// The author.
-        /// </param>
         /// <param name="priority">
         /// The priority.
         /// </param>
-        public ExtensionAttribute(string description, string version, string author, int priority)
+        /// <param name="subBlogEnabled">The sub-blog enabled.</param>
+        public ExtensionAttribute(string description, string version, string author, int priority = 0, bool subBlogEnabled = true)
         {
             this.description = description;
             this.version = version;
             this.author = author;
             this.priority = priority;
+            this.subBlogEnabled = subBlogEnabled;
         }
 
         #endregion
@@ -127,6 +114,20 @@
         }
 
         /// <summary>
+        /// This determins if extension settings should
+        /// be available for sub-blogs. Some extensions
+        /// can be application-wide, others on blog level
+        /// </summary>
+        /// <value>True if enabled.</value>
+        public bool SubBlogEnabled
+        {
+            get
+            {
+                return this.subBlogEnabled;
+            }
+        }
+
+        /// <summary>
         ///     Gets the version number of the extension
         /// </summary>
         public string Version
@@ -158,6 +159,11 @@
         public int Priority { get; set; }
 
         /// <summary>
+        ///     Gets or sets if extension settings valid for sub-blogs
+        /// </summary>
+        public bool SubBlogEnabled { get; set; }
+
+        /// <summary>
         ///     Gets or sets the type of the extension
         /// </summary>
         public string Type { get; set; }
@@ -172,9 +178,11 @@
         /// <param name="priority">The extension priority.</param>
         /// <param name="name">The extension name.</param>
         /// <param name="type">The extension type.</param>
-        public SortedExtension(int priority, string name, string type)
+        /// <param name="subBlogEnabled">The sub-blog enabled.</param>
+        public SortedExtension(int priority, string name, string type, bool subBlogEnabled = true)
         {
             this.Priority = priority;
+            this.SubBlogEnabled = subBlogEnabled;
             this.Name = name;
             this.Type = type;
         }

@@ -10,6 +10,15 @@
     var useDate = BlogSettings.Instance.TimeStampPostLinks;
     var postPerPage = BlogSettings.Instance.PostsPerPage;
     DateTime startDate = new DateTime(2012, 6, 3);
+
+    // delete demo post(s) ("welcome to blogengine...") -> restore in teardown
+    var existingPosts = Post.Posts.Where(post => post.IsVisible == true).ToList();
+    foreach (var exPost in existingPosts)
+    {
+        var post = Post.GetPost(exPost.Id);
+        post.Delete();
+        post.Save();
+    }
     
     var defPage = "default";
     BlogSettings.Instance.RemoveExtensionsFromUrls = false; 
@@ -64,12 +73,12 @@
 
 @It.Should("load default document on '/' in the URL", () =>
 {
-    return Runner.Get("/").Body.ShouldContain("Post one");
+    return Runner.Get("/").Html.ShouldContain("Post one");
 })
 
 @It.Should("load post list on default.aspx", () =>
 {
-    return Runner.Get("/default.aspx").Body.ShouldContain("Post one");
+    return Runner.Get("/default.aspx").Html.ShouldContain("Post one");
 })
 
 @It.Should("get post using \"/post/post-name[.aspx]\"", () =>
@@ -79,12 +88,12 @@
 
 @It.Should("get page using \"/page/page-name[.aspx]\"", () =>
 {
-    return Runner.Get("/page/Example-page" + ext).Body.ShouldContain("Example page");
+    return Runner.Get("/page/Example-page" + ext).Html.ShouldContain("Example page");
 })
 
 @It.Should("get posts by category using \"/category/categoryname[.aspx]\"", () =>
 {
-    return Runner.Get("/category/thetest" + ext).Body.ShouldContain("Post five");
+    return Runner.Get("/category/thetest" + ext).Html.ShouldContain("Post five");
 })
 
 @It.Should("get feeds by category using \"/category/feed/categoryname[.aspx]\"", () =>
@@ -94,7 +103,7 @@
 
 @It.Should("get posts by tag using \"/tag/tagname[.aspx]\"", () =>
 {
-    return Runner.Get("/tag/Test" + ext).Body.ShouldContain("Post one");
+    return Runner.Get("/tag/Test" + ext).Html.ShouldContain("Post one");
 })
 
 @It.Should("get feeds by tag using \"/tag/feed/tagname[.aspx]\"", () =>
@@ -105,12 +114,12 @@
 
 @It.Should("get posts by month using \"/2012/05/default[.aspx]\"", () =>
 {
-    return Runner.Get("/2012/05/default" + ext).Body.ShouldContain("Post four");
+    return Runner.Get("/2012/05/default" + ext).Html.ShouldContain("Post four");
 })
 
 @It.Should("get posts by page using \"/default[.aspx]?page=2\"", () =>
 {
-    return Runner.Get("/" + defPage + ext + "?page=2").Body.ShouldContain("Post three");
+    return Runner.Get("/" + defPage + ext + "?page=2").Html.ShouldContain("Post three");
 })
 
 @It.Should("get large calendar using \"/calendar/default[.aspx]\"", () =>
@@ -120,15 +129,21 @@
 
 @It.Should("get author posts using \"/author/admin[.aspx]\"", () =>
 {
-    return Runner.Get("/author/admin" + ext).Body.ShouldContain("Post one");
+    return Runner.Get("/author/admin" + ext).Html.ShouldContain("Post one");
 })
 
 @It.Should("get blog posts using \"/blog[.aspx]\"", () =>
 {
-    return Runner.Get("/blog" + ext).Body.ShouldContain("Post one");
+    return Runner.Get("/blog" + ext).Html.ShouldContain("Post one");
 })
 
 @{
+    // restore existing demo post
+    foreach (var exPost in existingPosts)
+    {
+        exPost.Restore();
+    }
+    
     // teardown
     foreach (var pst in posts)
     {

@@ -73,13 +73,19 @@
                         <img src="../images/avatars/monsterid.png" alt="None" />
                         <img src="../images/avatars/wavatar.png" alt="None" />
                         <img src="../images/avatars/identicon.png" alt="None" />
+                        <img src="../images/avatars/retro.png" alt="None" />
+                        <img src="../images/avatars/mm.png" alt="None" />
+                        <img src="../images/avatars/blank.png" alt="None" />
                         <img src="../../pics/noavatar.jpg" alt="None" />
                     </div>
                     <label class="lbl" for="<%=rblAvatar.ClientID %>"><%=labels.avatars %></label>
-                    <asp:RadioButtonList runat="Server" ID="rblAvatar" RepeatLayout="flow" RepeatDirection="horizontal">
+                    <asp:RadioButtonList runat="Server" ID="rblAvatar" RepeatLayout="Table" RepeatDirection="horizontal" CssClass="avatar-radio-button">
                         <asp:ListItem Text="MonsterID" Value="monster" />
                         <asp:ListItem Text="Wavatar" Value="wavatar" />
                         <asp:ListItem Text="Identicon" Value="identicon" />
+                        <asp:ListItem Text="Retro" Value="retro" />
+                        <asp:ListItem Text="MysteryMan" Value="mm" />
+                        <asp:ListItem Text="Blank" Value="blank" />
                         <asp:ListItem Text="<%$ Resources:labels, none %>" Value="none" />
                     </asp:RadioButtonList>
                 </li>

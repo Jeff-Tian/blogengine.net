@@ -113,8 +113,10 @@
                     {
                         if (!categories.TryGetValue(blog.BlogId, out blogCategories))
                         {
-                            categories[blog.Id] = blogCategories = BlogService.FillCategories();
-                            blogCategories.Sort();
+                            categories[blog.Id] = blogCategories = BlogService.FillCategories(blog);
+
+                            if(blogCategories != null)
+                                blogCategories.Sort();
                         }
                     }
                 }
@@ -156,7 +158,6 @@
                     categoriesAcrossAllBlogs.AddRange(blogCategories);
                 }
 
-                categoriesAcrossAllBlogs.Sort();
                 return categoriesAcrossAllBlogs;
             }
         }
@@ -250,9 +251,8 @@
         {
             get
             {
-                return string.Format(
-                    "{0}category/feed/{1}{2}",
-                    this.Blog.RelativeWebRoot,
+                var root = Blog.CurrentInstance.IsSiteAggregation ? Utils.ApplicationRelativeWebRoot : Blog.RelativeWebRoot;
+                return string.Format("{0}category/feed/{1}{2}", root,
                     Utils.RemoveIllegalCharacters(this.Title),
                     BlogConfig.FileExtension);
             }
@@ -295,7 +295,8 @@
         {
             get
             {
-                return this.Blog.RelativeWebRoot + "category/" + Utils.RemoveIllegalCharacters(this.Title) +
+                var root = Blog.CurrentInstance.IsSiteAggregation ? Utils.ApplicationRelativeWebRoot : Blog.RelativeWebRoot;
+                return root + "category/" + Utils.RemoveIllegalCharacters(this.Title) +
                        BlogConfig.FileExtension;
             }
         }
@@ -360,9 +361,12 @@
         /// </returns>
         public string CompleteTitle()
         {
-            return this.parent == null
-                       ? this.title
-                       : string.Format("{0} - {1}", GetCategory((Guid)this.parent).CompleteTitle(), this.title);
+            if (parent == null)
+                return title;
+
+            var cat = GetCategory((Guid)parent, Blog.CurrentInstance.IsSiteAggregation);
+
+            return cat == null ? title : string.Format("{0} - {1}", cat.CompleteTitle(), title);
         }
 
 

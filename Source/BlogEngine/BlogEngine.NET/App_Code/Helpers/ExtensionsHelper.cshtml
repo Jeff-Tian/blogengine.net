@@ -89,10 +89,14 @@
                             <a class="toolsAction" href="#"><span class="">Tools</span></a>
                             <ul class="rowToolsMenu">
                                 <li><a href="@statusLink" class="@actClass">@enabled</a></li>
+                                @if (Blog.CurrentInstance.IsPrimary)
+                                {
                                 <li><a href="#" onclick="$('#txtPriority').val('@x.Priority'); $('#hdnExtensionName').val('@x.Name');" class="changePriority rightsAction">@Resources.labels.priority</a></li>
                                 <li><a href="@Href(Utils.RelativeWebRoot + "admin/Extensions/Editor.cshtml?id=")@x.Name" class="viewButton viewAction">View</a></li>
-                                @if(pkg != null && pkg.Location == "I"){
+                                    if(pkg != null && pkg.Location == "I")
+                                    {
                                 <li><a href="#" id="a-@x.Name" onclick="UninstallExtension('@x.Name'); return false;" class="deleteAction">@Resources.labels.delete</a></li> 
+                                    }
                                 }
                             </ul>
                         </li>

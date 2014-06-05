@@ -61,5 +61,13 @@
 
             return JsonTrashList.Process(action, vals);
         }
+
+        [WebMethod]
+        public static JsonResponse PurgeLogfile()
+        {
+            Security.DemandUserHasRight(BlogEngine.Core.Rights.AccessAdminPages, true);
+
+            return JsonTrashList.PurgeLogfile();
+        }
     }
 }

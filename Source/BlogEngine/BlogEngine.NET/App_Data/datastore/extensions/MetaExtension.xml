@@ -5,6 +5,7 @@
   <Description>Meta extension</Description>
   <Enabled>true</Enabled>
   <Priority>0</Priority>
+  <SubBlogEnabled>false</SubBlogEnabled>
   <Settings>
     <Delimiter>44</Delimiter>
     <Help />
@@ -61,6 +62,7 @@
     <ShowAdd>true</ShowAdd>
     <ShowDelete>true</ShowDelete>
     <ShowEdit>true</ShowEdit>
+    <BlogId>96d5b379-7e1d-4dac-a6ba-1e50db561b04</BlogId>
   </Settings>
   <Settings>
     <Delimiter>44</Delimiter>
@@ -78,9 +80,9 @@
       <ParamType>String</ParamType>
       <Required>true</Required>
       <SelectedValue />
-      <Values>App_Code.Extensions.TypePadFilter</Values>
-      <Values>App_Code.Extensions.StopForumSpam</Values>
       <Values>App_Code.Extensions.AkismetFilter</Values>
+      <Values>App_Code.Extensions.StopForumSpam</Values>
+      <Values>App_Code.Extensions.TypePadFilter</Values>
     </Parameters>
     <Parameters>
       <KeyField>false</KeyField>
@@ -90,9 +92,9 @@
       <ParamType>String</ParamType>
       <Required>false</Required>
       <SelectedValue />
-      <Values>TypePadFilter</Values>
-      <Values>StopForumSpam</Values>
       <Values>AkismetFilter</Values>
+      <Values>StopForumSpam</Values>
+      <Values>TypePadFilter</Values>
     </Parameters>
     <Parameters>
       <KeyField>false</KeyField>
@@ -103,7 +105,7 @@
       <Required>false</Required>
       <SelectedValue />
       <Values>0</Values>
-      <Values>0</Values>
+      <Values>5</Values>
       <Values>0</Values>
     </Parameters>
     <Parameters>
@@ -145,6 +147,7 @@
     <ShowAdd>true</ShowAdd>
     <ShowDelete>true</ShowDelete>
     <ShowEdit>true</ShowEdit>
+    <BlogId>96d5b379-7e1d-4dac-a6ba-1e50db561b04</BlogId>
   </Settings>
   <ShowSettings>true</ShowSettings>
   <Version>1.0</Version>

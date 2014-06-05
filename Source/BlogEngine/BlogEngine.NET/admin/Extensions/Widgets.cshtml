@@ -2,7 +2,7 @@
 @using BlogEngine.Core.Packaging
 
 @{
-    Page.Title = Resources.labels.themes;
+    Page.Title = Resources.labels.widgets;
     Layout = "~/admin/_Layout.cshtml";
 
     var loaderSrc = Path.Combine(BlogEngine.Core.Utils.ApplicationRelativeWebRoot, "pics/ajax-loader.gif");
@@ -78,6 +78,11 @@
                                     {
                                     <p>@Resources.labels.author: unknown</p>
                                     }
+                                    @if (!string.IsNullOrWhiteSpace(wdg.Description))
+                                    {
+                                        var dsc = wdg.Description.Length < 80 ? wdg.Description : wdg.Description.Substring(0, 77) + "...";
+                                        <p>@dsc</p> 
+                                    }
                                     @if (Blog.CurrentInstance.IsPrimary && @wdg.Location == "I")
                                     {
                                         if (Gallery.ConvertVersion(wdg.LocalVersion) < Gallery.ConvertVersion(wdg.OnlineVersion))
@@ -91,6 +96,12 @@
                                             <a href="" class="deleteAction" onclick="UninstallPackage('@wdg.Id'); return false;">@Resources.labels.delete</a>
                                             <img class="loader2" src="@loaderSrc" alt="loader" />
                                         </p>  
+                                    }
+                                    else{
+                                        if (!string.IsNullOrWhiteSpace(wdg.LocalVersion))
+                                        {
+                                            <p>@Resources.labels.version: @wdg.LocalVersion</p> 
+                                        }
                                     }
                                 </div>
                             </div>

@@ -44,7 +44,7 @@
             get
             {
                 var pf = AuthorProfile.GetProfile(theId) ?? new AuthorProfile(theId);
-                return Avatar.GetAvatar(pf.EmailAddress, null, "", "", 32, 32).ImageTag;
+                return Avatar.GetAvatar(pf.EmailAddress, null, "", "", 48, 48).ImageTag;
             }
         }
 
@@ -63,19 +63,21 @@
 
                     if (file != null && file.ContentLength > 0)
                     {
-                        string login = HttpContext.Current.User.Identity.Name;
-                        string dir = Server.MapPath(Path.Combine("~/App_Data/files/Avatars/", login));
+                        string id = Request.QueryString["id"];
+                        string login = string.IsNullOrEmpty(id) ? HttpContext.Current.User.Identity.Name : id;
+                        string dir = Server.MapPath(Path.Combine(BlogConfig.StorageLocation, "files/Avatars", Blog.CurrentInstance.Name, login));
 
                         if (!Directory.Exists(dir))
                             Directory.CreateDirectory(dir);
 
                         string fname = Path.GetFileName(file.FileName);
-                        fname = Path.Combine(string.Format("~/App_Data/files/Avatars/{0}/", login), fname);
+                        fname = Path.Combine(dir, fname);
 
-                        file.SaveAs(Server.MapPath(fname));
+                        file.SaveAs(fname);
 
                         var pf = AuthorProfile.GetProfile(login) ?? new AuthorProfile(login);
-                        pf.PhotoUrl = login + "/" + Path.GetFileName(file.FileName);
+                        pf.PhotoUrl = Blog.CurrentInstance.Name + "/" + login + "/" + file.FileName;
+
                         pf.Save();
 
                         Master.SetStatus("success", "File saved");

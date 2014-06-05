@@ -1616,7 +1616,7 @@
     <value>Add new user</value>
   </data>
   <data name="appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>Customize</value>
   </data>
   <data name="commentSettings" xml:space="preserve">
     <value>Comment settings</value>
@@ -1968,6 +1968,63 @@
   </data>
   <data name="redirectToRemoveFileExtensionDesc" xml:space="preserve">
     <value>Redirects incoming requests containing the .aspx file extension to a URL with the extension removed.  Remove extensions from URLs must also be turned on.</value>
+  </data>
+  <data name="anotherEmail" xml:space="preserve">
+    <value>Please select another email address</value>
+  </data>
+  <data name="anotherUserName" xml:space="preserve">
+    <value>Please select another user name</value>
+  </data>
+  <data name="emailNotExist" xml:space="preserve">
+    <value>Email does not exist in our system</value>
+  </data>
+  <data name="loginFailed" xml:space="preserve">
+    <value>Login failed</value>
+  </data>
+  <data name="passwordNotChanged" xml:space="preserve">
+    <value>Password was not changed</value>
+  </data>
+  <data name="passwordSent" xml:space="preserve">
+    <value>The password has been sent</value>
+  </data>
+  <data name="AllPostsTagged" xml:space="preserve">
+    <value> All posts tagged </value>
+  </data>
+  <data name="fileManager" xml:space="preserve">
+    <value>File Manager</value>
+  </data>
+  <data name="emptyLog" xml:space="preserve">
+    <value>Empty the log file</value>
+  </data>
+  <data name="LangDirection" xml:space="preserve">
+    <value>ltr</value>
+  </data>
+  <data name="apmlDescription" xml:space="preserve">
+    <value>Enter the URL to your website or to your APML document</value>
+  </data>
+  <data name="createBlogOnSelfRegistration" xml:space="preserve">
+    <value>Create new blog for self-regitered user</value>
+  </data>
+  <data name="AllPostsBy" xml:space="preserve">
+    <value>All posts by</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="PageNotFound" xml:space="preserve">
+    <value>Page not found</value>
+  </data>
+  <data name="ListIsEmpty" xml:space="preserve">
+    <value>This list is empty. You can add new item from the menu above.</value>
+  </data>
+  <data name="authorDispalyCount" xml:space="preserve">
+    <value>Maximum authors in the list</value>
+  </data>
+  <data name="authorDisplayPattern" xml:space="preserve">
+    <value>Display pattern (author, post count)</value>
+  </data>
+  <data name="authorDisplayPatternAggregated" xml:space="preserve">
+    <value>Display pattern in aggregated blog (author, blog, post count)</value>
   </data>
   <data name="by" xml:space="preserve">
     <value>by</value>

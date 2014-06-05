@@ -21,7 +21,7 @@
         /// </param>
         public override void DeleteProfile(AuthorProfile profile)
         {
-            var fileName = string.Format("{0}profiles{1}{2}.xml", this.Folder, Path.DirectorySeparatorChar, profile.Id);
+            var fileName = string.Format("{0}profiles{1}{2}.xml", GetFolder(profile.Blog), Path.DirectorySeparatorChar, profile.Id);
             if (File.Exists(fileName))
             {
                 File.Delete(fileName);
@@ -41,14 +41,30 @@
         /// </returns>
         public override List<AuthorProfile> FillProfiles()
         {
-            var folder = string.Format("{0}profiles{1}", this.Folder, Path.DirectorySeparatorChar);
+            var profiles = new List<AuthorProfile>();
+            var blogs = new List<Blog>();
 
-            return (from file in Directory.GetFiles(folder, "*.xml", SearchOption.TopDirectoryOnly)
-                    select new FileInfo(file)
-                    into info 
-                    select info.Name.Replace(".xml", string.Empty)
-                    into username
-                    select AuthorProfile.Load(username)).ToList();
+            if (Blog.CurrentInstance.IsSiteAggregation)
+                blogs = Blog.Blogs;
+            else
+                blogs.Add(Blog.CurrentInstance);
+
+            foreach (Blog blog in blogs)
+            {
+                var folder = string.Format("{0}profiles{1}", GetFolder(blog), Path.DirectorySeparatorChar);
+
+                if (!Directory.Exists(folder))
+                    continue;
+
+                profiles.AddRange(from file in Directory.GetFiles(folder, "*.xml", SearchOption.TopDirectoryOnly)
+                                  select new FileInfo(file)
+                                  into info
+                                  select info.Name.Replace(".xml", string.Empty)
+                                  into username
+                                  select AuthorProfile.Load(username));
+            }
+
+            return profiles;
         }
 
         /// <summary>
@@ -59,12 +75,12 @@
         /// </param>
         public override void InsertProfile(AuthorProfile profile)
         {
-            if (!Directory.Exists(string.Format("{0}profiles", this.Folder)))
+            if (!Directory.Exists(string.Format("{0}profiles", GetFolder(profile.Blog))))
             {
-                Directory.CreateDirectory(string.Format("{0}profiles", this.Folder));
+                Directory.CreateDirectory(string.Format("{0}profiles", GetFolder(profile.Blog)));
             }
 
-            var fileName = string.Format("{0}profiles{1}{2}.xml", this.Folder, Path.DirectorySeparatorChar, profile.Id);
+            var fileName = string.Format("{0}profiles{1}{2}.xml", GetFolder(profile.Blog), Path.DirectorySeparatorChar, profile.Id);
             var settings = new XmlWriterSettings { Indent = true };
 
             using (var writer = XmlWriter.Create(fileName, settings))
@@ -104,8 +120,57 @@
         /// <returns>An AuthorProfile.</returns>
         public override AuthorProfile SelectProfile(string id)
         {
-            var fileName = string.Format("{0}profiles{1}{2}.xml", this.Folder, Path.DirectorySeparatorChar, id);
+            var profile = new AuthorProfile(id);
+
+            if (Blog.CurrentInstance.IsSiteAggregation)
+            {
+                foreach (Blog blog in Blog.Blogs)
+                {
+                    if (blog.IsActive && !blog.IsDeleted)
+                    {
+                        profile = SelectProfile(id, blog);
+
+                        if (profile != null)
+                            return profile;
+                    }
+                }
+            }
+            else
+            {
+                return SelectProfile(id, Blog.CurrentInstance);
+            }
+
+            return profile;
+        }
+
+        /// <summary>
+        /// The update profile.
+        /// </summary>
+        /// <param name="profile">
+        /// The profile.
+        /// </param>
+        public override void UpdateProfile(AuthorProfile profile)
+        {
+            this.InsertProfile(profile);
+        }
+
+        #endregion
+
+        AuthorProfile SelectProfile(string id, Blog blog)
+        {
+            var fileName = string.Format("{0}profiles{1}{2}.xml", GetFolder(blog), Path.DirectorySeparatorChar, id);
+
+            if (blog.IsSiteAggregation && !blog.IsPrimary)
+                fileName = Path.Combine(BlogConfig.StorageLocation, "blogs", blog.Name, "profiles", id + ".xml");
+
             var doc = new XmlDocument();
+
+            if (!File.Exists(fileName))
+            {
+                Utils.Log(string.Format("XmlBlogProvider: can not load profile from \"{0}\"", fileName));
+                return null;
+            }
+
             doc.Load(fileName);
 
             var profile = new AuthorProfile(id);
@@ -130,8 +195,6 @@
                 profile.LastName = doc.SelectSingleNode("//LastName").InnerText;
             }
 
-            // profile.Address1 = doc.SelectSingleNode("//Address1").InnerText;
-            // profile.Address2 = doc.SelectSingleNode("//Address2").InnerText;
             if (doc.SelectSingleNode("//CityTown") != null)
             {
                 profile.CityTown = doc.SelectSingleNode("//CityTown").InnerText;
@@ -195,23 +258,7 @@
             {
                 profile.Private = doc.SelectSingleNode("//IsPrivate").InnerText == "true";
             }
-
-            // page.DateCreated = DateTime.Parse(doc.SelectSingleNode("page/datecreated").InnerText, CultureInfo.InvariantCulture);
-            // page.DateModified = DateTime.Parse(doc.SelectSingleNode("page/datemodified").InnerText, CultureInfo.InvariantCulture);
             return profile;
         }
-
-        /// <summary>
-        /// The update profile.
-        /// </summary>
-        /// <param name="profile">
-        /// The profile.
-        /// </param>
-        public override void UpdateProfile(AuthorProfile profile)
-        {
-            this.InsertProfile(profile);
-        }
-
-        #endregion
     }
 }

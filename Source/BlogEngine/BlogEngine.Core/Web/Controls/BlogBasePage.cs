@@ -80,7 +80,7 @@
                         string.Format(
                             "{0}; charset={1}", Response.ContentType, Response.ContentEncoding.HeaderName)
                 };
-            Page.Header.Controls.Add(meta);
+            Page.Header.Controls.AddAt(0, meta);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(value))
                 return;
 
-            const string tag = "\n<meta name=\"{0}\" content=\"{1}\" />";
+            const string tag = "\n\t<meta name=\"{0}\" content=\"{1}\" />";
             Header.Controls.Add(new LiteralControl(string.Format(tag, name, value)));
         }
 
@@ -138,59 +138,37 @@
 
             if (!Page.IsCallback)
             {
-                // Links
-                AddGenericLink("contents", "Archive", string.Format("{0}archive{1}", relativeWebRoot, BlogConfig.FileExtension));
-                AddGenericLink("start", instanceName, relativeWebRoot);
-                AddGenericLink("application/rdf+xml", "meta", "SIOC", string.Format("{0}sioc.axd", absoluteWebRoot));
-                AddGenericLink("application/apml+xml", "meta", "APML", string.Format("{0}apml.axd", absoluteWebRoot));
-                AddGenericLink("application/rdf+xml", "meta", "FOAF", string.Format("{0}foaf.axd", absoluteWebRoot));
-
-                if (string.IsNullOrEmpty(BlogSettings.Instance.AlternateFeedUrl))
-                {
-                    AddGenericLink(
-                        "application/rss+xml",
-                        "alternate",
-                        string.Format("{0} (RSS)", instanceName),
-                        string.Format("{0}", Utils.FeedUrl));
-                    AddGenericLink(
-                        "application/atom+xml",
-                        "alternate",
-                        string.Format("{0} (ATOM)", instanceName),
-                        string.Format("{0}?format=atom", Utils.FeedUrl));
-                }
-                else
-                {
-                    AddGenericLink("application/rss+xml", "alternate", instanceName, Utils.FeedUrl);
-                }
-
-                AddGenericLink("application/rsd+xml", "edituri", "RSD", string.Format("{0}rsd.axd", absoluteWebRoot));
-
-                AddMetaContentType();
+                var header = new Scripting.PageHeader();
 
                 AddDefaultLanguages();
 
-                if (BlogSettings.Instance.EnableOptimization)
+                header.AddLink("", "contents", "Archive", string.Format("{0}archive{1}", relativeWebRoot, BlogConfig.FileExtension));
+                header.AddLink("", "start", instanceName, relativeWebRoot);
+                header.AddLink("application/rsd+xml", "edituri", "RSD", string.Format("{0}rsd.axd", absoluteWebRoot));
+                header.AddLink("application/rdf+xml", "meta", "SIOC", string.Format("{0}sioc.axd", absoluteWebRoot));
+                header.AddLink("application/apml+xml", "meta", "APML", string.Format("{0}apml.axd", absoluteWebRoot));
+                header.AddLink("application/rdf+xml", "meta", "FOAF", string.Format("{0}foaf.axd", absoluteWebRoot));
+
+                if (string.IsNullOrEmpty(BlogSettings.Instance.AlternateFeedUrl))
                 {
-                    Scripting.Helpers.AddBundledStylesAndScripts(this);
+                    header.AddLink("application/rss+xml", "alternate", string.Format("{0} (RSS)", instanceName), string.Format("{0}", Utils.FeedUrl));
+                    header.AddLink("application/atom+xml", "alternate", string.Format("{0} (ATOM)", instanceName), string.Format("{0}?format=atom", Utils.FeedUrl));
                 }
                 else
                 {
-                    Scripting.Helpers.AddStylesAndScripts(this);
+                    header.AddLink("application/rss+xml", "alternate", instanceName, Utils.FeedUrl);
                 }
-
                 if (BlogSettings.Instance.EnableOpenSearch)
                 {
-                    AddGenericLink(
-                        "application/opensearchdescription+xml",
-                        "search",
-                        instanceName,
-                        string.Format("{0}opensearch.axd", absoluteWebRoot));
+                    header.AddLink("application/opensearchdescription+xml", "search", instanceName, string.Format("{0}opensearch.axd", absoluteWebRoot));
                 }
+                header.Render(this);
+
+                AddMetaContentType();
 
                 Scripting.Helpers.AddCustomCodeToHead(this);
-
                 Scripting.Helpers.AddTrackingScript(this);
-            }       
+            }
         }
 
         /// <summary>

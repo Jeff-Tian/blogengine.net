@@ -196,6 +196,18 @@ namespace BlogEngine.Core
                     link = string.Format("{0}wavatar", gravatar);
                     break;
 
+                case "retro":
+                    link = string.Format("{0}retro", gravatar);
+                    break;
+
+                case "mm":
+                    link = string.Format("{0}mm", gravatar);
+                    break;
+
+                case "blank":
+                    link = string.Format("{0}blank", gravatar);
+                    break;
+
                 default:
                     link = string.Format("{0}monsterid", gravatar);
                     break;

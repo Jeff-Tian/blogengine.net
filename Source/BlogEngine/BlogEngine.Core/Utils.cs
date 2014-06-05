@@ -819,7 +819,7 @@
             int count;
             var userCollection = System.Web.Security.Membership.Provider.GetAllUsers(0, 999, out count);
             var users = userCollection.Cast<System.Web.Security.MembershipUser>().ToList();
-            var user = users.FirstOrDefault(u => u.UserName.Equals(userName));
+            var user = users.FirstOrDefault(u => u.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase));
 
             if(user != null)
             {
@@ -1088,34 +1088,54 @@
         /// <param name="message">
         /// The message.
         /// </param>
+        /// <param name="smtpServer">SMTP server</param>
+        /// <param name="smtpServerPort">SMTP server port</param>
+        /// <param name="smtpUserName">User name</param>
+        /// <param name="smtpPassword">Password</param>
+        /// <param name="enableSsl">Enable SSL</param>
         /// <returns>
         /// Error message, if any.
         /// </returns>
-        public static string SendMailMessage(MailMessage message)
+        public static string SendMailMessage(MailMessage message, string smtpServer = "", string smtpServerPort = "",
+            string smtpUserName = "", string smtpPassword = "", string enableSsl = "")
         {
-            if (message == null)
-            {
-                throw new ArgumentNullException("message");
-            }
-
             StringBuilder errorMsg = new StringBuilder();
+            bool boolSssl = BlogSettings.Instance.EnableSsl;
+            int intPort = BlogSettings.Instance.SmtpServerPort;
+
+            if (message == null)
+                throw new ArgumentNullException("message");
 
             try
             {
+                if (string.IsNullOrEmpty(smtpServer))
+                    smtpServer = BlogSettings.Instance.SmtpServer;
+
+                if (string.IsNullOrEmpty(smtpUserName))
+                    smtpUserName = BlogSettings.Instance.SmtpUserName;
+
+                if (string.IsNullOrEmpty(smtpPassword))
+                    smtpPassword = BlogSettings.Instance.SmtpPassword;
+
+                if (!string.IsNullOrEmpty(smtpServerPort))
+                    intPort = int.Parse(smtpServerPort);
+
+                if (!string.IsNullOrEmpty(enableSsl))
+                    bool.TryParse(enableSsl, out boolSssl);
+
                 message.IsBodyHtml = true;
                 message.BodyEncoding = Encoding.UTF8;
-                var smtp = new SmtpClient(BlogSettings.Instance.SmtpServer);
+                var smtp = new SmtpClient(smtpServer);
 
                 // don't send credentials if a server doesn't require it,
                 // linux smtp servers don't like that 
-                if (!string.IsNullOrEmpty(BlogSettings.Instance.SmtpUserName))
+                if (!string.IsNullOrEmpty(smtpUserName))
                 {
-                    smtp.Credentials = new NetworkCredential(
-                        BlogSettings.Instance.SmtpUserName, BlogSettings.Instance.SmtpPassword);
+                    smtp.Credentials = new NetworkCredential(smtpUserName, smtpPassword);
                 }
 
-                smtp.Port = BlogSettings.Instance.SmtpServerPort;
-                smtp.EnableSsl = BlogSettings.Instance.EnableSsl;
+                smtp.Port = intPort;
+                smtp.EnableSsl = boolSssl;
                 smtp.Send(message);
                 OnEmailSent(message);
             }
@@ -1493,9 +1513,10 @@
                     asm.GetTypes();
                     assemblies.Add(asm);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Log(string.Format("Error loading compiled extensions from assembly {0}: {1}", asm.FullName, ex.Message));
+                    // only use to debug - any third party DLL can through this, not a crytical error
+                    // Log(string.Format("Error loading compiled extensions from assembly {0}: {1}", asm.FullName, ex.Message));
                 }
             }
 

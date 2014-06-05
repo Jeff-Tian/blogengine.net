@@ -1,89 +1,95 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="FileManager.ascx.cs" Inherits="admin_FileManager" %>
 <%@ Import Namespace="BlogEngine.Core" %>
-<link href="<%= Utils.RelativeWebRoot %>admin/FileManager/FileManager.css" rel="Stylesheet" type="text/css" />
-<link href="<%= Utils.RelativeWebRoot %>admin/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
-<script src="<%= Utils.RelativeWebRoot %>admin/uploadify/swfobject.js" type="text/javascript"></script>
-<script src="<%= Utils.RelativeWebRoot %>admin/uploadify/jquery.uploadify.v2.1.4.min.js" type="text/javascript"></script>
+<%@ Import Namespace="System.Web.Optimization" %>
+
+<%if (BlogSettings.Instance.EnableOptimization) { %>
+<link href="<%= BundleTable.Bundles.ResolveBundleUrl("~/Content/filemanager") %>" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%= BundleTable.Bundles.ResolveBundleUrl("~/Scripts/filemanager") %>"></script>
+<% } else { %>
+<link href="<%= Utils.ApplicationRelativeWebRoot %>admin/FileManager/FileManager.css" rel="Stylesheet" type="text/css" />
+<link href="<%= Utils.ApplicationRelativeWebRoot %>admin/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+<script src="<%= Utils.ApplicationRelativeWebRoot %>admin/uploadify/swfobject.js" type="text/javascript"></script>
+<script src="<%= Utils.ApplicationRelativeWebRoot %>admin/uploadify/jquery.uploadify.v2.1.4.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 <link rel="Stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css" />
-<script src="<%= Utils.RelativeWebRoot %>admin/FileManager/jquery.jeegoocontext.min.js" type="text/javascript"></script>
-<link href="<%= Utils.RelativeWebRoot %>admin/FileManager/JCrop/css/jquery.Jcrop.css" rel="stylesheet" type="text/css" />
-<script src="<%= Utils.RelativeWebRoot %>admin/FileManager/JCrop/js/jquery.Jcrop.min.js" type="text/javascript"></script>
-
-<script type="text/javascript" src="<%= Utils.RelativeWebRoot %>admin/FileManager/FileManager-mini.js?v=3"></script>
-            
-        <div id="fmD" class="fmD" style="display:none;">
-            <div class="fmDWrap">
-            <div class="fmD-left">
-                <h1>File Manager</h1>
-                <ul>
-                    <li>
-                        <a href="javascript:;">
-                            <img src="<%= Utils.RelativeWebRoot %>admin/filemanager/images/New-Document-icon.png" height="32px" width="32px" title="Upload a new file" />
-                            Attach a new File.
-                        </a>
-                    </li>
-                    <li class="fmDActive">
-                        <a href="javascript:;">
-                            <img src="<%= Utils.RelativeWebRoot %>admin/filemanager/images/archives.png" height="32px" width="32px" title="Upload a new file" />
-                            File Manager
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" onclick="closefmD();">
-                            <img src="<%= Utils.RelativeWebRoot %>admin/filemanager/images/logout.png" height="32px" width="32px" title="Upload a new file" />
-                            Close
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="fmD-right">
-                <div class="fmD-right-content" >
-                    <div class="fmD-upload">
-                        <h2>Upload File</h2>
-                        <div class="fmD-upload-left">
-                                &nbsp;
-                        </div>
-                        <div class="fmD-upload-right">
-                            <div class="fmD-upload-right-wait">
-                                <p>
-                                    Select the files you wish to upload. When completed these files will be available in the File Manager.<br />
+<script src="<%= Utils.ApplicationRelativeWebRoot %>admin/FileManager/jquery.jeegoocontext.min.js" type="text/javascript"></script>
+<link href="<%= Utils.ApplicationRelativeWebRoot %>admin/FileManager/JCrop/css/jquery.Jcrop.css" rel="stylesheet" type="text/css" />
+<script src="<%= Utils.ApplicationRelativeWebRoot %>admin/FileManager/JCrop/js/jquery.Jcrop.min.js" type="text/javascript"></script>
+<script src="<%= Utils.ApplicationRelativeWebRoot %>admin/FileManager/FileManager-mini.js?v=3" type="text/javascript"></script>
+<% } %>
+           
+<div id="fmD" class="fmD" style="display:none;">
+    <div class="fmDWrap">
+    <div class="fmD-left">
+        <h1>File Manager</h1>
+        <ul>
+            <li>
+                <a href="javascript:;">
+                    <img src="<%= Utils.ApplicationRelativeWebRoot %>admin/filemanager/images/New-Document-icon.png" height="32px" width="32px" title="Upload a new file" />
+                    Attach a new File.
+                </a>
+            </li>
+            <li class="fmDActive">
+                <a href="javascript:;">
+                    <img src="<%= Utils.ApplicationRelativeWebRoot %>admin/filemanager/images/archives.png" height="32px" width="32px" title="Upload a new file" />
+                    File Manager
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" onclick="closefmD();">
+                    <img src="<%= Utils.ApplicationRelativeWebRoot %>admin/filemanager/images/logout.png" height="32px" width="32px" title="Upload a new file" />
+                    Close
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="fmD-right">
+        <div class="fmD-right-content" >
+            <div class="fmD-upload">
+                <h2>Upload File</h2>
+                <div class="fmD-upload-left">
+                        &nbsp;
+                </div>
+                <div class="fmD-upload-right">
+                    <div class="fmD-upload-right-wait">
+                        <p>
+                            Select the files you wish to upload. When completed these files will be available in the File Manager.<br />
                                     
-                                </p>
-                                <strong>...ready</strong>
-                            </div>
-                            <div class="fmD-upload-right-uploading">
-                                Uploading:<span id="fmD_UploadFile"></span>
-                                <div id="fmD_UploadProgress"></div>
-                            </div>
-                        </div>
-                        <div class="fmD-upload-right">
-                            <div class="fmD-upload-ctrl">
-                                <input type="file" id="fmD_upload_file" name="file_upload" />
-                             </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="fmD-upload-options">
-                            <input type="radio" id="fmdUpload_Append" checked="checked" name="fmdUpload_rdo" /><label for="fmdUpload_Append">Append to my document and close</label><br />
-                            <input type="radio" id="fmdUpload_AppendContinue" name="fmdUpload_rdo" /><label for="fmdUpload_AppendContinue">Append to my document and continue</label><br />
-                            <input type="radio" id="fmdUpload_FileManager" name="fmdUpload_rdo" /><label for="fmdUpload_FileManager">Upload and show file in the file manager</label>
-                        </div>
+                        </p>
+                        <strong>...ready</strong>
+                    </div>
+                    <div class="fmD-upload-right-uploading">
+                        Uploading:<span id="fmD_UploadFile"></span>
+                        <div id="fmD_UploadProgress"></div>
                     </div>
                 </div>
-                <div class="fmD-right-content" style="display:block;">
-                    File Manager&nbsp;<img src="<%= Utils.RelativeWebRoot %>admin/filemanager/images/design_wait.gif" height="16px" width="16px" id="dwait" style="border:none;" />
-                    <br />
-                    <div id="Container"></div>
+                <div class="fmD-upload-right">
+                    <div class="fmD-upload-ctrl">
+                        <input type="file" id="fmD_upload_file" name="file_upload" />
+                        </div>
                 </div>
-                <div class="fmD-right-content fmD-right-close">
-                    <div align="center">
-                        Close the file manager dialog
-                    </div>
+                <div class="clear"></div>
+                <div class="fmD-upload-options">
+                    <input type="radio" id="fmdUpload_Append" checked="checked" name="fmdUpload_rdo" /><label for="fmdUpload_Append">Append to my document and close</label><br />
+                    <input type="radio" id="fmdUpload_AppendContinue" name="fmdUpload_rdo" /><label for="fmdUpload_AppendContinue">Append to my document and continue</label><br />
+                    <input type="radio" id="fmdUpload_FileManager" name="fmdUpload_rdo" /><label for="fmdUpload_FileManager">Upload and show file in the file manager</label>
                 </div>
-            </div>
-            <div class="clear"></div>
             </div>
         </div>
+        <div class="fmD-right-content" style="display:block;">
+            File Manager&nbsp;<img src="<%= Utils.ApplicationRelativeWebRoot %>admin/filemanager/images/design_wait.gif" height="16px" width="16px" id="dwait" style="border:none;" />
+            <br />
+            <div id="Container"></div>
+        </div>
+        <div class="fmD-right-content fmD-right-close">
+            <div align="center">
+                Close the file manager dialog
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    </div>
+</div>
 
 <ul id="menu" class="jeegoocontext cm_default">
     <li class="icon" data-action="0">

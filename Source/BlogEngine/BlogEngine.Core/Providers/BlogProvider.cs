@@ -89,7 +89,7 @@
         /// Retrieves all Categories from the provider and returns them in a List.
         /// </summary>
         /// <returns>A list of Category.</returns>
-        public abstract List<Category> FillCategories();
+        public abstract List<Category> FillCategories(Blog blog);
 
         /// <summary>
         /// Retrieves all Pages from the provider and returns them in a List.
@@ -212,7 +212,7 @@
         /// Loads the settings from the provider.
         /// </summary>
         /// <returns>A StringDictionary.</returns>
-        public abstract StringDictionary LoadSettings();
+        public abstract StringDictionary LoadSettings(Blog blog);
 
         /// <summary>
         /// Loads the stop words used in the search feature.
@@ -325,6 +325,16 @@
         /// <param name="newBlog">The new blog instance.</param>
         /// <returns>A boolean indicating if the setup process was successful.</returns>
         public abstract bool SetupBlogFromExistingBlog(Blog existingBlog, Blog newBlog);
+
+        /// <summary>
+        /// Setup new blog
+        /// </summary>
+        /// <param name="newBlog">New blog</param>
+        /// <param name="userName">User name</param>
+        /// <param name="email">Email</param>
+        /// <param name="password">Password</param>
+        /// <returns>True if successful</returns>
+        public abstract bool SetupNewBlog(Blog newBlog, string userName, string email, string password);
 
         /// <summary>
         /// Updates an existing BlogRollItem in the data store specified by the provider.

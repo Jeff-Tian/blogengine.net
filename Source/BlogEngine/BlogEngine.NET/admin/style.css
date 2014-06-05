@@ -101,6 +101,7 @@ select { border: 1px solid #ccc; padding: 4px; color:#555;
     
 label.lbl { display:block; margin:0 0 5px 0;}
 .largeForm label.lbl { font-weight:bold;}
+.largeForm .mainForm {padding:0 40px 0 0; }
 #rolelist .lbl { margin-right:15px;}
 
 .insetHelp {color:#a0a0a0;display:block;font-family:Arial, Sans-Serif;font-size:12px;font-style:italic; margin-left:25px;}
@@ -504,7 +505,7 @@ h2.gallery-hdr {  font-size: 18px; }
 .pkg-installed { background-color: #F9F9F9; }
 .gallery img { border: 0; width: 100px; }
 .pkg-hdr { display: inline-table; width: 340px; }
-.pkg-img { float: left; width: 100px; height: 100px; overflow: hidden; }
+.pkg-img { float: left; width: 100px; height: 78px; overflow: hidden; }
 .prop-hdr { display: inline-table; width: 220px; float: right; height: 100px; }
 .prop-hdr p.package-installed, .prop-hdr p.package-update { padding-left: 20px; }
 .loader2, .page-loader { margin: 0; padding: 0; border: 0; width: 18px !important; height: 18px; position: relative; top: 4px; left: 5px; }
@@ -631,5 +632,10 @@ span.AlternatePageTabSelected {
 {
     border: 1px solid #ccc;
     width: 40px;
-    margin-right: 30px;
+    margin-right: 54px;
+}
+
+.avatar-radio-button td
+{
+    width: 96px;
 }

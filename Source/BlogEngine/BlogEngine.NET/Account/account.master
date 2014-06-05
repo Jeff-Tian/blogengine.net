@@ -8,7 +8,7 @@
     <title>Account Login</title>
     <meta name="description" content="Account Login Membership User Password" />
     <link href="account.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../Scripts/jQuery/01-jquery.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="account.js"></script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
 </head>

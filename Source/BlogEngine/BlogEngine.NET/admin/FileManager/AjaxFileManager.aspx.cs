@@ -228,7 +228,7 @@ public partial class admin_AjaxFileManager : System.Web.UI.Page
             response.Message = "Access denied";
             return response;
         }
-        var rwr = Utils.RelativeWebRoot;
+        var rwr = Utils.ApplicationRelativeWebRoot;
         List<FileInstance> list = new List<FileInstance>();
         var directory = BlogService.GetDirectory(path);
         if (!directory.IsRoot)

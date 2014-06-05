@@ -54,7 +54,7 @@
                 return;
             }
 
-            this.Master.SetStatus("warning", "Login failed");
+            this.Master.SetStatus("warning", Resources.labels.loginFailed);
         }
 
         protected void LoginUser_OnAuthenticate(object sender, AuthenticateEventArgs e)

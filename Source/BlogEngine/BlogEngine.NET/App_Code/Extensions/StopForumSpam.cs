@@ -11,7 +11,7 @@
     /// <summary>
     /// StopForumSpam.com custom comment filter
     /// </summary>
-    [Extension("Checks comment against stopforumspam.com spammers list.", "1.0", "BlogEngine.NET")]
+    [Extension("Checks comment against stopforumspam.com spammers list.", "1.0", "BlogEngine.NET", 0, false)]
     public class StopForumSpam : ICustomFilter
     {
         #region Constants and Fields

@@ -179,6 +179,9 @@
             {
                 if (filterName == m || spamMissedByAll)
                 {
+                    if (!ExtensionManager.ExtensionEnabled(ExtensionNameFromClassName(filterName)))
+                        continue;
+
                     var customFilter = GetCustomFilter(filterName);
 
                     if (customFilter != null)
@@ -542,6 +545,10 @@
             foreach (DataRowView row in dt.DefaultView)
             {
                 var filterName = row[0].ToString();
+
+                if (!ExtensionManager.ExtensionEnabled(ExtensionNameFromClassName(filterName)))
+                    continue;
+
                 var customFilter = GetCustomFilter(filterName);
 
                 if (customFilter == null || !customFilter.Initialize())
@@ -603,6 +610,11 @@
             }
 
             ExtensionManager.SaveSettings("MetaExtension", customFilters);
+        }
+
+        private static string ExtensionNameFromClassName(string className)
+        {
+            return className.Contains(".") ? className.Substring(className.LastIndexOf(".") + 1) : className;
         }
 
         #endregion

@@ -280,7 +280,8 @@ function setupBlogEngineCalendar() {{
   }};
 }}
 </script>",
-                this.Page.ClientScript.GetCallbackEventReference(this, "date", "BlogEngine.updateCalendar", "date"));
+            this.Page.ClientScript.GetCallbackEventReference(this, "date", "BlogEngine.updateCalendar", "date"));
+            this.Page.ClientScript.RegisterStartupScript(this.Page.GetType(), "calendarinit", BlogEngine.Core.Web.Scripting.Helpers.FormatInlineScript("BlogEngine.addLoadEvent(setupBlogEngineCalendar);"), false);
 
             /*
             ");

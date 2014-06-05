@@ -5,6 +5,7 @@
   <Description>Settings for the Recaptcha control</Description>
   <Enabled>false</Enabled>
   <Priority>0</Priority>
+  <SubBlogEnabled>true</SubBlogEnabled>
   <Settings>
     <Delimiter>44</Delimiter>
     <Help>
@@ -127,6 +128,7 @@ You can create your own public key at &lt;a href='http://www.Recaptcha.net'&gt;h
     <ShowAdd>true</ShowAdd>
     <ShowDelete>true</ShowDelete>
     <ShowEdit>true</ShowEdit>
+    <BlogId>96d5b379-7e1d-4dac-a6ba-1e50db561b04</BlogId>
   </Settings>
   <Settings>
     <Delimiter>44</Delimiter>
@@ -211,6 +213,7 @@ You can create your own public key at &lt;a href='http://www.Recaptcha.net'&gt;h
     <ShowAdd>true</ShowAdd>
     <ShowDelete>true</ShowDelete>
     <ShowEdit>true</ShowEdit>
+    <BlogId>96d5b379-7e1d-4dac-a6ba-1e50db561b04</BlogId>
   </Settings>
   <ShowSettings>true</ShowSettings>
   <Version>1.1</Version>

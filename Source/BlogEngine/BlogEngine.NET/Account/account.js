@@ -102,6 +102,14 @@ function ValidateNewUser() {
     return true;
 }
 
+function ValidateNewBlog() {
+    if ($("[id$='UserName']").val().length == 0) {
+        ShowStatus('warning', accountResources.userNameIsRequired);
+        return false;
+    }
+    return true;
+}
+
 function ValidateEmail(email) {
     var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     return reg.test(email);

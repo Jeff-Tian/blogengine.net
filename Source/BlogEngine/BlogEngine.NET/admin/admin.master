@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="admin.master.cs" Inherits="Admin.AdminMasterPage" %>
+
 <%@ Register Src="menu.ascx" TagName="menu" TagPrefix="uc1" %>
 <%@ Import Namespace="BlogEngine.Core" %>
 <%@ Import Namespace="System.Web.Optimization" %>
@@ -7,12 +8,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" style="height: 100%;">
 <head id="Head1" runat="server">
     <title>BlogEngine.NET Admin</title>
-    <% if (BlogSettings.Instance.EnableOptimization) { %>
-    <link href="<%# BundleTable.Bundles.ResolveBundleUrl("~/admin/css")%>" rel="stylesheet" type="text/css" />
+    <%if (BlogSettings.Instance.EnableOptimization) { %>
+    <link href="<%= BundleTable.Bundles.ResolveBundleUrl("~/admin/css") %>" rel="stylesheet" type="text/css" />
+    <% } else { %>
+    <% if (Utils.GetDefaultCulture().TextInfo.IsRightToLeft) { %>
+    <link href="~/admin/style-rtl.css" rel="stylesheet" type="text/css" />
     <% } else { %>
     <link href="~/admin/style.css" rel="stylesheet" type="text/css" />
+    <% } %>
     <link href="~/admin/colorbox.css" rel="stylesheet" type="text/css" />
-    <link href="~/admin/tipsy.css" rel="stylesheet" type="text/css" />  
+    <link href="~/admin/tipsy.css" rel="stylesheet" type="text/css" />
     <% } %>
     <link rel="shortcut icon" href="~/pics/blogengine.ico" type="image/x-icon" />
 </head>
@@ -25,14 +30,18 @@
         };
     </script>
     <script type="text/javascript" src="admin.res.axd"></script>
-    <% if (BlogSettings.Instance.EnableOptimization) { %>
-    <script type="text/javascript" src="<%= BundleTable.Bundles.ResolveBundleUrl("~/admin/js") %>"></script>
-    <% } else { %>
-    <script type="text/javascript" src="<%=Utils.ApplicationRelativeWebRoot %>Scripts/jQuery/01-jquery.js"></script>
-    <script type="text/javascript" src="<%=Utils.ApplicationRelativeWebRoot %>Scripts/jQuery/02-jquery.cookie.js"></script>
-    <script type="text/javascript" src="<%=Utils.ApplicationRelativeWebRoot %>Scripts/jQuery/03-jquery.validate.min.js"></script>
-    <script type="text/javascript" src="<%=Utils.ApplicationRelativeWebRoot %>Scripts/jQuery/04-jquery-jtemplates.js"></script>
-    <script type="text/javascript" src="<%=Utils.ApplicationRelativeWebRoot %>Scripts/jQuery/05-json2.js"></script>
+
+    <% if (BlogSettings.Instance.EnableOptimization)
+       { %>
+    <script type="text/javascript" src="<%= BundleTable.Bundles.ResolveBundleUrl("~/Scripts/adminjs") %>"></script>
+    <% }
+       else
+       { %>
+    <script type="text/javascript" src="<%=Utils.ApplicationRelativeWebRoot %>Scripts/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="<%=Utils.ApplicationRelativeWebRoot %>Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="<%=Utils.ApplicationRelativeWebRoot %>Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="<%=Utils.ApplicationRelativeWebRoot %>Scripts/jquery-jtemplates.min.js"></script>
+    <script type="text/javascript" src="<%=Utils.ApplicationRelativeWebRoot %>Scripts/json2.min.js"></script>
     <script type="text/javascript" src="<%=Utils.ApplicationRelativeWebRoot %>admin/admin.js"></script>
     <% } %>
     <div class="page">
@@ -51,24 +60,26 @@
                     | <a href="<%=Utils.RelativeWebRoot %>admin/Users/Profile.aspx?id=<%=Page.User.Identity.Name %>"><%=Resources.labels.myProfile %></a>
                     | <a href="<%=Utils.RelativeWebRoot %>"><%=Resources.labels.goToFrontPage %></a>
                     | <a runat="server" id="aLogin" />
-                </div>                                 
+                </div>
             </div>
-            
+
             <div class="tabs toprounded">
                 <uc1:menu ID="Menu1" runat="server" />
-                <asp:PlaceHolder ID="phRecycleBin" runat="server"><div id="recyclebin"><a class="<%=RecycleClass()%>" href="<%=Utils.RelativeWebRoot %>admin/Trash.aspx"></a></div></asp:PlaceHolder>
+                <asp:PlaceHolder ID="phRecycleBin" runat="server">
+                    <div id="recyclebin"><a class="<%=RecycleClass()%>" href="<%=Utils.RelativeWebRoot %>admin/Trash.aspx"></a></div>
+                </asp:PlaceHolder>
             </div>
             <div class="clear"></div>
-            <div>  
+            <div>
                 <asp:ContentPlaceHolder ID="cphAdmin" runat="server" />
-	        </div>
+            </div>
 
             <div id="footer">
                 <a href="http://dotnetblogengine.net">BlogEngine.NET <%=BlogSettings.Instance.Version() %></a> | 
-                <a id="donate" href="http://dotnetblogengine.net/Donate.aspx" target="_new"><%=Resources.labels.makeDonation %></a>          
+                <a id="donate" href="http://dotnetblogengine.net/Donate.aspx" target="_new"><%=Resources.labels.makeDonation %></a>
             </div>
 
-        </form>    
+        </form>
     </div>
 </body>
 </html>

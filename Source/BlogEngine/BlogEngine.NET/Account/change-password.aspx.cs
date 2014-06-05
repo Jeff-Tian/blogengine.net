@@ -4,6 +4,7 @@
     using System.Web.Security;
     using System.Web.UI;
     using BlogEngine.Core;
+    using Resources;
 
     /// <summary>
     /// The account change password.
@@ -19,7 +20,7 @@
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         protected void ChangePasswordPushButton_Click(object sender, EventArgs e)
         {
-            Master.SetStatus("warning", "Password was not changed");
+            Master.SetStatus("warning", Resources.labels.passwordNotChanged);
         }
 
         /// <summary>

@@ -160,6 +160,12 @@
             }
             else if (urlContainsFileExtension && url.Contains("/CALENDAR/"))
             {
+                if (url.Contains(".PNG") || url.Contains(".JPG") || url.Contains(".GIF"))
+                {
+                    // do not rewrite path to images, for example
+                    // leave alone /widgets/calendar/screenshot.png
+                    return;
+                }
                 UrlRules.RewriteCalendar(context, url);
             }
             else if (urlContainsFileExtension && UrlRules.DefaultPageRequested(context))

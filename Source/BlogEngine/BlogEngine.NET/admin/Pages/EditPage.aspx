@@ -6,6 +6,8 @@ ValidateRequest="false" CodeFile="EditPage.aspx.cs" Inherits="Admin.Pages.EditPa
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphAdmin" runat="Server">
     <script type="text/javascript">
+        var postId = Querystring('id');
+
         function GetSlug() {
             var title = document.getElementById('<%=txtTitle.ClientID %>').value;
             WebForm_DoCallback('__Page', title, ApplySlug, 'slug', null, false)
@@ -35,7 +37,7 @@ ValidateRequest="false" CodeFile="EditPage.aspx.cs" Inherits="Admin.Pages.EditPa
             var parent = $("[id$='ddlParent'] option:selected").val();
 
             var dto = {
-                "id": Querystring('id'),
+                "id": postId,
                 "content": content,
                 "title": title,
                 "description": description,
@@ -59,11 +61,8 @@ ValidateRequest="false" CodeFile="EditPage.aspx.cs" Inherits="Admin.Pages.EditPa
                 success: function (result) {
                     var rt = result.d;
                     if (rt.Success) {
-                        if (rt.Data) {
-                            window.location.href = rt.Data;
-                        } else {
-                            ShowStatus("success", rt.Message);
-                        }
+                        ShowStatus("success", rt.Message);
+                        postId = rt.Data;
                     }
                     else
                         ShowStatus("warning", rt.Message);
@@ -156,7 +155,7 @@ ValidateRequest="false" CodeFile="EditPage.aspx.cs" Inherits="Admin.Pages.EditPa
             <h1><%=Resources.labels.editPage %></h1>
             <table class="tblForm largeForm" style="width:100%; margin:0;">
                 <tr>
-                    <td style="vertical-align:top; padding:0 40px 0 0;">
+                    <td style="vertical-align:top;" class="mainForm">
                         <ul class="fl">
                             <li>
                                 <label class="lbl" for="<%=txtTitle.ClientID %>">

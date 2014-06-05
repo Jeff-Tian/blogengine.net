@@ -59,6 +59,8 @@ namespace BlogEngine.Tests.Posts
             editPost.UploadVideo(ie, filePath);
                         
             editPost.Save.Click();
+            ie.GoTo(Constants.Root);
+
             ie.WaitUntilContainsText(TheTestPost);
 
             Assert.IsTrue(ie.Html.Contains("sample.png"));

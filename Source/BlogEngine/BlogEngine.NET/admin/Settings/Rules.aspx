@@ -35,7 +35,6 @@
 			<menu:TabMenu ID="TabMenu1" runat="server" />
 		</div>
 		<div class="content-box-left">
-            <% if(BlogEngine.Core.Blog.CurrentInstance.IsPrimary){ %>
             <div class="rightligned-top action_buttons">
                 <asp:Button runat="server" class="btn primary" ID="btnSave" Text="Save settings" />
                 <span class="loader">&nbsp;</span>
@@ -189,11 +188,7 @@
             <div class="rightligned-bottom action_buttons">
                 <asp:Button runat="server" class="btn primary" ID="btnSave2" Text="Save settings" />
                 <span class="loader">&nbsp;</span>
-            </div>
-            <% } else { %>
-            <div class="info">Only available on application level (for primary blog).</div>
-            <% } %>
-            
+            </div>           
 		</div>
 	</div> 
 

@@ -124,6 +124,8 @@ namespace Admin.Pages
             if (!this.Page.IsPostBack && !this.Page.IsCallback)
             {
                 this.Page.ClientScript.GetCallbackEventReference(this, "title", "ApplyCallback", "slug");
+                //txtTitle.Attributes.Add("onfocus", "this.select()");
+                txtTitle.Focus();
             }
         }
 

@@ -7,6 +7,7 @@
     using System.Reflection;
     using System.Web.Hosting;
     using System.IO;
+    using System.Runtime.Serialization.Formatters.Binary;
 
     /// <summary>
     /// Serializable object that holds extension,
@@ -105,6 +106,12 @@
         public int Priority { get; set; }
 
         /// <summary>
+        ///     True if extenstion properties enabled in sub-blog
+        /// </summary>
+        [XmlElement]
+        public bool SubBlogEnabled { get; set; }
+
+        /// <summary>
         ///     Gets or sets Settings for the extension
         /// </summary>
         [XmlElement(IsNullable = true)]
@@ -112,11 +119,55 @@
         {
             get
             {
+                if (!Blog.CurrentInstance.IsPrimary && SubBlogEnabled)
+                {
+                    if (!settings.Any(xset => xset.BlogId == Blog.CurrentInstance.Id))
+                    {
+                        var primId = Blog.Blogs.FirstOrDefault(b => b.IsPrimary).BlogId;
+
+                        List<ExtensionSettings> newSets = GenericHelper<List<ExtensionSettings>>.Copy(
+                            settings.Where(setItem => setItem.BlogId == primId || setItem.BlogId == null).ToList());
+                      
+                        foreach (var setItem in newSets)
+                        {
+                            setItem.BlogId = Blog.CurrentInstance.Id;
+                            settings.Add(setItem);
+                        }
+                    }
+                }
                 return settings;
             }
             set
             {
                 settings = value;
+            }
+        }
+
+        /// <summary>
+        /// Blog specific extension settings
+        /// </summary>
+        [XmlIgnore]
+        public List<ExtensionSettings> BlogSettings
+        {
+            get
+            {
+                var primId = Blog.Blogs.FirstOrDefault(b => b.IsPrimary).BlogId;
+
+                if (!Blog.CurrentInstance.IsPrimary && SubBlogEnabled)
+                {
+                    if (!settings.Any(xset => xset.BlogId == Blog.CurrentInstance.Id))
+                    {
+                        List<ExtensionSettings> newSets = GenericHelper<List<ExtensionSettings>>.Copy(
+                            settings.Where(setItem => setItem.BlogId == primId || setItem.BlogId == null).ToList());
+
+                        foreach (var setItem in newSets)
+                        {
+                            setItem.BlogId = Blog.CurrentInstance.Id;
+                            settings.Add(setItem);
+                        }
+                    }
+                }
+                return settings.Where(s => s.BlogId == primId || s.BlogId == null).ToList();
             }
         }
 
@@ -196,13 +247,33 @@
                 extensionSettings.Name = this.Name;
             }
 
-            foreach (var setItem in this.settings.Where(setItem => setItem.Name == extensionSettings.Name))
+            if (!Blog.CurrentInstance.IsPrimary && SubBlogEnabled)
             {
-                this.settings.Remove(setItem);
-                break;
+                // update settings for sub-blog
+                foreach (var setItem in this.settings.Where(
+                    setItem => setItem.Name == extensionSettings.Name && 
+                        setItem.BlogId == extensionSettings.BlogId))
+                {
+                    this.settings.Remove(setItem);
+                    break;
+                }
             }
+            else
+            {
+                // update settings for primary blog
+                var primId = Blog.Blogs.FirstOrDefault(b => b.IsPrimary).BlogId;
+                extensionSettings.BlogId = primId;
 
-            this.settings.Add(extensionSettings);
+                foreach (var setItem in this.settings.Where(
+                    setItem => setItem.Name == extensionSettings.Name && 
+                        (setItem.BlogId == primId || setItem.BlogId == null)))
+                {
+                    this.settings.Remove(setItem);
+                    break;
+                }
+            }
+            settings.Add(extensionSettings);
+           
 			this.settings.Sort((s1, s2) => string.Compare(s1.Index.ToString(), s2.Index.ToString()));
         }
 
@@ -240,7 +311,29 @@
             return filename;
         }
 
-
         #endregion
+    }
+
+    /// <summary>
+    /// Helper class
+    /// </summary>
+    /// <typeparam name="T">Object type</typeparam>
+    public static class GenericHelper<T>
+    {
+        /// <summary>
+        /// To copy collection by value
+        /// </summary>
+        /// <param name="objectToCopy">Object to copy from</param>
+        /// <returns>New object, as oppose to object reference</returns>
+        public static T Copy(object objectToCopy)
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                binaryFormatter.Serialize(memoryStream, objectToCopy);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                return (T)binaryFormatter.Deserialize(memoryStream);
+            }
+        }
     }
 }

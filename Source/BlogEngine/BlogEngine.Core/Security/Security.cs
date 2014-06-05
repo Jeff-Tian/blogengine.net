@@ -65,6 +65,9 @@ namespace BlogEngine.Core
                 }
                 catch (Exception ex)
                 {
+                    context.Request.Cookies.Remove(FormsAuthCookieName);
+                    authTicket = null;
+
                     Utils.Log("Failed to decrypt the FormsAuthentication cookie.", ex);
                 }
 

@@ -88,7 +88,7 @@
 		    <div class="content-box-right">
                 <ul>
                     <% if (BlogEngine.Core.Security.IsAuthorizedTo(BlogEngine.Core.Rights.EditOtherUsersRoles)) { %>
-			        <li><a href="#" class="new"><%=Resources.labels.addNewRole %></a></li>
+			        <%--<li><a href="#" class="new"><%=Resources.labels.addNewRole %></a></li>--%>
                     <li><a href="Users.aspx"><%=Resources.labels.users%></a></li>
 			        <li><a href="Roles.aspx" class="selected"><%=Resources.labels.roles%></a></li>
                     <% } %>

@@ -143,10 +143,6 @@
             };
         }
 
-        #endregion
-
-        #region Properties
-
         /// <summary>
         ///     Gets an unsorted list of all pages.
         /// </summary>
@@ -154,25 +150,19 @@
         {
             get
             {
-                Blog blog = Blog.CurrentInstance;
+                if (profiles == null)
+                    profiles = new Dictionary<Guid, List<AuthorProfile>>();
 
-                if (profiles == null || !profiles.ContainsKey(blog.Id))
-                {
-                    lock (SyncRoot)
-                    {
-                        if (profiles == null || !profiles.ContainsKey(blog.Id))
-                        {
-                            if (profiles == null)
-                                profiles = new Dictionary<Guid, List<AuthorProfile>>();
+                if (!profiles.ContainsKey(Blog.CurrentInstance.Id))
+                    profiles.Add(Blog.CurrentInstance.Id, BlogService.FillProfiles());
 
-                            profiles[blog.Id] = BlogService.FillProfiles();
-                        }
-                    }
-                }
-
-                return profiles[blog.Id];
+                return profiles[Blog.CurrentInstance.Id];
             }
         }
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
         /// Gets or sets AboutMe.
@@ -548,6 +538,15 @@
             }
 
             return j;
+        }
+
+        /// <summary>
+        /// Removes profile for a specific blog
+        /// </summary>
+        /// <param name="blogId">Blog ID</param>
+        public static void RemoveProfile(Guid blogId)
+        {
+            profiles.Remove(blogId);
         }
 
         #endregion

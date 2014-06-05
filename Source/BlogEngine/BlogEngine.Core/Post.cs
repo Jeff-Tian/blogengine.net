@@ -281,7 +281,7 @@
                 }
 
                 postsAcrossAllBlogs.Sort();
-                
+
                 // do not call AddRelations(). that will change the Next/Previous properties
                 // to point to posts in other blogs, which leads to the Next / Previous
                 // posts pointing to posts in other blog instances when viewing a single post
@@ -342,17 +342,6 @@
                 }
 
                 return blogPosts;
-            }
-        }
-
-        /// <summary>
-        ///     Gets the absolute link to the post.
-        /// </summary>
-        public Uri AbsoluteLink
-        {
-            get
-            {
-                return new Uri(this.Blog.AbsoluteWebRootAuthority + this.RelativeLink);
             }
         }
 
@@ -561,7 +550,18 @@
         }
 
         /// <summary>
-        ///     Gets or sets the views for the post.
+        ///     Gets the absolute link to the post.
+        /// </summary>
+        public Uri AbsoluteLink
+        {
+            get
+            {
+                return new Uri(this.Blog.AbsoluteWebRootAuthority + this.RelativeLink);
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the views for the posts.
         ///     <remarks>jeff@zizhujy.com</remarks>
         /// </summary>
         public int Views
@@ -584,18 +584,24 @@
         {
             get
             {
-                var theslug = Utils.RemoveIllegalCharacters(this.Slug) + BlogConfig.FileExtension;
-
                 // taking into account aggregated posts
                 var settings = BlogSettings.GetInstanceSettings(Blog);
+                var ext = string.IsNullOrEmpty(BlogConfig.FileExtension) ? ".aspx" : BlogConfig.FileExtension;
+
+                var theslug = Utils.RemoveIllegalCharacters(this.Slug);
+                if (!settings.RemoveExtensionsFromUrls)
+                    theslug += ext;
+
+                var BlogUrl = "";
+                if (this.BlogId != Blog.CurrentInstance.Id)
+                {
+                    // point it to child blog
+                    BlogUrl = this.Blog.Name + "/";
+                }
 
                 return settings.TimeStampPostLinks
-                           ? string.Format(
-                               "{0}post/{1}{2}",
-                               this.Blog.RelativeWebRoot,
-                               this.DateCreated.ToString("yyyy/MM/dd/", CultureInfo.InvariantCulture),
-                               theslug)
-                           : string.Format("{0}post/{1}", Utils.RelativeWebRoot, theslug);
+                    ? string.Format("{0}{1}post/{2}{3}", Blog.RelativeWebRoot, BlogUrl, DateCreated.ToString("yyyy/MM/dd/", CultureInfo.InvariantCulture), theslug)
+                    : string.Format("{0}{1}post/{2}", Utils.RelativeWebRoot, BlogUrl, theslug);
             }
         }
 
@@ -608,20 +614,7 @@
         {
             get
             {
-                var returnLink = Blog.DoesHostnameDifferFromSiteAggregationBlog ? AbsoluteLink.ToString() : RelativeLink;
-
-                // when list blog posts for aggregate blog, current instance
-                // points to aggregate blog, so need to compensate for
-                // currently processed blog if it is a child/sub blog
-                var settings = BlogSettings.GetInstanceSettings(Blog);
-
-                // if in aggregate blog file extension set to be removed
-                // but child blog still votes to have it, add extension back
-                var ext = string.IsNullOrEmpty(BlogConfig.FileExtension) ? ".aspx" : BlogConfig.FileExtension;
-                if (!settings.RemoveExtensionsFromUrls && !returnLink.EndsWith(ext))
-                    returnLink += ext;
-
-                return settings.RemoveExtensionsFromUrls ? returnLink.Replace(ext, "") : returnLink;
+                return Blog.DoesHostnameDifferFromSiteAggregationBlog ? AbsoluteLink.ToString() : RelativeLink;
             }
         }
 
@@ -633,7 +626,7 @@
         {
             get
             {
-                return string.IsNullOrEmpty(this.slug) ? Utils.RemoveIllegalCharacters(this.Title) : this.slug;
+                return this.slug;
             }
 
             set
@@ -934,7 +927,7 @@
         public static List<Post> GetPostsByAuthor(string author)
         {
             var legalAuthor = Utils.RemoveIllegalCharacters(author);
-            var list = Posts.FindAll(
+            var list = ApplicablePosts.FindAll(
                 p =>
                 {
                     var legalTitle = Utils.RemoveIllegalCharacters(p.Author);
@@ -942,6 +935,24 @@
                 });
 
             return list;
+        }
+
+        /// <summary>
+        /// Get blog by author
+        /// </summary>
+        /// <param name="author">Post author</param>
+        /// <returns>Blog if author wrote any posts there</returns>
+        public static Blog GetBlogByAuthor(string author)
+        {
+            var legalAuthor = Utils.RemoveIllegalCharacters(author);
+            var post = ApplicablePosts.FirstOrDefault(
+                p =>
+                {
+                    var legalTitle = Utils.RemoveIllegalCharacters(p.Author);
+                    return legalAuthor.Equals(legalTitle, StringComparison.OrdinalIgnoreCase);
+                });
+
+            return post == null ? null : post.Blog;
         }
 
         /// <summary>
@@ -955,8 +966,37 @@
         /// </returns>
         public static List<Post> GetPostsByCategory(Guid categoryId)
         {
-            var cat = Category.GetCategory(categoryId);
-            var col = Posts.FindAll(p => p.Categories.Contains(cat));
+            var cat = Category.GetCategory(categoryId, Blog.CurrentInstance.IsSiteAggregation);
+            return GetPostsByCategory(cat);
+        }
+
+        /// <summary>
+        /// Returns all posts in the specified category
+        /// </summary>
+        /// <param name="cat">Category objuect</param>
+        /// <returns>A list of posts</returns>
+        public static List<Post> GetPostsByCategory(Category cat)
+        {
+            if (cat == null)
+            {
+                return null;
+            }
+            var col = new List<Post>();
+            foreach (var p in Post.ApplicablePosts)
+            {
+                foreach (var c in p.Categories)
+                {
+                    if (Blog.CurrentInstance.IsSiteAggregation)
+                    {
+                        if (c.Title == cat.Title) col.Add(p);
+                    }
+                    else
+                    {
+                        if (c.Title == cat.Title && c.Id == cat.Id) col.Add(p);
+                    }
+                }
+            }
+            //var col = Post.ApplicablePosts.Where(p => p.Categories.Contains(cat)).ToList();
             col.Sort();
             return col;
         }
@@ -1109,7 +1149,28 @@
         }
 
         /// <summary>
-        /// Increase the views to the post. 
+        /// Check if slug is unique and if not generate it
+        /// </summary>
+        /// <param name="slug">Post slug</param>
+        /// <param name="postId">Post id</param>
+        /// <returns>Slug that is unique across blogs</returns>
+        public static string GetUniqueSlug(string slug, Guid postId)
+        {
+            string s = Utils.RemoveIllegalCharacters(slug.Trim());
+
+            // will do for up to 100 unique post titles
+            for (int i = 1; i < 101; i++)
+            {
+                if (IsUniqueSlug(s, postId))
+                    break;
+
+                s = string.Format("{0}{1}", slug, i);
+            }
+            return s;
+        }
+
+        /// <summary>
+        /// Increase the views to the post.
         /// <remarks>jeff@zizhujy.com</remarks>
         /// </summary>
         public void View()
@@ -1795,6 +1856,18 @@
                 mail.To.Add(email);
                 Utils.SendMailMessageAsync(mail);
             }
+        }
+
+        /// <summary>
+        /// Check if post slug is unique accross all blogs
+        /// </summary>
+        /// <param name="slug">Post slug</param>
+        /// <param name="postId">Post id</param>
+        /// <returns>True if unique</returns>
+        private static bool IsUniqueSlug(string slug, Guid postId)
+        {
+            return Post.ApplicablePosts.Where(p => p.slug.ToLower() == slug.ToLower()
+                && p.Id != postId).FirstOrDefault() == null ? true : false;
         }
 
         #endregion

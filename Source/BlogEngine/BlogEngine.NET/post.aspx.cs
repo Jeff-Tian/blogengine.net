@@ -35,7 +35,7 @@ public partial class post : BlogEngine.Core.Web.Controls.BlogBasePage
         if ((!Utils.StringIsNullOrWhitespace(requestId)) && requestId.TryParse(out id))
         {
 
-            Post post = Post.GetPost(id);
+            Post post = Post.ApplicablePosts.Find(p => p.Id == id);
 
             if (post != null)
             {

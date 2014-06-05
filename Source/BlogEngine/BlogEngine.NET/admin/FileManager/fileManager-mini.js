@@ -90,16 +90,16 @@ $(document).ready(function () {
             });
         }
     });
-    $('tr.fmDRow td').live('dblclick', function () {
+    $(document).on("dblclick","tr.fmDRow td", function(){
         var p = $(this).parent('tr');
         if (parseInt(p.attr('data-type')) == 0) {
             Files(p.attr('data-path'));
         }
     });
-    $('tr.fmDRow td input[type=text]').live('click', function (e) {
+    $(document).on("click", 'tr.fmDRow td input[type=text]', function () {
         e.stopPropagation();
     });
-    $('.fmdPathPiece').live('click', function () {
+    $(document).on("click",".fmdPathPiece", function(){
         Files($(this).attr('data-path'));
 
     });
