@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using BlogEngine.Core;
 using System.Text.RegularExpressions;
 
@@ -11,6 +12,10 @@ public partial class StandardSite : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (HeadContent == null)
+        {
+            HeadContent = new ContentPlaceHolder();
+        }
 
         // for supported of RTL languages
         if (Resources.labels.LangDirection.Equals("rtl", StringComparison.OrdinalIgnoreCase))

@@ -11983,6 +11983,12 @@
                 The rating.
             </summary>
         </member>
+        <member name="F:BlogEngine.Core.Post.views">
+            <summary>
+                The post views;
+                <remarks>jeff@zizhujy.com</remarks>
+            </summary>
+        </member>
         <member name="F:BlogEngine.Core.Post.slug">
             <summary>
                 The slug of the post.
@@ -12135,6 +12141,12 @@
             <param name="slug">Post slug</param>
             <param name="postId">Post id</param>
             <returns>Slug that is unique across blogs</returns>
+        </member>
+        <member name="M:BlogEngine.Core.Post.View">
+            <summary>
+            Increase the views to the post.
+            <remarks>jeff@zizhujy.com</remarks>
+            </summary>
         </member>
         <member name="M:BlogEngine.Core.Post.ToString">
             <summary>
@@ -12581,6 +12593,12 @@
         <member name="P:BlogEngine.Core.Post.AbsoluteLink">
             <summary>
                 Gets the absolute link to the post.
+            </summary>
+        </member>
+        <member name="P:BlogEngine.Core.Post.Views">
+            <summary>
+                Gets or sets the views for the posts.
+                <remarks>jeff@zizhujy.com</remarks>
             </summary>
         </member>
         <member name="P:BlogEngine.Core.Post.RelativeLink">
