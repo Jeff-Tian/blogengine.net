@@ -1,6 +1,0 @@
-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-Date: 2014/6/5 18:14:23
-Error loading compiled assemblies: Could not load file or assembly 'file:///C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.NET\bin\SQLite.Interop.dll' or one of its dependencies. The module was expected to contain an assembly manifest.
-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-Date: 2014/6/5 18:18:18
-Error loading compiled assemblies: Could not load file or assembly 'file:///C:\Users\Jeff.Tian\blogengine.net\Source\BlogEngine\BlogEngine.NET\bin\SQLite.Interop.dll' or one of its dependencies. The module was expected to contain an assembly manifest.
