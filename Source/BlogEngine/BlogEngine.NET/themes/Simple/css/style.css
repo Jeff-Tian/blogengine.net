@@ -408,6 +408,11 @@ div.post .pubDate {
 }
 
 div.post .text {
+    font-size: larger;
+}
+
+div.post .text img {
+    max-width: 100%;
 }
 
 div.post .text h2 {

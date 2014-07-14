@@ -31,7 +31,7 @@
                         <li>
                             <blog:MobileThemeSwitch ID="MobileThemeSwitch1" runat="server" /></li>
                         <%
-                         }
+                           }
                         %>
                     </ul>
                     <ul class="menu" style="float: right; right: 0">
