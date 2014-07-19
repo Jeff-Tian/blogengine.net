@@ -417,10 +417,25 @@ public class ExcerptImages : BlogParser.ISubscriber
                 if (image != null)
                 {
 
-                    if (Security.IsAuthenticated && !String.IsNullOrEmpty(image.File) && image.File[0] == '\0') // See if error from GetSmallFile and send back
+                    if (!String.IsNullOrEmpty(image.File) && image.File[0] == '\0') // See if error from GetSmallFile and send back
                     {
-                        string r = image.File.Replace("\0", String.Empty);
-                        return "\">" + r;
+                        if (Security.IsAuthenticated)
+                        {
+                            string r = image.File.Replace("\0", String.Empty);
+
+                            if (string.IsNullOrWhiteSpace(r))
+                            {
+                                return imgTags[tagIndex]["src"].Value;
+                            }
+                            else
+                            {
+                                return "\">" + r;
+                            }
+                        }
+                        else
+                        {
+                            return string.Empty;
+                        }
                     }
 
                     imgTags[tagIndex]["src"].Value = image.File;
