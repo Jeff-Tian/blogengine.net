@@ -40,7 +40,11 @@ pre.auto-wrap {
     position: relative;
 }
 
-.poem::after {
+.semi-transparent {
+    position: relative;
+}
+
+.poem::after, .semi-transparent::after {
     content: '';
     display: block;
     position: absolute;
