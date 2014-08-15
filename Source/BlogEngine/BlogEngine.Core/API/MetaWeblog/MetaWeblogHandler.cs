@@ -891,6 +891,13 @@
                     Description = sentPost.excerpt
                 };
 
+            if (string.IsNullOrWhiteSpace(post.Slug))
+            {
+                post.Slug = post.Title;
+            }
+
+            post.Slug = Post.GetUniqueSlug(post.Slug, post.Id);
+
             if (publish)
             {
                 if (!post.CanPublish(author))
