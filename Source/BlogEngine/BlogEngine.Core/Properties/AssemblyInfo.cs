@@ -18,6 +18,5 @@ using System.Security.Permissions;
 [assembly: AssemblyCulture("")]
 [assembly: CLSCompliant(false)]
 [assembly: ComVisible(false)]
-[assembly: AllowPartiallyTrustedCallers]
 [assembly: AssemblyVersion("2.8.0.0")]
 [assembly: SecurityRules(SecurityRuleSet.Level1)]

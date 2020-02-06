@@ -108,3 +108,4 @@ Backup*/
 UpgradeLog*.XML
 
 App_Data/logger.txt
+Source/BlogEngine/PrecompiledWeb/
