@@ -348,13 +348,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(SolutionDir)..\lib\watin\Interop.SHDocVw.dll" "$(SolutionDir)BlogEngine.Tests\Bin\Debug\" /F /R /Y /I
-xcopy "$(SolutionDir)..\lib\watin\BlogEngine.Tests.dll.config" "$(SolutionDir)BlogEngine.Tests\Bin\Debug\" /F /R /Y /I
-xcopy "$(SolutionDir)packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll" "$(SolutionDir)BlogEngine.NET\Bin\" /F /R /Y /I
-xcopy "$(SolutionDir)packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll" "$(SolutionDir)BlogEngine.NET\Bin\" /F /R /Y /I
-xcopy "$(SolutionDir)packages\WebGrease.1.1.0\lib\WebGrease.dll" "$(SolutionDir)BlogEngine.NET\Bin\" /F /R /Y /I
-xcopy "$(SolutionDir)packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\*.dll" "$(SolutionDir)BlogEngine.NET\Bin\" /F /R /Y /I
-xcopy "$(SolutionDir)packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll" "$(SolutionDir)BlogEngine.NET\Bin\" /F /R /Y /I</PostBuildEvent>
+    <PostBuildEvent></PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
