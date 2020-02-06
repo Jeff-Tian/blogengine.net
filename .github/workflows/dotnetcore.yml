@@ -1,16 +1,27 @@
-name: .NET Core
+name: Build Web App
 
 on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
+      - name: Setup MSBuild Path
+        uses: warrenbuckley/Setup-MSBuild@v1
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.2
+
+      - name: Restore NuGet Packages
+        run: nuget restore Source/BlogEngine/BlogEngine.sln
+
+      - name: BUild and publish Web App
+        run: msbuild Source/BlogEngine/BlogEngine.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1.0.0
         with:
-          dotnet-version: 2.2.108
-      - name: Build with dotnet
-        run: dotnet build --configuration Release Source/BlogEngine/BlogEngine.sln
+          name: published_webapp
+          path: bin\Release\Publish
