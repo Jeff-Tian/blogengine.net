@@ -20,10 +20,10 @@ jobs:
       - name: BUild and publish Web App
         run: |
           msbuild -version
-          msbuild Source/BlogEngine/BlogEngine.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+          msbuild Source/BlogEngine/BlogEngine.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile /p:OutDir=publish
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v1.0.0
         with:
           name: published_webapp
-          path: bin\Release\Publish
+          path: Source/BlogEngine/publish_PublishedWebsites/
