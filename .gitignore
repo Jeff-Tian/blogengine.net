@@ -109,4 +109,5 @@ UpgradeLog*.XML
 
 App_Data/logger.txt
 Source/BlogEngine/PrecompiledWeb/
+Source/BlogEngine/BlogEngine.NET/Bin
 .vs
