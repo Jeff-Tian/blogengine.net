@@ -15,7 +15,7 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.2
 
       - name: Restore NuGet Packages
-        run: nuget restore Source/BlogEngine/BlogEngine.NET/packages.config /p:PackagesDirectory=Source/BlogEngine/packages
+        run: nuget restore Source/BlogEngine/BlogEngine.NET/packages.config -OutputDirectory Source/BlogEngine/packages
 
       - name: BUild and publish Web App
         run: msbuild Source/BlogEngine/BlogEngine.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
