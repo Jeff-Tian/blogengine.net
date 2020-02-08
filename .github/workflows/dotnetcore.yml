@@ -18,6 +18,7 @@ jobs:
         run: nuget restore Source/BlogEngine/BlogEngine.NET/packages.config -OutputDirectory Source/BlogEngine/packages
 
       - name: BUild and publish Web App
+        run: msbuild -version
         run: msbuild Source/BlogEngine/BlogEngine.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
 
       - name: Upload Artifact
